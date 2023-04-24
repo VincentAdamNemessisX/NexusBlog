@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+</head>
+<style>
+    .btn {
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        /*margin: 0 auto;*/
+        margin-top: 7%;
+        margin-left: 25%;
+    }
+
+    input {
+        width: 200px;
+        height: 30px;
+        /*margin: 0 auto;*/
+        margin-top: 5%;
+    }
+
+    legend {
+        text-align: center;
+    }
+
+    fieldset {
+        margin: 0 auto;
+        padding-left: 30%;
+    }
+</style>
+<body>
+<form action="../handle/login.php" method="post">
+    <fieldset>
+        <legend>WELCOME TO LOGIN</legend>
+        <label>Username:<input name="unm" placeholder="Please input username" type="text"></label><br/>
+        <label>Password:<input name="pwd" placeholder="Please input password" type="password"></label><br/>
+        <input class="btn" name="sb" type="submit" value="LOGIN">
+        <input name="rg" onclick="register();" type="button" value="REGISTER">
+    </fieldset>
+</form>
+<script type="text/javascript">
+    function register() {
+        window.location.href = "../views/register.html";
+    }
+</script>
+</body>
+</html>
