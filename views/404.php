@@ -1,5 +1,5 @@
 <?php include_once "../templates/header.html" ?>
-<!-- .site-content -->
+    <!-- .site-content -->
     <div class="site-content">
         <div class="atbs-404-block atbs-block atbs-404-block--fullwidth ">
             <div class="container container--narrow">

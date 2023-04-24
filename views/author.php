@@ -1,5 +1,5 @@
 <?php include_once "../templates/header.html" ?>
-<div class="site-content">
+    <div class="site-content">
         <div class="atbs-block atbs-block--fullwidth module-author">
             <div class="container">
                 <div class="row">
@@ -9,7 +9,8 @@
                             <div class="author-box__image">
                                 <div class="author-avatar">
                                     <img alt="Ryan Reynold" class="avatar photo"
-                                         data-pagespeed-url-hash="1520034441" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                         data-pagespeed-url-hash="1520034441"
+                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                          src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
                                 </div>
                             </div>
@@ -42,32 +43,36 @@
                                 <div class="posts-list flex-box flex-box-2i flex-space-30 posts-list-tablet-2i">
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3134146331"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -82,32 +87,36 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="1270394416"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -122,32 +131,36 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3284578357"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -162,32 +175,36 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="2314954141" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="2314954141"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x1.jpg.pagespeed.ic.lC-7aJNJix.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -202,32 +219,36 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="606178561" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="606178561"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x47.jpg.pagespeed.ic.ym8N9fj4mq.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -242,32 +263,36 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3428646252" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3428646252"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x42.jpg.pagespeed.ic.oAeuycxQzj.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -282,32 +307,36 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3198453904" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3198453904"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/4.jpg.pagespeed.ce.ksyJTHqoXB.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -322,32 +351,36 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="2903953983" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="2903953983"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/3.jpg.pagespeed.ce.epdGxZrfIQ.jpg">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                                    <a class="post__cat post__cat-primary"
+                                                       href="category-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
-                                                    <div class="post__meta time-style-1 flex-box justify-content-space align-item-center">
+                                                    <div
+                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
                                                                     <span>by</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor Randall</a>
+                                                                       title="Posts by Connor Randall"> Connor
+                                                                        Randall</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -380,7 +413,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3134146331"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -404,7 +438,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="1270394416"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -428,7 +463,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3284578357"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -463,11 +499,12 @@
                                     <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3134146331"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                 </div>
                                                 <div class="post__text">
@@ -480,11 +517,12 @@
                                         </div>
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="1270394416"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                 </div>
                                                 <div class="post__text">
@@ -497,11 +535,12 @@
                                         </div>
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3284578357"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                 </div>
                                                 <div class="post__text">

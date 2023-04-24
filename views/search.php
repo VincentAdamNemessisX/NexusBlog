@@ -1,12 +1,13 @@
 <?php include_once "../templates/header.html" ?>
-<div class="site-content">
+    <div class="site-content">
         <div class="atbs-block atbs-block--fullwidth">
             <div class="container">
                 <div class="row">
                     <div class="atbs-main-col">
                         <!-- listing-grid-1 -->
                         <div class="atbs-block atbs-block--fullwidth atbs-posts-listing--grid-1-has-sidebar">
-                            <div class="block-heading block-heading_style-1 block-heading-no-line block-heading_style-1-small">
+                            <div
+                                class="block-heading block-heading_style-1 block-heading-no-line block-heading_style-1-small">
                                 <h4 class="block-heading__title">
                                     <span class="first-word">Search For: </span><span> Travel</span>
                                 </h4>
@@ -15,12 +16,13 @@
                                 <div class="posts-list flex-box flex-space-30 flex-box-2i posts-list-tablet-2i">
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3134146331"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -59,12 +61,13 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="1270394416"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -103,12 +106,13 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3284578357"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -147,12 +151,13 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="2314954141" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="2314954141"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x1.jpg.pagespeed.ic.lC-7aJNJix.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -191,12 +196,13 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="606178561" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="606178561"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x47.jpg.pagespeed.ic.ym8N9fj4mq.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -235,12 +241,13 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3428646252" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3428646252"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/x42.jpg.pagespeed.ic.oAeuycxQzj.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -279,12 +286,13 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="3198453904" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="3198453904"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/4.jpg.pagespeed.ce.ksyJTHqoXB.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -323,12 +331,13 @@
                                     </div>
                                     <div class="list-item">
                                         <article
-                                                class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
-                                                data-dark-mode="true">
+                                            class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
+                                            data-dark-mode="true">
                                             <div class="post__thumb object-fit">
                                                 <a href="single.php">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="2903953983" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                         data-pagespeed-url-hash="2903953983"
+                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="../images/3.jpg.pagespeed.ce.epdGxZrfIQ.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -385,7 +394,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3134146331"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -409,7 +419,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="1270394416"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -433,7 +444,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3284578357"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -468,11 +480,12 @@
                                     <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3134146331"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                 </div>
                                                 <div class="post__text">
@@ -485,11 +498,12 @@
                                         </div>
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="1270394416"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                 </div>
                                                 <div class="post__text">
@@ -502,11 +516,12 @@
                                         </div>
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3284578357"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                 </div>
                                                 <div class="post__text">

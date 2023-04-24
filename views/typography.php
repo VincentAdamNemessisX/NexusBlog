@@ -1,5 +1,5 @@
-<?php include_once "../templates/header.html" ?> 
-<div class="site-content">
+<?php include_once "../templates/header.html" ?>
+    <div class="site-content">
         <div class="atbs-block atbs-block--fullwidth">
             <div class="container">
                 <div class="row">
@@ -20,10 +20,13 @@
                                             <blockquote><p>Stay hungry. Stay foolish.</p></blockquote>
                                             <p>Multi line blockquote with a cite reference:</p>
                                             <blockquote><p>People think focus means saying yes to the thing you’ve got
-                                                to focus on. But that’s not what it means at all. It means saying no to
-                                                the hundred other good ideas that there are. You have to pick carefully.
-                                                I’m actually as proud of the things we haven’t done as the things I have
-                                                done. Innovation is saying no to 1,000 things.</p>
+                                                    to focus on. But that’s not what it means at all. It means saying no
+                                                    to
+                                                    the hundred other good ideas that there are. You have to pick
+                                                    carefully.
+                                                    I’m actually as proud of the things we haven’t done as the things I
+                                                    have
+                                                    done. Innovation is saying no to 1,000 things.</p>
                                                 <footer>
                                                     <cite>Steve Jobs – Apple Worldwide Developers’ Conference,
                                                         1997</cite>
@@ -121,8 +124,9 @@
                                                 <li>List item four</li>
                                             </ol>
                                             <h2>HTML Tags</h2>
-                                            <p>These supported tags come from the WordPress.com code <a href="javascript:;"
-                                                                                                        title="Code">FAQ</a>.
+                                            <p>These supported tags come from the WordPress.com code <a
+                                                    href="javascript:;"
+                                                    title="Code">FAQ</a>.
                                             </p>
                                             <p><strong>Address Tag</strong></p>
                                             <address>1 Infinite Loop<br>
@@ -139,7 +143,7 @@
                                             <p>“Code is poetry.” —<cite>Automattic</cite></p>
                                             <p><strong>Code Tag</strong></p>
                                             <p>You will learn later on in these tests that <code>word-wrap:
-                                                break-word;</code> will be your best friend.</p>
+                                                    break-word;</code> will be your best friend.</p>
                                             <p><strong>Delete Tag</strong></p>
                                             <p>This tag will let you
                                                 <del>strikeout text</del>
@@ -197,7 +201,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3134146331"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -221,7 +226,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="1270394416"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -245,7 +251,8 @@
                                                 <div class="post__thumb object-fit">
                                                     <a href="single.php"><img
                                                             alt="file not found"
-                                                            data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3284578357"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
                                                        href="category-1.php">GADGETS</a>
@@ -280,11 +287,12 @@
                                     <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="3134146331" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3134146331"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                 </div>
                                                 <div class="post__text">
@@ -297,11 +305,12 @@
                                         </div>
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="1270394416" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="1270394416"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                 </div>
                                                 <div class="post__text">
@@ -314,11 +323,12 @@
                                         </div>
                                         <div class="list-item">
                                             <article
-                                                    class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
+                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
                                                 <div class="post__thumb atbs-thumb-object-fit">
                                                     <a href="single.php"><img
                                                             alt="File not found"
-                                                            data-pagespeed-url-hash="3284578357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                                            data-pagespeed-url-hash="3284578357"
+                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                 </div>
                                                 <div class="post__text">

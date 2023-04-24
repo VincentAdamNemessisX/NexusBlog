@@ -2,79 +2,186 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        .card {
+            background-color: #212121;
+            color: #fff;
+            border: none;
+        }
+        .btn-primary {
+            background-color: #e53935;
+            border-color: #e53935;
+        }
+        .btn-primary:hover {
+            background-color: #c62828;
+            border-color: #c62828;
+        }
+        /* 居中主体部分 */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        /* 调整输入框样式 */
+        .form-control {
+            background-color: #424242;
+            color: #fff;
+            border-color: #e53935;
+        }
+        .form-control:focus {
+            background-color: #424242;
+            color: #fff;
+            border-color: #e53935;
+            box-shadow: none;
+        }
+        /* 美化复选框 */
+        .form-check-input:checked + .form-check-label:before {
+            content: "\f00c";
+            color: #fff;
+            background-color: #e53935;
+            border-color: #e53935;
+        }
+        .form-check-input:focus + .form-check-label:before {
+            box-shadow: none;
+        }
+        /* 居中注册页面主体 */
+        .register-form {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        /* 调整注册按钮样式 */
+        .btn-register {
+            background-color: #e53935;
+            border-color: #e53935;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-register:hover {
+            background-color: #c62828;
+            border-color: #c62828;
+        }
+        /* 调整错误提示信息样式 */
+        .form-text {
+            margin-top: 5px;
+            display: none;
+        }
+        .form-text.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-<form action="../handle/register.php" method="post">
-    <fieldset>
-        <legend>Register</legend>
-        <label for="un">Username:</label>
-        <input id="un" name="un" onchange="check_un()" placeholder="Please input the username that you want to register"
-               type="text"><br/>
-        <label for="pwd">Password:</label>
-        <input id="pwd" name="pwd" placeholder="Please input the password" type="password"><br/>
-        <label for="rp_pwd">Repeat Password:</label>
-        <input id="rp_pwd" name="pwd" onchange="check_pwd()" placeholder="Please input the password again"
-               type="password"><br/>
-        <label for="nickname">NickName</label>
-        <input id="nickname" name="nickname" placeholder="Please input your nickname" type="text"><br/>
-        <input checked id="male" name="gender" type="radio" value="male">
-        <label for="male">男</label>
-        <input id="female" name="gender" type="radio" value="female">
-        <label for="female">女</label><br/>
-        <label for="email">E-Mail</label>
-        <input id='email' name="email" placeholder="please input your email" type="email"><br/>
-        <label for="url">URL</label>
-        <input id="url" name="url" placeholder="please input your personal url" type="url"><br/>
-        <label for="city">City</label>
-        <select id="city" name="city">
-            <option value="Beijing">Beijing</option>
-            <option value="Shanghai">Shanghai</option>
-            <option value="Guangzhou">Guangzhou</option>
-            <option value="Shenzhen">Shenzhen</option>
-            <option selected value="Shangqiu">Shangqiu</option>
-        </select><br/>
-        <label>Skills:</label>
-        <input checked id="program" name="skill[]" type="checkbox" value="Programs">
-        <label for="program">Programs</label>
-        <input id="sports" name="skill[]" type="checkbox" value="Sports">
-        <label for="sports">Sports</label>
-        <input id="food" name="skill[]" type="checkbox" value="Foods">
-        <label for="food">Foods</label><br/>
-        <label for="description">Introduction</label>
-        <textarea id="description" name="description" placeholder="please input your introduction"></textarea>
-        <br/>
-        <input name="sb" onclick="check_submit()" type="button" value="REGISTER">
-    </fieldset>
-</form>
-<script type="text/javascript">
-    function check_un() {
-        const un = document.getElementById("un").value;
-        if (un.length < 6) {
-            alert("The length of username should be at least 6");
-            return false;
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center"><h4>Register</h4></div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                            <small id="usernameError" class="form-text text-danger"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <small id="emailError" class="form-text text-danger"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter password">
+                            <small id="passwordError" class="form-text text-danger"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+                            <small id="confirmPasswordError" class="form-text text-danger"></small>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const form = document.querySelector('form');
+    const username = document.getElementById('username');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const usernameError = document.getElementById('usernameError');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const confirmPasswordError = document.getElementById('confirmPasswordError');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        checkInputs();
+    });
+
+    function checkInputs() {
+        const usernameValue = username.value.trim();
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+        const confirmPasswordValue = confirmPassword.value.trim();
+
+        if (usernameValue === '') {
+            setErrorFor(username, usernameError, 'Username cannot be blank');
+        } else {
+            setSuccessFor(username, usernameError);
         }
-        return true;
+
+        if (emailValue === '') {
+            setErrorFor(email, emailError, 'Email cannot be blank');
+        } else if (!isEmail(emailValue)) {
+            setErrorFor(email, emailError, 'Email is not valid');
+        } else {
+            setSuccessFor(email, emailError);
+        }
+
+        if (passwordValue === '') {
+            setErrorFor(password, passwordError, 'Password cannot be blank');
+        } else if (passwordValue.length < 6) {
+            setErrorFor(password, passwordError, 'Password must be at least 6 characters');
+        } else {
+            setSuccessFor(password, passwordError);
+        }
+
+        if (confirmPasswordValue === '') {
+            setErrorFor(confirmPassword, confirmPasswordError, 'Confirm password cannot be blank');
+        } else if (passwordValue !== confirmPasswordValue) {
+            setErrorFor(confirmPassword, confirmPasswordError, 'Passwords do not match');
+        } else {
+            setSuccessFor(confirmPassword, confirmPasswordError);
+        }
     }
 
-    function check_pwd() {
-        const pwd = document.getElementById("pwd").value;
-        const rp_pwd = document.getElementById("rp_pwd").value;
-        if (pwd.length < 6) {
-            alert("The length of password should be at least 6");
-            return false;
-        }
-        if (pwd !== rp_pwd) {
-            alert("The two passwords are not the same");
-            return false;
-        }
-        return true;
+    function setErrorFor(input, error, message) {
+        error.innerText = message;
+        input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
     }
 
-    function check_submit() {
-        if (check_un() && check_pwd()) {
-            document.forms[0].submit();
-        }
+    function setSuccessFor(input, error) {
+        error.innerText = '';
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+    }
+
+    function isEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 </script>
 </body>
