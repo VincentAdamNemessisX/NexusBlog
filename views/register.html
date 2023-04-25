@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-min-4.5.2.css">
     <style>
         body {
             background-color: #000;
@@ -113,22 +113,23 @@
                         </div>
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username" oninput="checkUsername()" onchange="checkUsername()" placeholder="Enter username">
+                            <input type="text" class="form-control" name="username" id="username" oninput="checkUsername()" onfocusin="checkUsername()" onfocusout="checkUsername()" placeholder="Enter username">
                             <small id="usernameError" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" oninput="checkEmail()" onchange="checkEmail()" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" id="email" oninput="checkEmail()"
+                                   onfocusin="checkEmail()" onfocusout="checkEmail()" placeholder="Enter email">
                             <small id="emailError" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" oninput="checkPassword()" onchange="checkPassword()" placeholder="Enter password">
+                            <input type="password" class="form-control" name="password" id="password" oninput="checkPassword()" onfocusin="checkPassword()" onfocusout="checkPassword()" placeholder="Enter password">
                             <small id="passwordError" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" oninput="checkConfirmPassword()" onchange="checkConfirmPassword()" placeholder="Confirm password">
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" oninput="checkConfirmPassword()" onfocusin="checkConfirmPassword()" onfocusout="checkConfirmPassword()" placeholder="Confirm password">
                             <small id="confirmPasswordError" class="form-text text-danger"></small>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-register" name="reg">Register</button>
@@ -151,7 +152,11 @@
     const confirmPasswordError = document.getElementById('confirmPasswordError');
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        checkInputs();
+        if(checkInputs()) {
+            form.submit();
+        } else {
+            alert("Please check your input!");
+        }
     });
 
     function fillHeadPortrait() {
@@ -213,9 +218,7 @@
     }
 
     function checkInputs() {
-        if(checkUsername() && checkEmail() && checkPassword() && checkConfirmPassword()) {
-            form.submit();
-        }
+        return checkUsername() && checkEmail() && checkPassword() && checkConfirmPassword();
     }
 
     function setErrorFor(input, error, message) {

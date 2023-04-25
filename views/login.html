@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-min-4.5.2.css">
     <style>
         body {
             background-color: #000;
@@ -107,9 +107,6 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
         // 获取用户名和密码输入框的引用
@@ -117,40 +114,45 @@
         const passwordInput = $("#password");
 
         // 监听输入框的输入事件
-        usernameInput.on("input", function() {
+        usernameInput.on("input focusin focusout", function() {
             // 获取输入框中的值
             const username = $(this).val();
 
             // 检查输入是否有效，例如长度是否超过3个字符
             if(username.length < 3) {
+                $(this).removeClass("is-valid");
                 $(this).addClass("is-invalid");
             } else {
                 $(this).removeClass("is-invalid");
+                $(this).addClass("is-valid");
             }
         });
 
-        passwordInput.on("input", function() {
+        passwordInput.on("input focusin focusout", function() {
             // 获取输入框中的值
             const password = $(this).val();
 
             // 检查输入是否有效，例如长度是否超过4个字符
             if(password.length < 4) {
+                $(this).removeClass("is-valid");
                 $(this).addClass("is-invalid");
             } else {
                 $(this).removeClass("is-invalid");
+                $(this).addClass("is-valid");
             }
         });
     });
 
     function check() {
-        var username = !document.getElementById("username").classList.contains("is-invalid");
-        var password = !document.getElementById("password").classList.contains("is-invalid");
+        var username = document.getElementById("username").classList.contains("is-valid");
+        var password = document.getElementById("password").classList.contains("is-valid");
         var form = document.getElementById("form");
         if(password && username) {
             form.submit();
+        } else {
+            alert("请检查用户名或密码！");
+            history.back();
         }
-        alert("请检查用户名或密码！");
-        history.back();
     }
 </script>
 </body>
