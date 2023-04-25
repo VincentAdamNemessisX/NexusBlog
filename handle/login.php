@@ -2,13 +2,12 @@
 session_start();
 include_once '../database/databaseHandle.php';
 date_default_timezone_set('PRC');
-if (isset($_POST['sb'])) {
-    if (isset($_POST['unm']) && isset($_POST['pwd'])) {
-        $acts = queryData("accounts", "*", "username='" . $_POST['unm'] . "'");
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        $acts = queryData("accounts", "username,password", "username='" . $_POST['username'] . "'");
         $act = mysqli_fetch_array($acts);
         closeDatabase();
         if ($act) {
-            if ($_POST['pwd'] == $act['password']) {
+            if (md5($_POST['password']) == $act['password']) {
                 $_SESSION['user'] = $act['username'];
                 $_SESSION['lastLoginTime'] = date('Y-m-d H:i:s');
                 echo "<script>alert('Login Successful!');location.href= '../views/index.php';</script>";
@@ -19,4 +18,3 @@ if (isset($_POST['sb'])) {
             echo "<script>alert('Login Failed, the user is not exists!'); history.back()</script>";
         }
     }
-}

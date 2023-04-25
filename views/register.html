@@ -14,6 +14,7 @@
             color: #fff;
             border: none;
         }
+
         .btn-primary {
             background-color: #e53935;
             border-color: #e53935;
@@ -41,20 +42,24 @@
             border-color: #e53935;
             box-shadow: none;
         }
-        /* 美化复选框 */
-        .form-check-input:checked + .form-check-label:before {
-            content: "\f00c";
-            color: #fff;
-            background-color: #e53935;
-            border-color: #e53935;
+
+        /* 响应式布局注册页面主体 */
+        .card {
+            width: 600px;
         }
-        .form-check-input:focus + .form-check-label:before {
-            box-shadow: none;
-        }
-        /* 居中注册页面主体 */
+
         .register-form {
             margin: 0 auto;
-            max-width: 500px;
+            width: 500px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .register-form {
+                width: auto;
+            }
+            .card {
+                width: auto;
+            }
         }
         /* 调整注册按钮样式 */
         .btn-register {
@@ -75,41 +80,59 @@
         .form-text.active {
             display: block;
         }
+
+        .imgSize {
+            width: 150px;
+        }
+
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center"><h4>Register</h4></div>
                 <div class="card-body">
-                    <form>
+                    <form class="register-form" action="../handle/register.php">
+                        <div class="text-center mt-3">
+                            <label for="headPortrait"></label>
+                            <select id="headPortrait" class="form-group" name="headPortrait" onchange="fillHeadPortrait()">
+                                <option value="../images/avatar-male-1.jpg">男生头像-1-力量</option>
+                                <option value="../images/avatar-male-2.jpg">男生头像-2-星空</option>
+                                <option value="../images/avatar-male-3.jpg">男生头像-3-落日</option>
+                                <option value="../images/avatar-male-4.jpg">男生头像-4-天空</option>
+                                <option value="../images/avatar-male-5.jpg">男生头像-5-自信</option>
+                                <option value="../images/avatar-female-1.jpg" selected>女生头像-1-春日</option>
+                                <option value="../images/avatar-female-2.jpg">女生头像-2-鲜花</option>
+                                <option value="../images/avatar-female-3.jpg">女生头像-3-自由</option>
+                                <option value="../images/avatar-female-4.jpg">女生头像-4-落日</option>
+                                <option value="../images/avatar-female-5.jpg">女生头像-5-夕阳</option>
+                            </select><br/>
+                            <input type="image" src="../images/avatar-female-1.jpg" id="img_head" alt="headPortrait" class="rounded-circle imgSize">
+                        </div>
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                            <input type="text" class="form-control" name="username" id="username" oninput="checkUsername()" onchange="checkUsername()" placeholder="Enter username">
                             <small id="usernameError" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" id="email" oninput="checkEmail()" onchange="checkEmail()" placeholder="Enter email">
                             <small id="emailError" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Enter password">
+                            <input type="password" class="form-control" name="password" id="password" oninput="checkPassword()" onchange="checkPassword()" placeholder="Enter password">
                             <small id="passwordError" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" oninput="checkConfirmPassword()" onchange="checkConfirmPassword()" placeholder="Confirm password">
                             <small id="confirmPasswordError" class="form-text text-danger"></small>
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-register" name="reg">Register</button>
+                        <small class="d-block text-center mt-3"><a href="login.html">Login</a></small>
                     </form>
                 </div>
             </div>
@@ -131,40 +154,67 @@
         checkInputs();
     });
 
-    function checkInputs() {
-        const usernameValue = username.value.trim();
-        const emailValue = email.value.trim();
-        const passwordValue = password.value.trim();
-        const confirmPasswordValue = confirmPassword.value.trim();
+    function fillHeadPortrait() {
+        const headPortrait = document.getElementById('headPortrait');
+        const img_head = document.getElementById('img_head');
+        img_head.src = headPortrait.value;
+    }
 
+    function checkUsername() {
+        const usernameValue = username.value.trim();
         if (usernameValue === '') {
             setErrorFor(username, usernameError, 'Username cannot be blank');
+            return false;
         } else {
             setSuccessFor(username, usernameError);
+            return true;
         }
+    }
 
+    function checkEmail() {
+        const emailValue = email.value.trim();
         if (emailValue === '') {
             setErrorFor(email, emailError, 'Email cannot be blank');
+            return false;
         } else if (!isEmail(emailValue)) {
-            setErrorFor(email, emailError, 'Email is not valid');
+            setErrorFor(email, emailError, 'Not a valid email');
+            return false;
         } else {
             setSuccessFor(email, emailError);
+            return true;
         }
+    }
 
+    function checkPassword() {
+        const passwordValue = password.value.trim();
         if (passwordValue === '') {
             setErrorFor(password, passwordError, 'Password cannot be blank');
+            return false;
         } else if (passwordValue.length < 6) {
             setErrorFor(password, passwordError, 'Password must be at least 6 characters');
+            return false;
         } else {
             setSuccessFor(password, passwordError);
+            return true;
         }
+    }
 
+    function checkConfirmPassword() {
+        const confirmPasswordValue = confirmPassword.value.trim();
         if (confirmPasswordValue === '') {
             setErrorFor(confirmPassword, confirmPasswordError, 'Confirm password cannot be blank');
-        } else if (passwordValue !== confirmPasswordValue) {
-            setErrorFor(confirmPassword, confirmPasswordError, 'Passwords do not match');
+        } else if (confirmPasswordValue !== password.value.trim()) {
+            setErrorFor(confirmPassword, confirmPasswordError, 'Confirm password does not match');
+            return false;
         } else {
             setSuccessFor(confirmPassword, confirmPasswordError);
+            return true;
+        }
+    }
+
+    function checkInputs() {
+        if(checkUsername() && checkEmail() && checkPassword() && checkConfirmPassword()) {
+            form.submit();
         }
     }
 
