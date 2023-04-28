@@ -10,10 +10,10 @@ $password = $_POST['password'];
 if(insertData("accounts", [], [], ["username" => $username, "email" => $email,
     "password" => md5($password), "headPortrait" => $headPortrait])) {
     closeDatabase();
+    $_SESSION['user'] = $username;
     echo "<script>alert('Register Successful!');location.href='./index.php';</script>";
 } else {
     closeDatabase();
     $error = mysqli_error($conn);
     echo "<script>alert('$error');location.history.back();</script>";
 }
-$_SESSION['user'] = $username;
