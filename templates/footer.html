@@ -13,16 +13,15 @@
         <div class="section-column section-column-center text-center">
           <nav class="footer-menu text-center">
             <ul class="navigation navigation--footer navigation--inline" id="menu-footer-menu">
-              <li><a href="../views/index.php">Home</a></li>
-              <li><a href="../views/contact.php">Contact</a></li>
-              <li><a href="javascript:">More Themes</a></li>
-              <li><a href="javascript:">Portfolio</a>
+              <li><a href="../views/index.php">主页</a></li>
+              <li><a href="../views/contact.php">联系我们</a></li>
               </li>
             </ul>
           </nav>
         </div>
         <div class="section-column section-column-right text-right section-socials">
           <ul class="social-list social-list--md list-horizontal">
+<!--            分享按钮展示位置-->
             <li><a href="#" target="_blank"><i class="mdicon mdicon-facebook"></i></a></li>
             <li><a href="#" target="_blank"><i class="mdicon mdicon-twitter"></i></a></li>
             <li><a href="#" target="_blank"><i class="mdicon mdicon-youtube"></i></a></li>
@@ -53,39 +52,37 @@
       <div class="navigation-wrapper navigation-bar__section js-priority-nav">
         <ul class="navigation navigation--main navigation--inline" id="menu-main-menu-1">
           <li class="menu-item-cat-1">
-            <a href="../views/index.php">Home</a>
+            <a href="../views/index.php">主页</a>
           </li>
           <li class="menu-item-cat-1">
-            <a href="../views/single.php">Single</a>
+            <a href="../views/single.php">单页</a>
           </li>
           <li class="menu-item-has-children">
-            <a href="#">Archive</a>
+            <a href="#">归档</a>
             <ul class="sub-menu">
               <li class="menu-item-has-children">
-                <a href="../views/category-1.php">Category</a>
+                <a href="../views/category-1.php">分类</a>
                 <ul class="sub-menu">
-                  <li><a href="../views/category-1.php">category 1</a></li>
-                  <li><a href="../views/category-2.php">category 2</a></li>
-                  <li><a href="../views/category-3.php">category 3</a></li>
-                  <li><a href="../views/category-4.php">category 4</a></li>
+                  <li><a href="../views/category-1.php">XX 运动</a></li>
+                  <li><a href="../views/category-2.php">XX 运动</a></li>
+                  <li><a href="../views/category-3.php">XX 运动</a></li>
+                  <li><a href="../views/category-4.php">XX 运动</a></li>
                 </ul>
               </li>
-              <li><a href="../views/tags.php">Archive Tags</a></li>
-              <li><a href="../views/author.php">Author</a></li>
+              <li><a href="../views/author.php">作者</a></li>
             </ul>
           </li>
           <li class="menu-item-has-children">
-            <a href="#">Pages</a>
+            <a href="#">页面</a>
             <ul class="sub-menu">
-              <li><a href="../views/page.php">Page</a></li>
-              <li><a href="../views/page-no-sidebar.php">page no sidebar</a></li>
-              <li><a href="../views/search.php">search</a></li>
-              <li><a href="../views/typography.php">typography</a></li>
-              <li><a href="404.php">404</a></li>
+              <li><a href="../views/page.php">经典页面</a></li>
+              <li><a href="../views/page-no-sidebar.php">无侧栏页面</a></li>
+              <li><a href="../views/search.php">搜索页面</a></li>
+              <li><a href="../views/typography.php">分类展示页面</a></li>
             </ul>
           </li>
           <li class="menu-item-cat-4">
-            <a href="../views/contact.php">Contact</a>
+            <a href="../views/contact.php">联系我们</a>
           </li>
         </ul>
       </div>
@@ -100,119 +97,6 @@
   <!-- Navigation-bar -->
 </div>
 <!-- Sticky header -->
-<!-- Login modal -->
-<div aria-labelledby="login-modal-label" class="modal fade login-modal" id="login-modal" role="dialog"
-     tabindex="-1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content login-signup-form">
-      <div class="modal-header">
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                aria-hidden="true">&#10005;</span></button>
-        <div class="modal-title" id="login-modal-label">
-          <ul class="nav nav-tabs js-login-form-tabs" role="tablist">
-            <li class="active" role="presentation"><a aria-controls="login-tab" data-toggle="tab"
-                                                      href="#login-tab" role="tab">Log in</a></li>
-            <li role="presentation"><a aria-controls="signup-tab" data-toggle="tab" href="#signup-tab"
-                                       role="tab">Sign up</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="tab-content">
-          <div class="tab-pane fade in active" id="login-tab" role="tabpanel">
-            <div class="login-with-social">
-              <p>Log in with social account</p>
-              <ul class="social-list social-list--circle list-center ">
-                <li><a class="facebook-theme-bg text-white" href="#"><i
-                        class="mdicon mdicon-facebook"></i></a>
-                </li>
-                <li><a class="twitter-theme-bg text-white" href="#"><i
-                        class="mdicon mdicon-twitter"></i></a>
-                </li>
-                <li><a class="googleplus-theme-bg text-white" href="#"><i
-                        class="mdicon mdicon-google-plus"></i></a>
-                </li>
-              </ul>
-            </div>
-            <div class="block-divider"><span>or</span></div>
-            <form action="#" id="loginform" method="post" name="loginform">
-              <p class="login-username">
-                <label for="user_login">Username</label>
-                <input class="input" id="user_login" name="log" size="20" type="text" value="">
-              </p>
-              <p class="login-password">
-                <label for="user_pass">Password</label>
-                <input class="input" id="user_pass" name="pwd" size="20" type="password" value="">
-              </p>
-              <p class="login-remember"><label><input id="rememberme" name="rememberme"
-                                                      type="checkbox" value="forever"> Remember
-                Me</label>
-              </p>
-              <p class="login-submit">
-                <input class="btn btn-block btn-primary" id="wp-submit" name="wp-submit"
-                       type="submit" value="Log In">
-                <input name="redirect_to" type="hidden" value="#">
-              </p>
-              <p class="login-lost-password">
-                <a class="link link--darken" href="#">Lost your password?</a>
-              </p>
-            </form>
-          </div>
-          <div class="tab-pane fade" id="signup-tab" role="tabpanel">
-            <form action="#" id="registerform" method="post" name="registerform">
-              <p class="register-username">
-                <label for="user_register">Username</label>
-                <input class="input" id="user_register" name="log" size="20" type="text" value="">
-              </p>
-              <p class="register-password">
-                <label for="user_register_pass">Password</label>
-                <input class="input" id="user_register_pass" name="pwd" size="20" type="password"
-                       value="">
-              </p>
-              <p class="register-submit">
-                <input class="btn btn-block btn-primary" id="wp-submit-register" name="wp-submit"
-                       type="submit" value="Sign Up">
-                <input name="redirect_to" type="hidden" value="#">
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Login modal -->
-<!-- Subscribe modal -->
-<div aria-labelledby="subscribe-modal-label" class="modal fade subscribe-modal" id="subscribe-modal" role="dialog"
-     tabindex="-1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                aria-hidden="true">&#10005;</span></button>
-        <h4 class="modal-title" id="subscribe-modal-label">Subscribe</h4>
-      </div>
-      <div class="modal-body">
-        <div class="subscribe-form subscribe-form--horizontal text-center max-width-sm">
-          <p class="typescale-1">
-            Join our <b>868,537</b> subscribers and get access to the latest tools, freebies, product
-            announcements and much more!
-          </p>
-          <div class="subscribe-form__fields">
-            <p>
-              <label>
-                <input name="EMAIL" placeholder="Your email address" required="" type="email">
-              </label>
-              <input class="btn btn-primary" type="submit" value="Subscribe">
-            </p>
-          </div>
-          <small>Don't worry, we don't spam</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Subscribe modal -->
 <!-- Off-canvas menu -->
 <div class="atbs-offcanvas js-atbs-offcanvas js-perfect-scrollbar scrollbar-overflowing"
      id="atbs-offcanvas-primary">
@@ -236,46 +120,44 @@
   <div class="atbs-offcanvas__section atbs-offcanvas__section-navigation">
     <ul class="navigation navigation--offcanvas" id="menu-offcanvas-menu">
       <li class="menu-item-cat-1">
-        <a href="../views/index.php">Home</a>
+        <a href="../views/index.php">主页</a>
       </li>
       <li class="menu-item-cat-1">
-        <a href="../views/single.php">Single</a>
+        <a href="../views/single.php">单页</a>
       </li>
       <li class="menu-item-has-children">
-        <a href="#">Archive</a>
+        <a href="#">归档</a>
         <ul class="sub-menu">
           <li class="menu-item-has-children">
-            <a href="../views/category-1.php">Category</a>
+            <a href="../views/category-1.php">分类</a>
             <ul class="sub-menu">
-              <li><a href="../views/category-1.php">category 1</a></li>
-              <li><a href="../views/category-2.php">category 2</a></li>
-              <li><a href="../views/category-3.php">category 3</a></li>
-              <li><a href="../views/category-4.php">category 4</a></li>
+              <li><a href="../views/category-1.php"> XX 运动</a></li>
+              <li><a href="../views/category-2.php"> XX 运动</a></li>
+              <li><a href="../views/category-3.php"> XX 运动</a></li>
+              <li><a href="../views/category-4.php"> XX 运动</a></li>
             </ul>
           </li>
-          <li><a href="../views/tags.php">Archive Tags</a></li>
-          <li><a href="../views/author.php">Author</a></li>
+          <li><a href="../views/author.php">作者</a></li>
         </ul>
       </li>
       <li class="menu-item-has-children">
-        <a href="#">Pages</a>
+        <a href="#">页面</a>
         <ul class="sub-menu">
-          <li><a href="../views/page.php">Page</a></li>
-          <li><a href="../views/page-no-sidebar.php">page no sidebar</a></li>
-          <li><a href="../views/search.php">search</a></li>
-          <li><a href="../views/typography.php">typography</a></li>
-          <li><a href="404.php">404</a></li>
+          <li><a href="../views/page.php">经典页面</a></li>
+          <li><a href="../views/page-no-sidebar.php">无侧栏页面</a></li>
+          <li><a href="../views/search.php">搜索页面</a></li>
+          <li><a href="../views/typography.php">分类展示页面</a></li>
         </ul>
       </li>
       <li class="menu-item-cat-4">
-        <a href="../views/contact.php">Contact</a>
+        <a href="../views/contact.php">联系我们</a>
       </li>
     </ul>
   </div>
-  <div class="atbs-offcanvas__section visible-xs visible-sm">
+  <div class="atbs-offcanvas__section">
     <div class="text-center">
-      <i class="mdicon mdicon-person mdicon--first"></i><span><a href="../views/login.html">Login</a> / <a
-            href="../views/register.html">Sign up</a></span>
+      <i class="mdicon mdicon-person mdicon--first"></i><span><a href="../views/login.html">登录</a> / <a
+            href="../views/register.html">注册</a></span>
     </div>
   </div>
 </div>
