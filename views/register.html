@@ -94,10 +94,10 @@
             <div class="card">
                 <div class="card-header text-center"><h4>Register</h4></div>
                 <div class="card-body">
-                    <form class="register-form" action="../handle/register.php">
+                    <form class="register-form" action="../handle/register.php" method="post">
                         <div class="text-center mt-3">
                             <label for="headPortrait"></label>
-                            <select id="headPortrait" class="form-group" name="headPortrait" onchange="fillHeadPortrait()">
+                            <select id="headPortrait" class="form-group" name="headPortrait" onload="fillHeadPortrait()" onchange="fillHeadPortrait()">
                                 <option value="../images/avatar-male-1.jpg">男生头像-1-力量</option>
                                 <option value="../images/avatar-male-2.jpg">男生头像-2-星空</option>
                                 <option value="../images/avatar-male-3.jpg">男生头像-3-落日</option>
