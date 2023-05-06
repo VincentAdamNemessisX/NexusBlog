@@ -1,43 +1,47 @@
-<?php include_once "../templates/header.php" ?>
+<?php include_once "../templates/header.php"; ?>
 <div class="site-content">
     <!-- module-1 -->
     <div class="atbs-block atbs-block--fullwidth atbs-featured-module-1">
         <div class="atbs-block__inner background-dots">
             <div class="atbs-block__inner-group flex-box">
                 <div class="section-main">
+                    <!--                            editor's pick by category-->
+                    <?php $blogs = queryData('accounts, recommendblog, blog, blogimages', '*',
+                            'blog.blogid=1 and blog.blogid = recommendblog.blogid and blog.author = accounts.username');
+                    ?>
                     <div
                         class="owl-carousel js-atbs-carousel-1i atbs-carousel dots-circle nav-circle  nav-vertical nav-border">
+                        <?php $blog = mysqli_fetch_array($blogs); ?>
                         <div class="slide-content">
                             <article class="post post--horizontal post--horizontal-middle post--horizontal-circle">
                                 <div class="post__thumb object-fit">
                                     <a href="single.php"><img
                                             alt="File not found"
-                                            src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
+                                            src="<?php echo explode(',', $blog['imagesurl'])[0] ?>"></a>
                                 </div>
                                 <div class="post__text inverse-text">
-                                    <a class="post__cat post__cat--bg" href="category-1.php">GADGETS</a>
+                                    <a class="post__cat post__cat--bg" href="category-1.php"><?php echo $_SESSION['types'][0]['name'] ?></a>
                                     <h3 class="post__title f-46 f-w-700 m-t-10 m-b-15 atbs-line-limit atbs-line-limit-3">
-                                        <a href="single.php">Those Who Realize Their Folly Are Not True Fools.</a>
+                                        <a href="single.php?blogid=1"><?php echo $blog['title'] ?></a>
                                     </h3>
                                     <div class="post__excerpt m-t-0 m-b-20">
-                                        Here are some of the most impressive ones to inspire your next expedition
-                                        for when the time.
+                                        <?php echo $blog['abstract']  ?>
                                     </div>
                                     <div class="post__meta">
                                         <div class="post-author post-author_style-7">
-                                            <a class="post-author__avatar" href="author.php"
+                                            <a class="post-author__avatar" href="author.php?authorid=19"
                                                rel="author" title="Posts by Connor Randall">
                                                 <img alt="Connor Randall"
-                                                     src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
+                                                     src="<?php echo $blog['headPortrait'] ?>">
                                             </a>
                                             <div class="post-author__text">
                                                 <div class="author_name--wrap">
                                                     <span>by</span>
                                                     <a class="post-author__name" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall"> Connor Randall</a>
+                                                       rel="author" title="Posts by Connor Randall"><?php echo $blog['author'] ?></a>
                                                 </div>
-                                                <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                                      title="March 6, 2021 at 8:45 am">March 6, 2021
+                                                <time class="time published" datetime="<?php echo $blog['publishTime'] ?>"
+                                                      title="<?php echo $blog['publishTime'] ?>"><?php echo $blog['publishTime'] ?>
                                                 </time>
                                             </div>
                                         </div>
@@ -45,6 +49,7 @@
                                 </div>
                             </article>
                         </div>
+<!--                        cycle print recommend data-->
                         <div class="slide-content">
                             <article class="post post--horizontal post--horizontal-middle post--horizontal-circle">
                                 <div class="post__thumb object-fit">
