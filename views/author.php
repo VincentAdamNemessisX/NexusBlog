@@ -1,4 +1,4 @@
-<?php include_once "../templates/header.html" ?>
+<?php include_once "../templates/header.php" ?>
     <div class="site-content">
         <div class="atbs-block atbs-block--fullwidth module-author">
             <div class="container">
@@ -562,4 +562,4 @@
         </div>
     </div>
     <!-- .site-content -->
-<?php include_once "../templates/footer.html" ?>
+<?php include_once "../templates/footer.php" ?>

@@ -14,8 +14,11 @@
           <nav class="footer-menu text-center">
             <ul class="navigation navigation--footer navigation--inline" id="menu-footer-menu">
               <li><a href="../views/index.php">主页</a></li>
+              <li class="menu-item-cat-1"><a href="../views/category-1.php"><?php echo $types[0]['name'] ?></a></li>
+              <li class="menu-item-cat-1"><a href="../views/category-2.php"><?php echo $types[1]['name'] ?></a></li>
+              <li class="menu-item-cat-1"><a href="../views/category-3.php"><?php echo $types[2]['name'] ?></a></li>
+              <li class="menu-item-cat-1"><a href="../views/category-4.php"><?php echo $types[3]['name'] ?></a></li>
               <li><a href="../views/contact.php">联系我们</a></li>
-              </li>
             </ul>
           </nav>
         </div>
@@ -50,37 +53,14 @@
         </div>
       </div>
       <div class="navigation-wrapper navigation-bar__section js-priority-nav">
-        <ul class="navigation navigation--main navigation--inline" id="menu-main-menu-1">
+        <ul class="navigation navigation--main navigation--inline" id="menu-main-menu">
           <li class="menu-item-cat-1">
             <a href="../views/index.php">主页</a>
           </li>
-          <li class="menu-item-cat-1">
-            <a href="../views/single.php">单页</a>
-          </li>
-          <li class="menu-item-has-children">
-            <a href="#">归档</a>
-            <ul class="sub-menu">
-              <li class="menu-item-has-children">
-                <a href="../views/category-1.php">分类</a>
-                <ul class="sub-menu">
-                  <li><a href="../views/category-1.php">XX 运动</a></li>
-                  <li><a href="../views/category-2.php">XX 运动</a></li>
-                  <li><a href="../views/category-3.php">XX 运动</a></li>
-                  <li><a href="../views/category-4.php">XX 运动</a></li>
-                </ul>
-              </li>
-              <li><a href="../views/author.php">作者</a></li>
-            </ul>
-          </li>
-          <li class="menu-item-has-children">
-            <a href="#">页面</a>
-            <ul class="sub-menu">
-              <li><a href="../views/page.php">经典页面</a></li>
-              <li><a href="../views/page-no-sidebar.php">无侧栏页面</a></li>
-              <li><a href="../views/search.php">搜索页面</a></li>
-              <li><a href="../views/typography.php">分类展示页面</a></li>
-            </ul>
-          </li>
+          <li class="menu-item-cat-1"><a href="../views/category-1.php"><?php echo $types[0]['name'] ?></a></li>
+          <li class="menu-item-cat-1"><a href="../views/category-2.php"><?php echo $types[1]['name'] ?></a></li>
+          <li class="menu-item-cat-1"><a href="../views/category-3.php"><?php echo $types[2]['name'] ?></a></li>
+          <li class="menu-item-cat-1"><a href="../views/category-4.php"><?php echo $types[3]['name'] ?></a></li>
           <li class="menu-item-cat-4">
             <a href="../views/contact.php">联系我们</a>
           </li>
@@ -119,39 +99,17 @@
   </div>
   <div class="atbs-offcanvas__section atbs-offcanvas__section-navigation">
     <ul class="navigation navigation--offcanvas" id="menu-offcanvas-menu">
-      <li class="menu-item-cat-1">
-        <a href="../views/index.php">主页</a>
-      </li>
-      <li class="menu-item-cat-1">
-        <a href="../views/single.php">单页</a>
-      </li>
-      <li class="menu-item-has-children">
-        <a href="#">归档</a>
-        <ul class="sub-menu">
-          <li class="menu-item-has-children">
-            <a href="../views/category-1.php">分类</a>
-            <ul class="sub-menu">
-              <li><a href="../views/category-1.php"> XX 运动</a></li>
-              <li><a href="../views/category-2.php"> XX 运动</a></li>
-              <li><a href="../views/category-3.php"> XX 运动</a></li>
-              <li><a href="../views/category-4.php"> XX 运动</a></li>
-            </ul>
-          </li>
-          <li><a href="../views/author.php">作者</a></li>
-        </ul>
-      </li>
-      <li class="menu-item-has-children">
-        <a href="#">页面</a>
-        <ul class="sub-menu">
-          <li><a href="../views/page.php">经典页面</a></li>
-          <li><a href="../views/page-no-sidebar.php">无侧栏页面</a></li>
-          <li><a href="../views/search.php">搜索页面</a></li>
-          <li><a href="../views/typography.php">分类展示页面</a></li>
-        </ul>
-      </li>
-      <li class="menu-item-cat-4">
-        <a href="../views/contact.php">联系我们</a>
-      </li>
+        <li class="menu-item-cat-1">
+          <a href="../views/index.php">主页</a>
+        </li>
+      <li class="menu-item-cat-1"><a href="../views/category-1.php"><?php echo $types[0]['name'] ?></a></li>
+      <li class="menu-item-cat-1"><a href="../views/category-2.php"><?php echo $types[1]['name'] ?></a></li>
+      <li class="menu-item-cat-1"><a href="../views/category-3.php"><?php echo $types[2]['name'] ?></a></li>
+      <li class="menu-item-cat-1"><a href="../views/category-4.php"><?php echo $types[3]['name'] ?></a></li>
+        <li class="menu-item-cat-4">
+          <a href="../views/contact.php">联系我们</a>
+        </li>
+      </ul>
     </ul>
   </div>
   <div class="atbs-offcanvas__section">

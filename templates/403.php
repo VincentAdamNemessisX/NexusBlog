@@ -1,5 +1,5 @@
 <?php
-include_once "header.html"; ?>
+include_once "header.php"; ?>
     <!-- .site-content -->
     <div class="site-content">
         <div class="atbs-404-block atbs-block atbs-404-block--fullwidth ">
@@ -21,4 +21,4 @@ include_once "header.html"; ?>
         </div>
     </div>
     <!-- .site-content -->
-<?php include_once "footer.html"; ?>
+<?php include_once "footer.php"; ?>

@@ -3,10 +3,10 @@ global $conn;
 error_reporting(0);
 $conn = mysqli_connect('localhost:3333', 'root', 'root')
 or die("Database connect failed!" . mysqli_error($conn));
-mysqli_select_db($conn, 'Info');
+mysqli_select_db($conn, 'NexusBlog');
 mysqli_set_charset($conn, 'utf-8');
 
-function queryData($table, $fields = "*", $condition = "", $offset = 0, $limit = 0)
+function queryData($table, $fields = "*", $condition = "", $offset = -1, $limit = -1)
 {
     global $conn;
     if ($condition != '') {

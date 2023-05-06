@@ -1,3 +1,12 @@
+<?php
+session_start();
+include_once '../database/databaseHandle.php';
+$rst = queryData('blogstype');
+$types = [];
+while ($row = mysqli_fetch_array($rst)) {
+  $types[] = $row;
+}
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -59,10 +68,6 @@
             <i class="mdicon mdicon-search hidden-xs"></i>
             <i class="mdicon mdicon-search visible-xs-inline-block"></i>
           </button>
-          <a class="offcanvas-menu-toggle mobile-header-btn js-atbs-offcanvas-toggle">
-            <i class="mdicon mdicon-menu hidden-xs"></i>
-            <i class="mdicon mdicon-menu visible-xs-inline-block"></i>
-          </a>
         </div>
       </div>
     </div>
@@ -96,33 +101,10 @@
             <li class="menu-item-cat-1">
               <a href="../views/index.php">主页</a>
             </li>
-            <li class="menu-item-cat-1">
-              <a href="../views/single.php">单页</a>
-            </li>
-            <li class="menu-item-has-children">
-              <a href="#">归档</a>
-              <ul class="sub-menu">
-                <li class="menu-item-has-children">
-                  <a href="../views/category-1.php">分类</a>
-                  <ul class="sub-menu">
-                    <li><a href="../views/category-1.php">XX 运动</a></li>
-                    <li><a href="../views/category-2.php">XX 运动</a></li>
-                    <li><a href="../views/category-3.php">XX 运动</a></li>
-                    <li><a href="../views/category-4.php">XX 运动</a></li>
-                  </ul>
-                </li>
-                <li><a href="../views/author.php">作者</a></li>
-              </ul>
-            </li>
-            <li class="menu-item-has-children">
-              <a href="#">页面</a>
-              <ul class="sub-menu">
-                <li><a href="../views/page.php">经典页面</a></li>
-                <li><a href="../views/page-no-sidebar.php">无侧栏页面</a></li>
-                <li><a href="../views/search.php">搜索页面</a></li>
-                <li><a href="../views/typography.php">分类展示页面</a></li>
-              </ul>
-            </li>
+            <li class="menu-item-cat-1"><a href="../views/category-1.php"><?php echo $types[0]['name'] ?></a></li>
+            <li class="menu-item-cat-1"><a href="../views/category-2.php"><?php echo $types[1]['name'] ?></a></li>
+            <li class="menu-item-cat-1"><a href="../views/category-3.php"><?php echo $types[2]['name'] ?></a></li>
+            <li class="menu-item-cat-1"><a href="../views/category-4.php"><?php echo $types[3]['name'] ?></a></li>
             <li class="menu-item-cat-4">
               <a href="../views/contact.php">联系我们</a>
             </li>
