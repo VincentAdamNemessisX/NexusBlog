@@ -111,12 +111,19 @@
             </li>
         </ul>
     </div>
+    <?php if(!isset($_SESSION['user']))
+        echo <<<EOF
     <div class="atbs-offcanvas__section">
         <div class="text-center">
             <i class="mdicon mdicon-person mdicon--first"></i><span><a href="../views/login.html">登录</a> / <a
                     href="../views/register.html">注册</a></span>
         </div>
     </div>
+EOF;
+    else
+        echo <<<EOF
+EOF;
+?>
 </div>
 <!-- Off-canvas menu -->
 <a class="atbs-go-top btn btn-default hidden-xs js-go-top-el" href="#"><i

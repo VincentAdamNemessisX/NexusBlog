@@ -21,7 +21,8 @@ $_SESSION['types'] = $types;
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- import stylesheet -->
-    <style>@import url(../css/vendors.css);
+    <style>
+        @import url(../css/vendors.css);
         @import url(../css/atbs-style.css);
         @import url(../css/header.css);
         @import url(../css/footer.css);
@@ -43,11 +44,11 @@ $_SESSION['types'] = $types;
         @import url(../css/single-1.css);
         @import url(../css/author.css);
         @import url(../css/font.css);
-        @import url(../css/color.css);</style>
+        @import url(../css/color.css);
+    </style>
     <!-- Web Fonts  -->
     <link href="../css/css2.css" rel="stylesheet">
     <link href="../css/css21.css" rel="stylesheet">
-
 </head>
 <body class="home home-1 has-block-heading-line">
 <!-- .site-wrapper -->
