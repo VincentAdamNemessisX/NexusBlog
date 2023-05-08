@@ -25,7 +25,7 @@
                                                 src="../images/4.jpg.pagespeed.ce.ksyJTHqoXB.jpg"></a>
                                     </div>
                                     <div class="post__text inverse-text">
-                                        <a class="post__cat post__cat--bg" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat--bg" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-32 f-w-700 m-t-10 m-b-15 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Life Is Either A Daring Adventure Or Nothing At
                                                 All</a>
@@ -72,7 +72,7 @@
                                                         src="../images/3.jpg.pagespeed.ce.epdGxZrfIQ.jpg"></a>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-18 f-w-500 m-t-10 m-b-10 atbs-line-limit atbs-line-limit-2">
                                                     <a href="single.php">Life Is Too Important To Be Taken
                                                         Seriously</a>
@@ -96,7 +96,7 @@
                                                         src="../images/x34.jpg.pagespeed.ic.2LSufkqvmb.jpg"></a>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-18 f-w-500 m-t-10 m-b-10 atbs-line-limit atbs-line-limit-2">
                                                     <a href="single.php">Life Is Too Important To Be Taken
                                                         Seriously</a>
@@ -129,7 +129,7 @@
                                         <div class="post__text flex-box flex-direction-column inverse-text">
                                             <div class="post__text-group">
                                                 <a class="post__cat post__cat-primary"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                     <a href="single.php">Life Is Too Important To Be Taken
                                                         Seriously</a>
@@ -171,7 +171,7 @@
                                         <div class="post__text flex-box flex-direction-column inverse-text">
                                             <div class="post__text-group">
                                                 <a class="post__cat post__cat-primary"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                     <a href="single.php">Life Is Too Important To Be Taken
                                                         Seriously</a>
@@ -242,7 +242,7 @@
                                                 </div>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-22 f-w-600 m-t-10 m-b-15">
                                                     <a href="single.php">
                                                         What We Do Today Is What Matters Most.
@@ -291,7 +291,7 @@
                                                 </div>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-22 f-w-600 m-t-10 m-b-15">
                                                     <a href="single.php">
                                                         What We Do Today Is What Matters Most.
@@ -340,7 +340,7 @@
                                                 </div>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-22 f-w-600 m-t-10 m-b-15">
                                                     <a href="single.php">
                                                         What We Do Today Is What Matters Most.
@@ -389,7 +389,7 @@
                                                 </div>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-22 f-w-600 m-t-10 m-b-15">
                                                     <a href="single.php">
                                                         What We Do Today Is What Matters Most.
@@ -438,7 +438,7 @@
                                                 </div>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-22 f-w-600 m-t-10 m-b-15">
                                                     <a href="single.php">
                                                         What We Do Today Is What Matters Most.
@@ -487,7 +487,7 @@
                                                 </div>
                                             </div>
                                             <div class="post__text inverse-text">
-                                                <a class="post__cat" href="category-1.php">GADGETS</a>
+                                                <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                                 <h3 class="post__title f-22 f-w-600 m-t-10 m-b-15">
                                                     <a href="single.php">
                                                         What We Do Today Is What Matters Most.
@@ -537,7 +537,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -562,7 +562,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -587,7 +587,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">

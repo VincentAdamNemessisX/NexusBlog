@@ -5,21 +5,24 @@
         <div class="atbs-block__inner background-dots">
             <div class="atbs-block__inner-group flex-box">
 
-                <!--                            editor's pick by category-->
+                <!--editor's pick by some good content 推荐博客输出-->
                 <div class="section-main">
-                    <?php $blogrst = queryData('accounts, recommendblog, blog, blogimages', '*',
+                    <?php $blogrst = queryData('accounts, recommendblog, blogtype, blog, blogimages', '*',
                             'blog.blogid = recommendblog.blogid and blog.author = accounts.username
-                            and blog.blogid = blogimages.blogid');
+                             and blog.type = blogtype.name and blog.blogid = blogimages.blogid order by publishTime desc',
+                        '0', '5');
                     ?>
                     <div
                         class="owl-carousel js-atbs-carousel-1i atbs-carousel dots-circle nav-circle  nav-vertical nav-border">
                         <!--                        cycle print recommend data-->
                         <?php while ($blog = mysqli_fetch_array($blogrst)) {
                             $blogtitle = $blog['title'];
-                            $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                            $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                             $blogauthor = $blog['author'];
                             $blogabstract = $blog['abstract'];
+                            $blogtypeid = $blog['blogtypeid'];
                             $blogtype = $blog['type'];
+                            $typestyle = $blog['showstyle'];
                             $authorid = $blog['accountid'];
                             $authorheadportrait = $blog['headPortrait'];
                             $blogimagesurl = explode(',', $blog['imagesurl']);
@@ -33,7 +36,8 @@
                                             src="$blogimagesurl[0]"></a>
                                 </div>
                                 <div class="post__text inverse-text">
-                                    <a class="post__cat post__cat--bg" href="category-1.php">$blogtype</a>
+                                    <a class="post__cat post__cat--bg"
+                                     href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                     <h3 class="post__title f-46 f-w-700 m-t-10 m-b-15 atbs-line-limit atbs-line-limit-3">
                                         <a href="single.php?blogid=$blogid">
                                         $blogtitle</a>
@@ -72,11 +76,11 @@ slideblog;
                     </div>
                 </div>
 
-<!--                up down cycle print data all blog-->
+<!--                up down cycle print data all blog 全部博客内容输出-->
                 <?php
                     $blogrst = []; $blog = [];
                     $blogrst = queryData('accounts, blog, blogimages', '*',
-                        'blog.author = accounts.username and blog.blogid = blogimages.blogid order by publishTime desc');
+                        'blog.author = accounts.username and blog.blogid = blogimages.blogid');
                 ?>
                 <div class="section-sub scrollbar-hidden scroll-default" data-scroll="260">
                     <div class="section-sub__inner">
@@ -155,12 +159,12 @@ listitems;
     <!-- module-1 -->
 
     <!-- module-2 -->
-<!--    主编推荐模块：斜对齐-->
+<!--    精选推荐模块：斜对齐 精选模块-->
     <div class="atbs-block atbs-block--fullwidth atbs-featured-module-2">
         <div class="container">
             <div class="block-heading block-heading_style-1 block-heading--center block-heading-no-line">
                 <h4 class="block-heading__title">
-                    <span class="first-word">主编</span><span>推荐</span>
+                    <span class="first-word">精选</span><span>推荐</span>
                 </h4>
             </div>
         </div>
@@ -170,15 +174,17 @@ listitems;
                     <div class="section-main__inner flex-box flex-space-30">
                         <?php
                         $blogrst = []; $blog = [];
-                        $blogrst = queryData('accounts, blog, blogimages, blogtype',
+                        $blogrst = queryData('accounts, blog, blogtype, blogimages, selectedblog',
                             '*', 'blog.blogid = blogimages.blogid and blog.author = accounts.username
-                            and blogtype.name = blog.type and blogtype.name = "精选"');
+                             and blog.blogid = selectedblog.blogid and blog.type = blogtype.name');
                         $blog = mysqli_fetch_array($blogrst);
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $blogtype = $blog['type'];
+                        $typestyle = $blog['showstyle'];
+                        $blogtypeid = $blog['blogtypeid'];
                         $authorid = $blog['accountid'];
                         $authorheadportrait = $blog['headPortrait'];
                         $blogimagesurl = explode(',', $blog['imagesurl']);
@@ -227,7 +233,7 @@ listitems;
                                 </div>
                                 <a class="link-overlay" href="single.php?blogid=$blogid"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="category-1.php">$blogtype</a>
+                                   href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                             </article>
                         </div>
 postmain;
@@ -237,6 +243,8 @@ postmain;
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $blogtype = $blog['type'];
+                        $blogtypeid = $blog['blogtypeid'];
+                        $typestyle = $blog['showstyle'];
                         $authorid = $blog['accountid'];
                         $authorheadportrait = $blog['headPortrait'];
                         $blogimagesurl = explode(',', $blog['imagesurl']);
@@ -254,7 +262,8 @@ postmain;
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">$blogtype</a>
+                                        <a class="post__cat post__cat-primary"
+                                         href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php?blogid=$blogid">$blogtitle</a>
                                         </h3>
@@ -285,8 +294,11 @@ postsub;
                         ?>
                     </div>
                 </div>
-                <?php $blogrst = queryData('blog, accounts, blogimages', '*',
-                    'blog.blogid = blogimages.blogid and blog.author = accounts.username and blog.type = "专业运动"') ?>
+                <?php
+                    $blogrst = queryData('accounts, blog, blogtype, blogimages, selectedblog',
+                    '*', 'blog.blogid = blogimages.blogid and blog.author = accounts.username
+                    and blog.blogid = selectedblog.blogid and blog.type = blogtype.name');
+                ?>
                 <div class="section-sub m-t-30">
                     <div class="section-sub__inner flex-box flex-space-30">
                         <?php
@@ -296,6 +308,8 @@ postsub;
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $blogtype = $blog['type'];
+                        $typestyle = $blog['showstyle'];
+                        $blogtypeid = $blog['blogtypeid'];
                         $authorid = $blog['accountid'];
                         $authorheadportrait = $blog['headPortrait'];
                         $blogimagesurl = explode(',', $blog['imagesurl']);
@@ -314,7 +328,7 @@ postsub;
                                     <div class="post__text-wrap">
                                         <div class="post__text-inner">
                                             <h3 class="post__title f-28 f-w-700 m-b-15">
-                                                <a href="single.php?$blogid">$blogtitle</a>
+                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__meta">
                                                 <div class="post-author post-author_style-7">
@@ -344,7 +358,7 @@ postsub;
                                 </div>
                                 <a class="link-overlay" href="single.php?blogid=$blogid"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="category-1.php">$blogtype</a>
+                                   href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                             </article>
                         </div>
 postmain;
@@ -353,6 +367,7 @@ postmain;
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
+                        $typestyle = $blog['showstyle'];
                         $blogtype = $blog['type'];
                         $authorid = $blog['accountid'];
                         $authorheadportrait = $blog['headPortrait'];
@@ -371,7 +386,8 @@ postmain;
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">$blogtype</a>
+                                        <a class="post__cat post__cat-primary" 
+                                        href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php?blogid=$blogid">$blogtitle</a>
                                         </h3>
@@ -407,13 +423,16 @@ postsub;
     </div>
     <!-- module-2 -->
 
-<!--    复杂页面展示-->
+<!--    复杂页面展示 户外分类博客文章专题展示-->
     <!-- module-3 -->
+    <?php $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+        'accounts.username = blog.author and blog.blogid = blogimages.blogid and blog.type = blogtype.name
+        and blog.type = "户外"', '0', '5') ?>
     <div class="atbs-block atbs-block--fullwidth atbs-featured-module-3">
         <div class="container">
             <div class="block-heading block-heading_style-1 block-heading--center block-heading-no-line">
                 <h4 class="block-heading__title">
-                    <span class="first-word">editor's </span><span> choise</span>
+                    <span class="first-word">户外</span><span>专题</span>
                 </h4>
             </div>
         </div>
@@ -425,7 +444,7 @@ postsub;
                         data-dark-mode="true">
                         <div class="post__thumb atbs-thumb-object-fit">
                             <a href="single.php">
-                                <img alt="File not found" src="../images/x34.jpg.pagespeed.ic.2LSufkqvmb.jpg">
+                                <img alt="File not found" src="">
                                 <div class="post-type-icon post-type-circle overlay-item--center-xy">
                                     <i class="mdicon mdicon-play_arrow"></i>
                                 </div>
@@ -434,7 +453,7 @@ postsub;
                         <div class="post__text inverse-text">
                             <div class="post__text-wrap flex-box">
                                 <div class="post__text-group flex-column-100 m-b-10">
-                                    <a class="post__cat post__cat-primary" href="category-1.php">Mobile</a>
+                                    <a class="post__cat post__cat-primary" href="categorystyle-1.php">Mobile</a>
                                 </div>
                                 <div class="post__text-group">
                                     <h3 class="post__title f-40 f-w-700 atbs-line-limit atbs-line-limit-3">
@@ -498,7 +517,7 @@ postsub;
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Oculus Working on Update to Improve Rift S
                                                 Audio</a>
@@ -537,7 +556,7 @@ postsub;
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Oculus Working on Update to Improve Rift S
                                                 Audio</a>
@@ -576,7 +595,7 @@ postsub;
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Oculus Working on Update to Improve Rift S
                                                 Audio</a>
@@ -615,7 +634,7 @@ postsub;
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Oculus Working on Update to Improve Rift S
                                                 Audio</a>
@@ -710,7 +729,7 @@ postsub;
                                 </div>
                                 <a class="link-overlay" href="single.php"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="category-1.php">GADGETS</a>
+                                   href="categorystyle-1.php">GADGETS</a>
                             </article>
                         </div>
                         <div class="slide-content">
@@ -759,7 +778,7 @@ postsub;
                                 </div>
                                 <a class="link-overlay" href="single.php"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="category-1.php">GADGETS</a>
+                                   href="categorystyle-1.php">GADGETS</a>
                             </article>
                         </div>
                         <div class="slide-content">
@@ -808,7 +827,7 @@ postsub;
                                 </div>
                                 <a class="link-overlay" href="single.php"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="category-1.php">GADGETS</a>
+                                   href="categorystyle-1.php">GADGETS</a>
                             </article>
                         </div>
                     </div>
@@ -822,7 +841,7 @@ postsub;
                                             alt="File not found"
                                             src="../images/x6.jpg.pagespeed.ic.Dzx_eITMOU.jpg"></a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="category-1.php">GADGETS</a>
+                                       href="categorystyle-1.php">GADGETS</a>
                                 </div>
                                 <div class="post__text">
                                     <h3 class="post__title f-20 f-w-600 m-b-10"><a href="single.php">Never Let The
@@ -851,7 +870,7 @@ postsub;
                                             alt="File not found"
                                             src="../images/x16.jpg.pagespeed.ic.LvT-5PFqru.jpg"></a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="category-1.php">GADGETS</a>
+                                       href="categorystyle-1.php">GADGETS</a>
                                 </div>
                                 <div class="post__text">
                                     <h3 class="post__title f-20 f-w-600 m-b-10"><a href="single.php">Never Let The
@@ -880,7 +899,7 @@ postsub;
                                             alt="File not found"
                                             src="../images/x51.jpg.pagespeed.ic.q9GuAyi1ty.jpg"></a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="category-1.php">GADGETS</a>
+                                       href="categorystyle-1.php">GADGETS</a>
                                 </div>
                                 <div class="post__text">
                                     <h3 class="post__title f-20 f-w-600 m-b-10"><a href="single.php">Never Let The
@@ -961,7 +980,7 @@ postsub;
                             </div>
                         </div>
                         <a class="link-overlay" href="single.php"></a>
-                        <a class="post__cat post__cat--bg overlay-item--top-left" href="category-1.php">GADGETS</a>
+                        <a class="post__cat post__cat--bg overlay-item--top-left" href="categorystyle-1.php">GADGETS</a>
                     </article>
                 </div>
                 <div class="section-sub section-left flex-order-1">
@@ -975,7 +994,7 @@ postsub;
                                              src="../images/x29.jpg.pagespeed.ic.LErxubgQm6.jpg">
                                     </a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="category-1.php">GADGETS</a>
+                                       href="categorystyle-1.php">GADGETS</a>
                                 </div>
                                 <div class="post__text inverse-text">
                                     <h3 class="post__title f-22 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1012,7 +1031,7 @@ postsub;
                                              src="../images/x6.jpg.pagespeed.ic.Dzx_eITMOU.jpg">
                                     </a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="category-1.php">GADGETS</a>
+                                       href="categorystyle-1.php">GADGETS</a>
                                 </div>
                                 <div class="post__text inverse-text">
                                     <h3 class="post__title f-22 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1053,7 +1072,7 @@ postsub;
                                              src="../images/x16.jpg.pagespeed.ic.LvT-5PFqru.jpg">
                                     </a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="category-1.php">GADGETS</a>
+                                       href="categorystyle-1.php">GADGETS</a>
                                 </div>
                                 <div class="post__text inverse-text">
                                     <h3 class="post__title f-22 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1090,7 +1109,7 @@ postsub;
                                              src="../images/x51.jpg.pagespeed.ic.q9GuAyi1ty.jpg">
                                     </a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="category-1.php">GADGETS</a>
+                                       href="categorystyle-1.php">GADGETS</a>
                                 </div>
                                 <div class="post__text inverse-text">
                                     <h3 class="post__title f-22 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1177,7 +1196,7 @@ postsub;
                             </div>
                         </div>
                         <a class="link-overlay" href="single.php"></a>
-                        <a class="post__cat post__cat--bg overlay-item--top-left" href="category-1.php">GADGETS</a>
+                        <a class="post__cat post__cat--bg overlay-item--top-left" href="categorystyle-1.php">GADGETS</a>
                     </article>
                 </div>
                 <div class="section-sub">
@@ -1194,7 +1213,7 @@ postsub;
                                     <div class="post__text-wrap">
                                         <div class="post__text-inner flex-box flex-direction-column">
                                             <div class="post__text-group">
-                                                <a class="post__cat" href="category-1.php">Mobile</a>
+                                                <a class="post__cat" href="categorystyle-1.php">Mobile</a>
                                                 <h3 class="post__title f-22 f-w-700 m-t-15 m-b-20"><a
                                                         href="single.php">Rivals in Gaming, Microsoft And Sony Team
                                                         Up on Cloud Services</a></h3>
@@ -1239,7 +1258,7 @@ postsub;
                                     <div class="post__text-wrap">
                                         <div class="post__text-inner flex-box flex-direction-column">
                                             <div class="post__text-group">
-                                                <a class="post__cat" href="category-1.php">Mobile</a>
+                                                <a class="post__cat" href="categorystyle-1.php">Mobile</a>
                                                 <h3 class="post__title f-22 f-w-700 m-t-15 m-b-20"><a
                                                         href="single.php">Rivals in Gaming, Microsoft And Sony Team
                                                         Up on Cloud Services</a></h3>
@@ -1300,7 +1319,7 @@ postsub;
                                             src="../images/4.jpg.pagespeed.ce.ksyJTHqoXB.jpg"></a>
                                 </div>
                                 <div class="post__text inverse-text">
-                                    <a class="post__cat post__cat--bg" href="category-1.php">GADGETS</a>
+                                    <a class="post__cat post__cat--bg" href="categorystyle-1.php">GADGETS</a>
                                     <h3 class="post__title f-32 f-w-700 m-t-10 m-b-15 atbs-line-limit atbs-line-limit-3">
                                         <a href="single.php">Life Is Either A Daring Adventure Or Nothing At
                                             All</a>
@@ -1342,7 +1361,7 @@ postsub;
                                                     src="../images/3.jpg.pagespeed.ce.epdGxZrfIQ.jpg"></a>
                                         </div>
                                         <div class="post__text inverse-text">
-                                            <a class="post__cat" href="category-1.php">GADGETS</a>
+                                            <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                             <h3 class="post__title f-18 f-w-500 m-t-10 m-b-10 atbs-line-limit atbs-line-limit-2">
                                                 <a href="single.php">Life Is Too Important To Be Taken
                                                     Seriously</a>
@@ -1364,7 +1383,7 @@ postsub;
                                                     src="../images/x34.jpg.pagespeed.ic.2LSufkqvmb.jpg"></a>
                                         </div>
                                         <div class="post__text inverse-text">
-                                            <a class="post__cat" href="category-1.php">GADGETS</a>
+                                            <a class="post__cat" href="categorystyle-1.php">GADGETS</a>
                                             <h3 class="post__title f-18 f-w-500 m-t-10 m-b-10 atbs-line-limit atbs-line-limit-2">
                                                 <a href="single.php">Life Is Too Important To Be Taken
                                                     Seriously</a>
@@ -1395,7 +1414,7 @@ postsub;
                                     <div class="post__text flex-box flex-direction-column inverse-text">
                                         <div class="post__text-group">
                                             <a class="post__cat post__cat-primary"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                             <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                 <a href="single.php">Life Is Too Important To Be Taken
                                                     Seriously</a>
@@ -1435,7 +1454,7 @@ postsub;
                                     <div class="post__text flex-box flex-direction-column inverse-text">
                                         <div class="post__text-group">
                                             <a class="post__cat post__cat-primary"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                             <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                 <a href="single.php">Life Is Too Important To Be Taken
                                                     Seriously</a>
@@ -1493,7 +1512,7 @@ postsub;
                                                      src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1534,7 +1553,7 @@ postsub;
                                                      src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1575,7 +1594,7 @@ postsub;
                                                      src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1616,7 +1635,7 @@ postsub;
                                                      src="../images/x1.jpg.pagespeed.ic.lC-7aJNJix.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1657,7 +1676,7 @@ postsub;
                                                      src="../images/x47.jpg.pagespeed.ic.ym8N9fj4mq.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1698,7 +1717,7 @@ postsub;
                                                      src="../images/x42.jpg.pagespeed.ic.oAeuycxQzj.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1739,7 +1758,7 @@ postsub;
                                                      src="../images/4.jpg.pagespeed.ce.ksyJTHqoXB.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1780,7 +1799,7 @@ postsub;
                                                      src="../images/3.jpg.pagespeed.ce.epdGxZrfIQ.jpg">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="category-1.php">GADGETS</a>
+                                               href="categorystyle-1.php">GADGETS</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -1833,7 +1852,7 @@ postsub;
                                                         alt="file not found"
                                                         src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                 <a class="post__cat post__cat--bg"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text text-center">
                                                 <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -1856,7 +1875,7 @@ postsub;
                                                         alt="file not found"
                                                         src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                 <a class="post__cat post__cat--bg"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text text-center">
                                                 <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -1879,7 +1898,7 @@ postsub;
                                                         alt="file not found"
                                                         src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                 <a class="post__cat post__cat--bg"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text text-center">
                                                 <h3 class="post__title f-18 m-b-5 f-w-500">

@@ -26,7 +26,7 @@
                                                          src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -71,7 +71,7 @@
                                                          src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -116,7 +116,7 @@
                                                          src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -161,7 +161,7 @@
                                                          src="../images/x1.jpg.pagespeed.ic.lC-7aJNJix.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -206,7 +206,7 @@
                                                          src="../images/x47.jpg.pagespeed.ic.ym8N9fj4mq.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -251,7 +251,7 @@
                                                          src="../images/x42.jpg.pagespeed.ic.oAeuycxQzj.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -296,7 +296,7 @@
                                                          src="../images/4.jpg.pagespeed.ce.ksyJTHqoXB.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -341,7 +341,7 @@
                                                          src="../images/3.jpg.pagespeed.ce.epdGxZrfIQ.jpg">
                                                 </a>
                                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                                   href="category-1.php">GADGETS</a>
+                                                   href="categorystyle-1.php">GADGETS</a>
                                             </div>
                                             <div class="post__text inverse-text">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
@@ -398,7 +398,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -423,7 +423,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -448,7 +448,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">

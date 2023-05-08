@@ -534,7 +534,7 @@
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Oculus Working on Update to Improve Rift S
                                                 Audio</a>
@@ -575,7 +575,7 @@
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Oculus Working on Update to Improve Rift S
                                                 Audio</a>
@@ -616,7 +616,7 @@
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="category-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                             <a href="single.php">Oculus Working on Update to Improve Rift S
                                                 Audio</a>

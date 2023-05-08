@@ -1,7 +1,7 @@
 <?php
 global $conn;
 error_reporting(0);
-$conn = mysqli_connect('localhost:3333', 'root', 'root')
+$conn = mysqli_connect('localhost:3306', 'root', 'root')
 or die("Database connect failed!" . mysqli_error($conn));
 mysqli_select_db($conn, 'nexusblog');
 mysqli_set_charset($conn, 'utf-8');
@@ -9,12 +9,12 @@ mysqli_set_charset($conn, 'utf-8');
 function queryData($table, $fields = "*", $condition = "", $offset = -1, $limit = -1)
 {
     global $conn;
+    $sql = "select $fields from $table";
     if ($condition != '') {
-        $sql = "select $fields from $table where $condition";
-    } elseif ($offset != -1 && $limit != -1) {
-        $sql = "select $fields from $table limit $offset, $limit";
-    } else {
-        $sql = "select $fields from $table";
+        $sql .= " where $condition";
+    }
+    if ($offset != -1 && $limit != -1) {
+        $sql .= " limit $offset,$limit";
     }
 //    print $sql;
     return mysqli_query($conn, $sql);

@@ -14,10 +14,18 @@
                     <nav class="footer-menu text-center">
                         <ul class="navigation navigation--footer navigation--inline" id="menu-footer-menu">
                             <li><a href="../views/index.php">主页</a></li>
-                            <li class="menu-item-cat-1"><a href="../views/category-1.php"><?php echo $_SESSION['types'][0]['name'] ?></a></li>
-                            <li class="menu-item-cat-1"><a href="../views/category-2.php"><?php echo $_SESSION['types'][1]['name'] ?></a></li>
-                            <li class="menu-item-cat-1"><a href="../views/category-3.php"><?php echo $_SESSION['types'][2]['name'] ?></a></li>
-                            <li class="menu-item-cat-1"><a href="../views/category-4.php"><?php echo $_SESSION['types'][3]['name'] ?></a></li>
+                            <?php
+                            foreach ($_SESSION['types'] as $type) {
+                                $typename = $type['name'];
+                                $blogtypeid = $type['blogtypeid'];
+                                $typestyle = $type['showstyle'];
+                                echo <<<li
+                        <li class="menu-item-cat-2"><a href="../views/categorystyle-$typestyle.php?typeid=$blogtypeid">
+                            $typename</a>
+                        </li>
+li;
+                            }
+                            ?>
                             <li><a href="../views/contact.php">联系我们</a></li>
                         </ul>
                     </nav>
@@ -57,10 +65,18 @@
                     <li class="menu-item-cat-1">
                         <a href="../views/index.php">主页</a>
                     </li>
-                    <li class="menu-item-cat-1"><a href="../views/category-1.php"><?php echo $_SESSION['types'][0]['name'] ?></a></li>
-                    <li class="menu-item-cat-1"><a href="../views/category-2.php"><?php echo $_SESSION['types'][1]['name'] ?></a></li>
-                    <li class="menu-item-cat-1"><a href="../views/category-3.php"><?php echo $_SESSION['types'][2]['name'] ?></a></li>
-                    <li class="menu-item-cat-1"><a href="../views/category-4.php"><?php echo $_SESSION['types'][3]['name'] ?></a></li>
+                    <?php
+                    foreach ($_SESSION['types'] as $type) {
+                        $typename = $type['name'];
+                        $blogtypeid = $type['blogtypeid'];
+                        $typestyle = $type['showstyle'];
+                        echo <<<li
+                        <li class="menu-item-cat-2"><a href="../views/categorystyle-$typestyle.php?typeid=$blogtypeid">
+                            $typename</a>
+                        </li>
+li;
+                    }
+                    ?>
                     <li class="menu-item-cat-4">
                         <a href="../views/contact.php">联系我们</a>
                     </li>
@@ -102,10 +118,18 @@
             <li class="menu-item-cat-1">
                 <a href="../views/index.php">主页</a>
             </li>
-            <li class="menu-item-cat-1"><a href="../views/category-1.php"><?php echo $_SESSION['types'][0]['name'] ?></a></li>
-            <li class="menu-item-cat-1"><a href="../views/category-2.php"><?php echo $_SESSION['types'][1]['name'] ?></a></li>
-            <li class="menu-item-cat-1"><a href="../views/category-3.php"><?php echo $_SESSION['types'][2]['name'] ?></a></li>
-            <li class="menu-item-cat-1"><a href="../views/category-4.php"><?php echo $_SESSION['types'][3]['name'] ?></a></li>
+            <?php
+            foreach ($_SESSION['types'] as $type) {
+                $typename = $type['name'];
+                $blogtypeid = $type['blogtypeid'];
+                $typestyle = $type['showstyle'];
+                echo <<<li
+                        <li class="menu-item-cat-2"><a href="../views/categorystyle-$typestyle.php?typeid=$blogtypeid">
+                            $typename</a>
+                        </li>
+li;
+            }
+            ?>
             <li class="menu-item-cat-4">
                 <a href="../views/contact.php">联系我们</a>
             </li>

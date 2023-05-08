@@ -56,7 +56,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -100,7 +100,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -144,7 +144,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -188,7 +188,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -232,7 +232,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -276,7 +276,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -320,7 +320,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -364,7 +364,7 @@
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
                                                         <a href="single.php">Oculus Working on Update to Improve Rift S
                                                             Audio</a>
@@ -417,7 +417,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -442,7 +442,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">
@@ -467,7 +467,7 @@
                                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                             src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
                                                     <a class="post__cat post__cat--bg"
-                                                       href="category-1.php">GADGETS</a>
+                                                       href="categorystyle-1.php">GADGETS</a>
                                                 </div>
                                                 <div class="post__text text-center">
                                                     <h3 class="post__title f-18 m-b-5 f-w-500">
