@@ -369,6 +369,7 @@ postmain;
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
                         $blogtype = $blog['type'];
+                        $blogtypeid = $blog['blogtypeid'];
                         $authorid = $blog['accountid'];
                         $authorheadportrait = $blog['headPortrait'];
                         $blogimagesurl = explode(',', $blog['imagesurl']);
@@ -427,7 +428,7 @@ postsub;
     <!-- module-3 -->
     <?php $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
         'accounts.username = blog.author and blog.blogid = blogimages.blogid and blog.type = blogtype.name
-        and blog.type = "户外"', '0', '5') ?>
+        and blog.type = "户外" order by readTimes Desc', '0', '5') ?>
     <div class="atbs-block atbs-block--fullwidth atbs-featured-module-3">
         <div class="container">
             <div class="block-heading block-heading_style-1 block-heading--center block-heading-no-line">
@@ -438,13 +439,27 @@ postsub;
         </div>
         <div class="atbs-block__inner background-dots">
             <div class="atbs-block__inner-group flex-box">
-                <div class="section-main">
+                <?php
+                $blog = mysqli_fetch_array($blogrst);
+                $blogtitle = $blog['title'];
+                $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                $blogauthor = $blog['author'];
+                $blogabstract = $blog['abstract'];
+                $typestyle = $blog['showstyle'];
+                $blogtype = $blog['type'];
+                $blogtypeid = $blog['blogtypeid'];
+                $authorid = $blog['accountid'];
+                $authorheadportrait = $blog['headPortrait'];
+                $blogimagesurl = explode(',', $blog['imagesurl']);
+                $blogid = $blog['blogid'];
+                echo <<<sectionmain
+<div class="section-main">
                     <article
                         class="post post--vertical post--vertical-normal-two-column post--vertical-normal-two-column-text-reverse post__thumb-480"
                         data-dark-mode="true">
                         <div class="post__thumb atbs-thumb-object-fit">
-                            <a href="single.php">
-                                <img alt="File not found" src="">
+                            <a href="single.php?blogid=$blogid">
+                                <img alt="File not found" src="$blogimagesurl[0]">
                                 <div class="post-type-icon post-type-circle overlay-item--center-xy">
                                     <i class="mdicon mdicon-play_arrow"></i>
                                 </div>
@@ -453,28 +468,30 @@ postsub;
                         <div class="post__text inverse-text">
                             <div class="post__text-wrap flex-box">
                                 <div class="post__text-group flex-column-100 m-b-10">
-                                    <a class="post__cat post__cat-primary" href="categorystyle-1.php">Mobile</a>
+                                    <a class="post__cat post__cat-primary"
+                                     href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                 </div>
                                 <div class="post__text-group">
                                     <h3 class="post__title f-40 f-w-700 atbs-line-limit atbs-line-limit-3">
-                                        <a href="single.php">It’s better to be a lion for a day than a sheep all
-                                            your life Me</a>
+                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__meta m-t-25">
                                         <div class="post-author post-author_style-7">
-                                            <a class="post-author__avatar" href="author.php"
-                                               rel="author" title="Posts by Connor Randall">
-                                                <img alt="Connor Randall"
-                                                     src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
+                                            <a class="post-author__avatar" href="author.php?authorid=$authorid"
+                                               rel="author" title="Posts by $blogauthor">
+                                                <img alt="$blogauthor"
+                                                     src="$authorheadportrait">
                                             </a>
                                             <div class="post-author__text">
                                                 <div class="author_name--wrap">
-                                                    <span>by</span>
-                                                    <a class="post-author__name" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall"> Connor Randall</a>
+                                                    <span>由</span>
+                                                    <a class="post-author__name" href="author.php?authorid=$authorid""
+                                                       rel="author" title="Posts by $blogauthor">$blogauthor</a>
+                                                    <span>创作</span>
                                                 </div>
-                                                <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                                      title="March 6, 2021 at 8:45 am">March 6, 2021
+                                                <time class="time published" datetime="$blogpublishTime"
+                                                      title="$blogpublishTime">
+                                                    $blogpublishTime
                                                 </time>
                                             </div>
                                         </div>
@@ -482,12 +499,11 @@ postsub;
                                 </div>
                                 <div class="post__text-group">
                                     <div class="post__excerpt atbs-line-limit atbs-line-limit-3">
-                                        The shark swam away when the boy's father jumped into the water, but the
-                                        child suffered lacerations across his body
+                                        $blogabstract
                                     </div>
                                     <div class="post__readmore m-t-20">
-                                        <a href="single.php">
-                                            <span class="readmore__text">Read More</span>
+                                        <a href="single.php?blogid=$blogid">
+                                            <span class="readmore__text">阅读全文</span>
                                             <svg height="10.121" viewbox="0 0 19.811 10.121" width="19.811"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M17,8l4,4m0,0-4,4m4-4H3" data-name="Path 1414"
@@ -503,24 +519,41 @@ postsub;
                         </div>
                     </article>
                 </div>
+sectionmain;
+                ?>
+<!--                户外专题次要文章展示-->
                 <div class="section-sub">
                     <div class="posts-list flex-box flex-box-2i">
+                        <?php
+                        while ($blog = mysqli_fetch_array($blogrst)) {
+                            $blogtitle = $blog['title'];
+                            $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                            $blogauthor = $blog['author'];
+                            $blogabstract = $blog['abstract'];
+                            $typestyle = $blog['showstyle'];
+                            $blogtype = $blog['type'];
+                            $blogtypeid = $blog['blogtypeid'];
+                            $authorid = $blog['accountid'];
+                            $authorheadportrait = $blog['headPortrait'];
+                            $blogimagesurl = explode(',', $blog['imagesurl']);
+                            $blogid = $blog['blogid'];
+                            echo <<<sectionsublistitem
                         <div class="list-item">
                             <article
                                 class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
                                 data-dark-mode="true">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php">
+                                    <a href="single.php?blogid=$blogid">
                                         <img alt="File not found"
-                                             src="../images/x10.jpg.pagespeed.ic.2193TilPH_.jpg">
+                                             src="$blogimagesurl[0]">
                                     </a>
                                 </div>
                                 <div class="post__text flex-box flex-direction-column inverse-text">
                                     <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
+                                        <a class="post__cat post__cat-primary"
+                                         href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                            <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                Audio</a>
+                                            <a href="single.php?blogid=$blogid">$blogtitle</a>
                                         </h3>
                                     </div>
                                     <div class="post__text-group flex-item-auto-bottom">
@@ -529,138 +562,25 @@ postsub;
                                             <div class="post-author post-author_style-6">
                                                 <div class="post-author__text">
                                                     <div class="author_name--wrap">
-                                                        <span>by</span>
-                                                        <a class="post-author__name" href="author.php"
-                                                           rel="author" title="Posts by Connor Randall"> Connor
-                                                            Randall</a>
+                                                        <span>由</span>
+                                                        <a class="post-author__name" href="author.php?authorid=$authorid"
+                                                           rel="author" title="Posts by $blogauthor">$blogauthor</a>
+                                                        <span>创作</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                                  title="March 6, 2021 at 8:45 am">March 6, 2021
+                                            <time class="time published" datetime="$blogpublishTime"
+                                                  title="$blogpublishTime">
+                                                $blogpublishTime
                                             </time>
                                         </div>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        <div class="list-item">
-                            <article
-                                class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                data-dark-mode="true">
-                                <div class="post__thumb object-fit">
-                                    <a href="single.php">
-                                        <img alt="File not found"
-                                             src="../images/x9.jpg.pagespeed.ic.inGC_uTvF0.jpg">
-                                    </a>
-                                </div>
-                                <div class="post__text flex-box flex-direction-column inverse-text">
-                                    <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
-                                        <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                            <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                Audio</a>
-                                        </h3>
-                                    </div>
-                                    <div class="post__text-group flex-item-auto-bottom">
-                                        <div
-                                            class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                            <div class="post-author post-author_style-6">
-                                                <div class="post-author__text">
-                                                    <div class="author_name--wrap">
-                                                        <span>by</span>
-                                                        <a class="post-author__name" href="author.php"
-                                                           rel="author" title="Posts by Connor Randall"> Connor
-                                                            Randall</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                                  title="March 6, 2021 at 8:45 am">March 6, 2021
-                                            </time>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="list-item">
-                            <article
-                                class="post post--vertical post--vertical-style-card-thumb-aside atbs-post-hover-theme-style post--hover-theme"
-                                data-dark-mode="true">
-                                <div class="post__thumb object-fit">
-                                    <a href="single.php">
-                                        <img alt="File not found"
-                                             src="../images/x12.jpg.pagespeed.ic.D97Kd4sf7I.jpg">
-                                    </a>
-                                </div>
-                                <div class="post__text flex-box flex-direction-column inverse-text">
-                                    <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
-                                        <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                            <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                Audio</a>
-                                        </h3>
-                                    </div>
-                                    <div class="post__text-group flex-item-auto-bottom">
-                                        <div
-                                            class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                            <div class="post-author post-author_style-6">
-                                                <div class="post-author__text">
-                                                    <div class="author_name--wrap">
-                                                        <span>by</span>
-                                                        <a class="post-author__name" href="author.php"
-                                                           rel="author" title="Posts by Connor Randall"> Connor
-                                                            Randall</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                                  title="March 6, 2021 at 8:45 am">March 6, 2021
-                                            </time>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="list-item">
-                            <article
-                                class="post post--vertical post--vertical-style-card-thumb-aside atbs-post-hover-theme-style post--hover-theme"
-                                data-dark-mode="true">
-                                <div class="post__thumb object-fit">
-                                    <a href="single.php">
-                                        <img alt="File not found"
-                                             src="../images/x44.jpg.pagespeed.ic.CuLi-SGHYS.jpg">
-                                    </a>
-                                </div>
-                                <div class="post__text flex-box flex-direction-column inverse-text">
-                                    <div class="post__text-group">
-                                        <a class="post__cat post__cat-primary" href="categorystyle-1.php">GADGETS</a>
-                                        <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                            <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                Audio</a>
-                                        </h3>
-                                    </div>
-                                    <div class="post__text-group flex-item-auto-bottom">
-                                        <div
-                                            class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                            <div class="post-author post-author_style-6">
-                                                <div class="post-author__text">
-                                                    <div class="author_name--wrap">
-                                                        <span>by</span>
-                                                        <a class="post-author__name" href="author.php"
-                                                           rel="author" title="Posts by Connor Randall"> Connor
-                                                            Randall</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                                  title="March 6, 2021 at 8:45 am">March 6, 2021
-                                            </time>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+sectionsublistitem;
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -668,58 +588,75 @@ postsub;
     </div>
     <!-- module-3 -->
 
-
+    <!--    复杂页面展示 器械分类博客文章专题展示-->
     <!-- module-4 -->
     <div class="atbs-block atbs-block--fullwidth atbs-featured-module-4">
         <div class="container">
             <div class="block-heading block-heading_style-1 block-heading--center block-heading-no-line">
                 <h4 class="block-heading__title">
-                    <span class="first-word">editor's </span><span> choise</span>
+                    <span class="first-word">器械</span><span>专题</span>
                 </h4>
             </div>
         </div>
         <div class="container">
             <div class="atbs-block__inner">
+                <?php $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    'accounts.username = blog.author and blog.blogid = blogimages.blogid and blog.type = blogtype.name
+        and blog.type = "器械" order by readTimes Desc', '0', '4') ?>
                 <div class="section-main">
                     <div
                         class="owl-carousel js-atbs-carousel-1i atbs-carousel dots-circle nav-circle nav-horizontal nav-border">
+                        <?php
+                            while ($blog = mysqli_fetch_array($blogrst)) {
+                                $blogtitle = $blog['title'];
+                                $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                                $blogauthor = $blog['author'];
+                                $blogabstract = $blog['abstract'];
+                                $typestyle = $blog['showstyle'];
+                                $blogtype = $blog['type'];
+                                $blogtypeid = $blog['blogtypeid'];
+                                $authorid = $blog['accountid'];
+                                $authorheadportrait = $blog['headPortrait'];
+                                $blogimagesurl = explode(',', $blog['imagesurl']);
+                                $blogid = $blog['blogid'];
+                                echo <<<slidecontent
                         <div class="slide-content">
                             <article
                                 class="post post--overlay post--overlay-rectangle post--overlay-bottom post--overlay-height-600 post--overlay-padding-lg">
                                 <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                                    <a href="single.php">
+                                    <a href="single.php?blogid=$blogid">
                                         <img alt="file not found"
-                                             src="../images/x55.jpg.pagespeed.ic.u4FkrAdGX7.jpg">
+                                             src="$blogimagesurl[0]">
                                     </a>
                                 </div>
                                 <div class="post__text inverse-text">
                                     <div class="post__text-wrap">
                                         <div class="post__text-inner">
                                             <h3 class="post__title f-32 f-w-700 m-b-15">
-                                                <a href="single.php">Look Deep Into Nature, And You Will
-                                                    Understand</a>
+                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__excerpt atbs-line-limit atbs-line-limit-3 m-b-20">
-                                                The shark swam away when the boy's father jumped into the water, but
-                                                the child suffered lacerations across his body
+                                                $blogabstract
                                             </div>
                                             <div class="post__meta">
                                                 <div class="post-author post-author_style-7">
-                                                    <a class="post-author__avatar" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall">
-                                                        <img alt="Connor Randall"
-                                                             src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
+                                                    <a class="post-author__avatar" href="author.php?authorid=$authorid"
+                                                       rel="author" title="Posts by $blogauthor">
+                                                        <img alt="$blogauthor"
+                                                             src="$authorheadportrait">
                                                     </a>
                                                     <div class="post-author__text">
                                                         <div class="author_name--wrap">
-                                                            <span>by</span>
+                                                            <span>由</span>
                                                             <a class="post-author__name"
-                                                               href="author.php" rel="author"
-                                                               title="Posts by Connor Randall"> Connor Randall</a>
+                                                               href="author.php?authorid=$authorid" rel="author"
+                                                               title="Posts by $blogauthor">$blogauthor</a>
+                                                            <span>创作</span>
                                                         </div>
                                                         <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
+                                                              datetime="$blogpublishTime"
+                                                              title="$blogpublishTime">
+                                                            $blogpublishTime
                                                         </time>
                                                     </div>
                                                 </div>
@@ -727,206 +664,77 @@ postsub;
                                         </div>
                                     </div>
                                 </div>
-                                <a class="link-overlay" href="single.php"></a>
+                                <a class="link-overlay" href="single.php?blogid=$blogid"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="categorystyle-1.php">GADGETS</a>
+                                   href="categorystyle-$typestyle.php">$blogtype</a>
                             </article>
                         </div>
-                        <div class="slide-content">
-                            <article
-                                class="post post--overlay post--overlay-rectangle post--overlay-bottom post--overlay-height-600 post--overlay-padding-lg">
-                                <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                                    <a href="single.php">
-                                        <img alt="file not found"
-                                             src="../images/x5.jpg.pagespeed.ic.hbCv2NPLDO.jpg">
-                                    </a>
-                                </div>
-                                <div class="post__text inverse-text">
-                                    <div class="post__text-wrap">
-                                        <div class="post__text-inner">
-                                            <h3 class="post__title f-32 f-w-700 m-b-15">
-                                                <a href="single.php">Look Deep Into Nature, And You Will
-                                                    Understand</a>
-                                            </h3>
-                                            <div class="post__excerpt atbs-line-limit atbs-line-limit-3 m-b-20">
-                                                The shark swam away when the boy's father jumped into the water, but
-                                                the child suffered lacerations across his body
-                                            </div>
-                                            <div class="post__meta">
-                                                <div class="post-author post-author_style-7">
-                                                    <a class="post-author__avatar" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall">
-                                                        <img alt="Connor Randall"
-                                                             src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
-                                                    </a>
-                                                    <div class="post-author__text">
-                                                        <div class="author_name--wrap">
-                                                            <span>by</span>
-                                                            <a class="post-author__name"
-                                                               href="author.php" rel="author"
-                                                               title="Posts by Connor Randall"> Connor Randall</a>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="link-overlay" href="single.php"></a>
-                                <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="categorystyle-1.php">GADGETS</a>
-                            </article>
-                        </div>
-                        <div class="slide-content">
-                            <article
-                                class="post post--overlay post--overlay-rectangle post--overlay-bottom post--overlay-height-600 post--overlay-padding-lg">
-                                <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                                    <a href="single.php">
-                                        <img alt="file not found"
-                                             src="../images/x43.jpg.pagespeed.ic.FLjUiKrE0a.jpg">
-                                    </a>
-                                </div>
-                                <div class="post__text inverse-text">
-                                    <div class="post__text-wrap">
-                                        <div class="post__text-inner">
-                                            <h3 class="post__title f-32 f-w-700 m-b-15">
-                                                <a href="single.php">Look Deep Into Nature, And You Will
-                                                    Understand</a>
-                                            </h3>
-                                            <div class="post__excerpt atbs-line-limit atbs-line-limit-3 m-b-20">
-                                                The shark swam away when the boy's father jumped into the water, but
-                                                the child suffered lacerations across his body
-                                            </div>
-                                            <div class="post__meta">
-                                                <div class="post-author post-author_style-7">
-                                                    <a class="post-author__avatar" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall">
-                                                        <img alt="Connor Randall"
-                                                             src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
-                                                    </a>
-                                                    <div class="post-author__text">
-                                                        <div class="author_name--wrap">
-                                                            <span>by</span>
-                                                            <a class="post-author__name"
-                                                               href="author.php" rel="author"
-                                                               title="Posts by Connor Randall"> Connor Randall</a>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="link-overlay" href="single.php"></a>
-                                <a class="post__cat post__cat--bg overlay-item--top-left"
-                                   href="categorystyle-1.php">GADGETS</a>
-                            </article>
-                        </div>
+slidecontent;
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="section-sub">
                     <div class="posts-list flex-box flex-box-3i flex-space-30 posts-list-tablet-2i">
+                        <?php
+                        $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                            'accounts.username = blog.author and blog.blogid = blogimages.blogid and blog.type = blogtype.name
+        and blog.type = "器械" order by publishTime Desc', '0', '3');
+                        while ($blog = mysqli_fetch_array($blogrst)) {
+                            $blogtitle = $blog['title'];
+                            $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                            $blogauthor = $blog['author'];
+                            $blogabstract = $blog['abstract'];
+                            $typestyle = $blog['showstyle'];
+                            $blogtype = $blog['type'];
+                            $blogtypeid = $blog['blogtypeid'];
+                            $authorid = $blog['accountid'];
+                            $authorheadportrait = $blog['headPortrait'];
+                            $blogimagesurl = explode(',', $blog['imagesurl']);
+                            $blogid = $blog['blogid'];
+                            echo <<<sectionsublistitem
                         <div class="list-item">
                             <article class="post post--vertical post--vertical-normal">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php"><img
+                                    <a href="single.php?blogid=$blogid"><img
                                             alt="File not found"
-                                            src="../images/x6.jpg.pagespeed.ic.Dzx_eITMOU.jpg"></a>
+                                            src="$blogimagesurl[0]"></a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="categorystyle-1.php">GADGETS</a>
+                                       href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                 </div>
                                 <div class="post__text">
-                                    <h3 class="post__title f-20 f-w-600 m-b-10"><a href="single.php">Never Let The
-                                            Fear Of Striking Out Keep You From Playing </a></h3>
+                                    <h3 class="post__title f-20 f-w-600 m-b-10">
+                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                    </h3>
                                     <div class="post__meta flex-box time-style-1">
                                         <div class="post-author post-author_style-6">
                                             <div class="post-author__text">
                                                 <div class="author_name--wrap">
-                                                    <span>by</span>
-                                                    <a class="post-author__name" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall"> Connor Randall</a>
+                                                    <span>由</span>
+                                                    <a class="post-author__name" href="author.php?authorid=$authorid"
+                                                       rel="author" title="Posts by $blogauthor">$blogauthor</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                              title="March 6, 2021 at 8:45 am">March 6, 2021
+                                        <time class="time published" datetime="$blogpublishTime"
+                                              title="$blogpublishTime">
+                                            $blogpublishTime
                                         </time>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        <div class="list-item">
-                            <article class="post post--vertical post--vertical-normal">
-                                <div class="post__thumb object-fit">
-                                    <a href="single.php"><img
-                                            alt="File not found"
-                                            src="../images/x16.jpg.pagespeed.ic.LvT-5PFqru.jpg"></a>
-                                    <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="categorystyle-1.php">GADGETS</a>
-                                </div>
-                                <div class="post__text">
-                                    <h3 class="post__title f-20 f-w-600 m-b-10"><a href="single.php">Never Let The
-                                            Fear Of Striking Out Keep You From Playing </a></h3>
-                                    <div class="post__meta flex-box time-style-1">
-                                        <div class="post-author post-author_style-6">
-                                            <div class="post-author__text">
-                                                <div class="author_name--wrap">
-                                                    <span>by</span>
-                                                    <a class="post-author__name" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall"> Connor Randall</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                        </time>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="list-item">
-                            <article class="post post--vertical post--vertical-normal">
-                                <div class="post__thumb object-fit">
-                                    <a href="single.php"><img
-                                            alt="File not found"
-                                            src="../images/x51.jpg.pagespeed.ic.q9GuAyi1ty.jpg"></a>
-                                    <a class="post__cat post__cat--bg overlay-item--top-left"
-                                       href="categorystyle-1.php">GADGETS</a>
-                                </div>
-                                <div class="post__text">
-                                    <h3 class="post__title f-20 f-w-600 m-b-10"><a href="single.php">Never Let The
-                                            Fear Of Striking Out Keep You From Playing </a></h3>
-                                    <div class="post__meta flex-box time-style-1">
-                                        <div class="post-author post-author_style-6">
-                                            <div class="post-author__text">
-                                                <div class="author_name--wrap">
-                                                    <span>by</span>
-                                                    <a class="post-author__name" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall"> Connor Randall</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <time class="time published" datetime="2021-03-06T08:45:23+00:00"
-                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                        </time>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+sectionsublistitem;
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- module-4 -->
+
+
     <!-- module-5 -->
     <div class="atbs-block atbs-block--fullwidth atbs-featured-module-5">
         <div class="container">
