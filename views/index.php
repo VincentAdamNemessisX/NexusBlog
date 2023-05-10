@@ -294,11 +294,6 @@ postsub;
                         ?>
                     </div>
                 </div>
-                <?php
-                    $blogrst = queryData('accounts, blog, blogtype, blogimages, selectedblog',
-                    '*', 'blog.blogid = blogimages.blogid and blog.author = accounts.username
-                    and blog.blogid = selectedblog.blogid and blog.type = blogtype.name');
-                ?>
                 <div class="section-sub m-t-30">
                     <div class="section-sub__inner flex-box flex-space-30">
                         <?php
@@ -1556,7 +1551,7 @@ listitem;
                             <?php
                                 $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
                                     'accounts.username = blog.author and blog.blogid = blogimages.blogid and
-                                     blog.type = blogtype.name order by readTimes Desc', '0', '7');
+                                     blog.type = blogtype.name order by readTimes Desc', '0', '3');
                             ?>
                             <div class="widget__inner">
                                 <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
@@ -1617,7 +1612,7 @@ listitem;
                             <?php
                             $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
                                 'accounts.username = blog.author and blog.blogid = blogimages.blogid and
-                                     blog.type = blogtype.name order by publishTime Desc', '0', '7');
+                                     blog.type = blogtype.name order by publishTime Desc', '0', '5');
                             ?>
                             <div class="widget__inner">
                                 <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
