@@ -149,6 +149,7 @@ singleheader;
                                                         <span>由</span>
                                                         <a class="post-author__name" href="author.php?authorid=$authorid"
                                                            rel="author" title="Posts by $blogauthor">$blogauthor</a>
+                                                        <span>发布于</span>
                                                     </div>
                                                 </div>
                                             </div>
