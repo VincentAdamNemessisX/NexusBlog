@@ -17,6 +17,7 @@
                         <!--                        cycle print recommend data-->
                         <?php while ($blog = mysqli_fetch_array($blogrst)) {
                             $blogtitle = $blog['title'];
+                            $blogshowstyle = $blog['blogshowstyle'];
                             $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                             $blogauthor = $blog['author'];
                             $blogabstract = $blog['abstract'];
@@ -31,7 +32,7 @@
                         <div class="slide-content">
                             <article class="post post--horizontal post--horizontal-middle post--horizontal-circle">
                                                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid"><img
+                                    <a href="$blogshowstyle?blogid=$blogid"><img
                                             alt="File not found"
                                             src="$blogimagesurl[0]"></a>
                                 </div>
@@ -39,7 +40,7 @@
                                     <a class="post__cat post__cat--bg"
                                      href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                     <h3 class="post__title f-46 f-w-700 m-t-10 m-b-15 atbs-line-limit atbs-line-limit-3">
-                                        <a href="single.php?blogid=$blogid">
+                                        <a href="$blogshowstyle?blogid=$blogid">
                                         $blogtitle</a>
                                     </h3>
                                     <div class="post__excerpt m-t-0 m-b-20">
@@ -79,8 +80,9 @@ slideblog;
 <!--                up down cycle print data all blog 全部博客内容输出-->
                 <?php
                     $blogrst = []; $blog = [];
-                    $blogrst = queryData('accounts, blog, blogimages', '*',
-                        'blog.author = accounts.username and blog.blogid = blogimages.blogid');
+                    $blogrst = queryData('accounts, blog,blogtype, blogimages', '*',
+                        'blog.author = accounts.username and blog.blogid = blogimages.blogid
+                        and blog.type = blogtype.name');
                 ?>
                 <div class="section-sub scrollbar-hidden scroll-default" data-scroll="260">
                     <div class="section-sub__inner">
@@ -88,6 +90,7 @@ slideblog;
                             <?php
                                 while ($blog = mysqli_fetch_array($blogrst)) {
                                     $blogtitle = $blog['title'];
+                                    $blogshowstyle = $blog['blogshowstyle'];
                                     $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                                     $blogauthor = $blog['author'];
                                     $blogabstract = $blog['abstract'];
@@ -100,7 +103,7 @@ slideblog;
                                 <article
                                     class="post post--overlay post--overlay-outside post--overlay-bottom post--overlay-height-230">
                                     <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                                        <a href="single.php?blogid=$blogid">
+                                        <a href="$blogshowstyle?blogid=$blogid">
                                             <img alt="file not found"
                                                  src="$blogimagesurl[0]">
                                         </a>
@@ -109,10 +112,10 @@ slideblog;
                                         <div class="post__text-wrap">
                                             <div class="post__text-inner">
                                                 <h3 class="post__title f-20 f-w-600 m-b-10">
-                                                    <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                    <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                                 </h3>
                                                 <div class="post__readmore m-t-0 m-b-0">
-                                                    <a href="single.php?blogid=$blogid">
+                                                    <a href="$blogshowstyle?blogid=$blogid">
                                                         <svg height="10.828" viewbox="0 0 20.414 10.828"
                                                              width="20.414" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M17,8l4,4m0,0-4,4m4-4H3" data-name="Path 1402"
@@ -144,7 +147,7 @@ slideblog;
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="link-overlay" href="single.php?blogid=$blogid"></a>
+                                    <a class="link-overlay" href="$blogshowstyle?blogid=$blogid"></a>
                                 </article>
                             </div>
 listitems;
@@ -178,6 +181,7 @@ listitems;
                             '*', 'blog.blogid = blogimages.blogid and blog.author = accounts.username
                              and blog.blogid = selectedblog.blogid and blog.type = blogtype.name');
                         $blog = mysqli_fetch_array($blogrst);
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                         $blogauthor = $blog['author'];
@@ -194,7 +198,7 @@ listitems;
                             <article
                                 class="post post--overlay post--overlay-medium post--overlay-bottom post--overlay-height-440 post--overlay-padding-lg">
                                 <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="file not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -203,7 +207,7 @@ listitems;
                                     <div class="post__text-wrap">
                                         <div class="post__text-inner">
                                             <h3 class="post__title f-28 f-w-700 m-b-15">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__meta">
                                                 <div class="post-author post-author_style-7">
@@ -231,13 +235,14 @@ listitems;
                                         </div>
                                     </div>
                                 </div>
-                                <a class="link-overlay" href="single.php?blogid=$blogid"></a>
+                                <a class="link-overlay" href="$blogshowstyle?blogid=$blogid"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
                                    href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                             </article>
                         </div>
 postmain;
                         $blog = mysqli_fetch_array($blogrst);
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                         $blogauthor = $blog['author'];
@@ -255,7 +260,7 @@ postmain;
                                 class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
                                 data-dark-mode="true">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="File not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -265,7 +270,7 @@ postmain;
                                         <a class="post__cat post__cat-primary"
                                          href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                            <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                            <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                         </h3>
                                     </div>
                                     <div class="post__text-group flex-item-auto-bottom">
@@ -300,6 +305,7 @@ postsub;
                         $blog = mysqli_fetch_array($blogrst);
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $blogtype = $blog['type'];
@@ -314,7 +320,7 @@ postsub;
                             <article
                                 class="post post--overlay  post--overlay-medium post--overlay-bottom post--overlay-height-440 post--overlay-padding-lg">
                                 <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="file not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -323,7 +329,7 @@ postsub;
                                     <div class="post__text-wrap">
                                         <div class="post__text-inner">
                                             <h3 class="post__title f-28 f-w-700 m-b-15">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__meta">
                                                 <div class="post-author post-author_style-7">
@@ -351,7 +357,7 @@ postsub;
                                         </div>
                                     </div>
                                 </div>
-                                <a class="link-overlay" href="single.php?blogid=$blogid"></a>
+                                <a class="link-overlay" href="$blogshowstyle?blogid=$blogid"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
                                    href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                             </article>
@@ -360,6 +366,7 @@ postmain;
                         $blog = mysqli_fetch_array($blogrst);
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
@@ -375,7 +382,7 @@ postmain;
                                 class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
                                 data-dark-mode="true">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="File not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -385,7 +392,7 @@ postmain;
                                         <a class="post__cat post__cat-primary" 
                                         href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                            <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                            <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                         </h3>
                                     </div>
                                     <div class="post__text-group flex-item-auto-bottom">
@@ -436,6 +443,7 @@ postsub;
             <div class="atbs-block__inner-group flex-box">
                 <?php
                 $blog = mysqli_fetch_array($blogrst);
+                $blogshowstyle = $blog['blogshowstyle'];
                 $blogtitle = $blog['title'];
                 $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                 $blogauthor = $blog['author'];
@@ -453,7 +461,7 @@ postsub;
                         class="post post--vertical post--vertical-normal-two-column post--vertical-normal-two-column-text-reverse post__thumb-480"
                         data-dark-mode="true">
                         <div class="post__thumb atbs-thumb-object-fit">
-                            <a href="single.php?blogid=$blogid">
+                            <a href="$blogshowstyle?blogid=$blogid">
                                 <img alt="File not found" src="$blogimagesurl[0]">
                                 <div class="post-type-icon post-type-circle overlay-item--center-xy">
                                     <i class="mdicon mdicon-play_arrow"></i>
@@ -468,7 +476,7 @@ postsub;
                                 </div>
                                 <div class="post__text-group">
                                     <h3 class="post__title f-40 f-w-700 atbs-line-limit atbs-line-limit-3">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__meta m-t-25">
                                         <div class="post-author post-author_style-7">
@@ -497,7 +505,7 @@ postsub;
                                         $blogabstract
                                     </div>
                                     <div class="post__readmore m-t-20">
-                                        <a href="single.php?blogid=$blogid">
+                                        <a href="$blogshowstyle?blogid=$blogid">
                                             <span class="readmore__text">阅读全文</span>
                                             <svg height="10.121" viewbox="0 0 19.811 10.121" width="19.811"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -523,6 +531,7 @@ sectionmain;
                         while ($blog = mysqli_fetch_array($blogrst)) {
                             $blogtitle = $blog['title'];
                             $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                            $blogshowstyle = $blog['blogshowstyle'];
                             $blogauthor = $blog['author'];
                             $blogabstract = $blog['abstract'];
                             $typestyle = $blog['showstyle'];
@@ -538,7 +547,7 @@ sectionmain;
                                 class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
                                 data-dark-mode="true">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="File not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -548,7 +557,7 @@ sectionmain;
                                         <a class="post__cat post__cat-primary"
                                          href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                         <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                            <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                            <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                         </h3>
                                     </div>
                                     <div class="post__text-group flex-item-auto-bottom">
@@ -605,6 +614,7 @@ sectionsublistitem;
                             while ($blog = mysqli_fetch_array($blogrst)) {
                                 $blogtitle = $blog['title'];
                                 $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                                $blogshowstyle = $blog['blogshowstyle'];
                                 $blogauthor = $blog['author'];
                                 $blogabstract = $blog['abstract'];
                                 $typestyle = $blog['showstyle'];
@@ -619,7 +629,7 @@ sectionsublistitem;
                             <article
                                 class="post post--overlay post--overlay-rectangle post--overlay-bottom post--overlay-height-600 post--overlay-padding-lg">
                                 <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="file not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -628,7 +638,7 @@ sectionsublistitem;
                                     <div class="post__text-wrap">
                                         <div class="post__text-inner">
                                             <h3 class="post__title f-32 f-w-700 m-b-15">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__excerpt atbs-line-limit atbs-line-limit-3 m-b-20">
                                                 $blogabstract
@@ -659,7 +669,7 @@ sectionsublistitem;
                                         </div>
                                     </div>
                                 </div>
-                                <a class="link-overlay" href="single.php?blogid=$blogid"></a>
+                                <a class="link-overlay" href="$blogshowstyle?blogid=$blogid"></a>
                                 <a class="post__cat post__cat--bg overlay-item--top-left"
                                    href="categorystyle-$typestyle.php">$blogtype</a>
                             </article>
@@ -678,6 +688,7 @@ slidecontent;
                         while ($blog = mysqli_fetch_array($blogrst)) {
                             $blogtitle = $blog['title'];
                             $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                            $blogshowstyle = $blog['blogshowstyle'];
                             $blogauthor = $blog['author'];
                             $blogabstract = $blog['abstract'];
                             $typestyle = $blog['showstyle'];
@@ -691,7 +702,7 @@ slidecontent;
                         <div class="list-item">
                             <article class="post post--vertical post--vertical-normal">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid"><img
+                                    <a href="$blogshowstyle?blogid=$blogid"><img
                                             alt="File not found"
                                             src="$blogimagesurl[0]"></a>
                                     <a class="post__cat post__cat--bg overlay-item--top-left"
@@ -699,7 +710,7 @@ slidecontent;
                                 </div>
                                 <div class="post__text">
                                     <h3 class="post__title f-20 f-w-600 m-b-10">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__meta flex-box time-style-1">
                                         <div class="post-author post-author_style-6">
@@ -749,6 +760,7 @@ sectionsublistitem;
                 $blogid = $blog['blogid'];
                 $blogtitle = $blog['title'];
                 $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                $blogshowstyle = $blog['blogshowstyle'];
                 $blogauthor = $blog['author'];
                 $blogabstract = $blog['abstract'];
                 $typestyle = $blog['showstyle'];
@@ -762,7 +774,7 @@ sectionsublistitem;
                     <article
                         class="post post--overlay post--overlay-cylinder post--overlay-bottom post--overlay-height-920 post--overlay-padding-lg">
                         <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                            <a href="single.php?blogid=$blogid">
+                            <a href="$blogshowstyle?blogid=$blogid">
                                 <img alt="file not found" src="$blogimagesurl[0]">
                             </a>
                         </div>
@@ -770,7 +782,7 @@ sectionsublistitem;
                             <div class="post__text-wrap">
                                 <div class="post__text-inner">
                                     <h3 class="post__title f-32 f-w-700 m-b-15">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__excerpt atbs-line-limit atbs-line-limit-3 m-b-20">
                                         $blogabstract
@@ -799,7 +811,7 @@ sectionsublistitem;
                                 </div>
                             </div>
                         </div>
-                        <a class="link-overlay" href="single.php?blogid=$blogid"></a>
+                        <a class="link-overlay" href="$blogshowstyle?blogid=$blogid"></a>
                         <a class="post__cat post__cat--bg overlay-item--top-left"
                          href="categorystyle-$typestyle.php">$blogtype</a>
                     </article>
@@ -813,6 +825,7 @@ sectionmain;
                             $blog = mysqli_fetch_array($blogrst);
                             $blogtitle = $blog['title'];
                             $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                            $blogshowstyle = $blog['blogshowstyle'];
                             $blogauthor = $blog['author'];
                             $blogabstract = $blog['abstract'];
                             $typestyle = $blog['showstyle'];
@@ -827,7 +840,7 @@ sectionmain;
                             <article class="post post--vertical post--vertical-card-background"
                                      data-dark-mode="true">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="File not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -836,7 +849,7 @@ sectionmain;
                                 </div>
                                 <div class="post__text inverse-text">
                                     <h3 class="post__title f-22 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__meta border-avatar">
                                         <div class="post-author post-author_style-7">
@@ -873,6 +886,7 @@ sectionsublistitem;
                         $blog = mysqli_fetch_array($blogrst);
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
@@ -887,7 +901,7 @@ sectionsublistitem;
                             <article class="post post--vertical post--vertical-card-background"
                                      data-dark-mode="true">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid">
+                                    <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="File not found"
                                              src="$blogimagesurl[0]">
                                     </a>
@@ -896,7 +910,7 @@ sectionsublistitem;
                                 </div>
                                 <div class="post__text inverse-text">
                                     <h3 class="post__title f-22 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__meta border-avatar">
                                         <div class="post-author post-author_style-7">
@@ -953,6 +967,7 @@ sectionsublistitem;
                         $blogid = $blog['blogid'];
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
@@ -966,7 +981,7 @@ sectionsublistitem;
                             <article
                                 class="post post--horizontal post--horizontal-middle post--horizontal-cylinder">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid"><img
+                                    <a href="$blogshowstyle?blogid=$blogid"><img
                                             alt="File not found"
                                             src="$blogimagesurl[0]"></a>
                                 </div>
@@ -974,7 +989,7 @@ sectionsublistitem;
                                     <a class="post__cat post__cat--bg"
                                      href="categorystyle-$typestyle.php?$blogtypeid">$blogtype</a>
                                     <h3 class="post__title f-32 f-w-700 m-t-10 m-b-15 atbs-line-limit atbs-line-limit-3">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__excerpt m-t-0 m-b-25">
                                         $blogabstract
@@ -1011,6 +1026,7 @@ postmain;
                             $blogid = $blog['blogid'];
                             $blogtitle = $blog['title'];
                             $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                            $blogshowstyle = $blog['blogshowstyle'];
                             $blogauthor = $blog['author'];
                             $blogabstract = $blog['abstract'];
                             $typestyle = $blog['showstyle'];
@@ -1024,14 +1040,14 @@ postmain;
                                     <article
                                         class="post post--horizontal post--horizontal-middle post--horizontal-card-space flex-box">
                                         <div class="post__thumb object-fit">
-                                            <a href="single.php?blogid=$blogid"><img
+                                            <a href="$blogshowstyle?blogid=$blogid"><img
                                                     alt="File not found"
                                                     src="$blogimagesurl[0]"></a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <a class="post__cat" href="categorystyle-$typestyle.php">$blogtype</a>
                                             <h3 class="post__title f-18 f-w-500 m-t-10 m-b-10 atbs-line-limit atbs-line-limit-2">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__meta flex-box time-style-1">
                                                 <time class="time published" datetime="$blogpublishTime"
@@ -1055,6 +1071,7 @@ postsub;
                         $blogid = $blog['blogid'];
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
@@ -1069,7 +1086,7 @@ postsub;
                                     class="post post--vertical post--vertical-style-card-thumb-aside post--vertical-style-card-thumb-aside-small atbs-post-hover-theme-style post--hover-theme"
                                     data-dark-mode="true">
                                     <div class="post__thumb object-fit">
-                                        <a href="single.php?blogid=$blogid">
+                                        <a href="$blogshowstyle?blogid=$blogid">
                                             <img alt="File not found"
                                                  src="$blogimagesurl[0]">
                                         </a>
@@ -1079,7 +1096,7 @@ postsub;
                                             <a class="post__cat post__cat-primary"
                                                href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                             <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                         </div>
                                         <div class="post__text-group flex-item-auto-bottom">
@@ -1136,6 +1153,7 @@ listitem;
                     $blogid = $blog['blogid'];
                     $blogtitle = $blog['title'];
                     $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                    $blogshowstyle = $blog['blogshowstyle'];
                     $blogauthor = $blog['author'];
                     $blogabstract = $blog['abstract'];
                     $typestyle = $blog['showstyle'];
@@ -1149,7 +1167,7 @@ listitem;
                     <article
                         class="post post--overlay post--overlay-cylinder-small post--overlay-bottom post--overlay-height-770 post--overlay-padding-lg">
                         <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit">
-                            <a href="single.php?blogid=$blogid">
+                            <a href="$blogshowstyle?blogid=$blogid">
                                 <img alt="file not found" src="$blogimagesurl[0]">
                             </a>
                         </div>
@@ -1157,7 +1175,7 @@ listitem;
                             <div class="post__text-wrap">
                                 <div class="post__text-inner">
                                     <h3 class="post__title f-32 f-w-700 m-b-15">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__excerpt atbs-line-limit atbs-line-limit-3 m-b-20">
                                         $blogabstract
@@ -1186,7 +1204,7 @@ listitem;
                                 </div>
                             </div>
                         </div>
-                        <a class="link-overlay" href="single.php?blogid=$blogid"></a>
+                        <a class="link-overlay" href="$blogshowstyle?blogid=$blogid"></a>
                         <a class="post__cat post__cat--bg overlay-item--top-left"
                          href="categorystyle-$typestyle.php">$blogtype</a>
                     </article>
@@ -1200,6 +1218,7 @@ sectionmain;
                                 $blogid = $blog['blogid'];
                                 $blogtitle = $blog['title'];
                                 $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                                $blogshowstyle = $blog['blogshowstyle'];
                                 $blogauthor = $blog['author'];
                                 $blogabstract = $blog['abstract'];
                                 $typestyle = $blog['showstyle'];
@@ -1213,7 +1232,7 @@ sectionmain;
                             <article
                                 class="post post--overlay post--overlay-background-blur-primary post--overlay-height-370">
                                 <div class="post__thumb  post__thumb--overlay atbs-thumb-object-fit">
-                                    <a href="single.php?blogid=$blogid"><img
+                                    <a href="$blogshowstyle?blogid=$blogid"><img
                                             alt="File not found"
                                             src="$blogimagesurl[0]"></a>
                                 </div>
@@ -1223,7 +1242,7 @@ sectionmain;
                                             <div class="post__text-group">
                                                 <a class="post__cat" href="categorystyle-$typestyle.php">$blogtype</a>
                                                 <h3 class="post__title f-22 f-w-700 m-t-15 m-b-20"><a
-                                                        href="single.php?blogid=$blogid">$blogtitle</a></h3>
+                                                        href="$blogshowstyle?blogid=$blogid">$blogtitle</a></h3>
                                                 <div class="post__excerpt atbs-line-limit atbs-line-limit-3 m-b-0">
                                                     $blogabstract
                                                 </div>
@@ -1252,7 +1271,7 @@ sectionmain;
                                         </div>
                                     </div>
                                 </div>
-                                <a class="link-overlay" href="single.php?blogid=$blogid"></a>
+                                <a class="link-overlay" href="$blogshowstyle?blogid=$blogid"></a>
                             </article>
                         </div>
 sectionsublistitem;
@@ -1287,6 +1306,7 @@ sectionsublistitem;
                         $blogid = $blog['blogid'];
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                        $blogshowstyle = $blog['blogshowstyle'];
                         $blogauthor = $blog['author'];
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
@@ -1300,7 +1320,7 @@ sectionsublistitem;
                             <article
                                 class="post post--horizontal post--horizontal-middle post--horizontal-cylinder">
                                 <div class="post__thumb object-fit">
-                                    <a href="single.php?blogid=$blogid"><img
+                                    <a href="$blogshowstyle?blogid=$blogid"><img
                                             alt="File not found"
                                             src="$blogimagesurl[0]"></a>
                                 </div>
@@ -1308,7 +1328,7 @@ sectionsublistitem;
                                     <a class="post__cat post__cat--bg"
                                      href="categorystyle-$typestyle.php?$blogtypeid">$blogtype</a>
                                     <h3 class="post__title f-32 f-w-700 m-t-10 m-b-15 atbs-line-limit atbs-line-limit-3">
-                                        <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                        <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                     </h3>
                                     <div class="post__excerpt m-t-0 m-b-25">
                                         $blogabstract
@@ -1345,6 +1365,7 @@ postmain;
                             $blogid = $blog['blogid'];
                             $blogtitle = $blog['title'];
                             $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                            $blogshowstyle = $blog['blogshowstyle'];
                             $blogauthor = $blog['author'];
                             $blogabstract = $blog['abstract'];
                             $typestyle = $blog['showstyle'];
@@ -1358,14 +1379,14 @@ postmain;
                                     <article
                                         class="post post--horizontal post--horizontal-middle post--horizontal-card-space flex-box">
                                         <div class="post__thumb object-fit">
-                                            <a href="single.php?blogid=$blogid"><img
+                                            <a href="$blogshowstyle?blogid=$blogid"><img
                                                     alt="File not found"
                                                     src="$blogimagesurl[0]"></a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <a class="post__cat" href="categorystyle-$typestyle.php">$blogtype</a>
                                             <h3 class="post__title f-18 f-w-500 m-t-10 m-b-10 atbs-line-limit atbs-line-limit-2">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__meta flex-box time-style-1">
                                                 <time class="time published" datetime="$blogpublishTime"
@@ -1390,6 +1411,7 @@ postsub;
                                     $blogtitle = $blog['title'];
                                     $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                                     $blogauthor = $blog['author'];
+                                    $blogshowstyle = $blog['blogshowstyle'];
                                     $blogabstract = $blog['abstract'];
                                     $typestyle = $blog['showstyle'];
                                     $blogtype = $blog['type'];
@@ -1403,7 +1425,7 @@ postsub;
                                     class="post post--vertical post--vertical-style-card-thumb-aside post--vertical-style-card-thumb-aside-small atbs-post-hover-theme-style post--hover-theme"
                                     data-dark-mode="true">
                                     <div class="post__thumb object-fit">
-                                        <a href="single.php?blogid=$blogid">
+                                        <a href="$blogshowstyle?blogid=$blogid">
                                             <img alt="File not found"
                                                  src="$blogimagesurl[0]">
                                         </a>
@@ -1413,7 +1435,7 @@ postsub;
                                             <a class="post__cat post__cat-primary"
                                                href="categorystyle-$typestyle.php?typeid=$blogtypeid">$blogtype</a>
                                             <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                         </div>
                                         <div class="post__text-group flex-item-auto-bottom">
@@ -1480,6 +1502,7 @@ listinggrid;
                                         $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                                         $blogauthor = $blog['author'];
                                         $blogabstract = $blog['abstract'];
+                                        $blogshowstyle = $blog['blogshowstyle'];
                                         $typestyle = $blog['showstyle'];
                                         $blogtype = $blog['type'];
                                         $blogtypeid = $blog['blogtypeid'];
@@ -1492,7 +1515,7 @@ listinggrid;
                                         class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
                                         data-dark-mode="true">
                                         <div class="post__thumb object-fit">
-                                            <a href="single.php?blogid=$blogid">
+                                            <a href="$blogshowstyle?blogid=$blogid">
                                                 <img alt="File not found"
                                                      src="$blogimagesurl[0]">
                                             </a>
@@ -1501,7 +1524,7 @@ listinggrid;
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
-                                                <a href="single.php?blogid=$blogid">$blogtitle</a>
+                                                <a href="$blogshowstyle?blogid=$blogid">$blogtitle</a>
                                             </h3>
                                             <div class="post__meta border-avatar">
                                                 <div class="post-author post-author_style-7">

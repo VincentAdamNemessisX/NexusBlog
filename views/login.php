@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
+    <title>
+        <?php
+        if(isset($_SESSION['tabtitle']) && $_SESSION['tabtitle'] != '')
+            echo $_SESSION['tabtitle'];
+        else
+            echo 'NexusBlog';
+        ?>
+        Login Page
+    </title>
     <link rel="stylesheet" href="../css/bootstrap-min-4.5.2.css">
     <style>
         body {
@@ -98,7 +106,7 @@
                             </span>记住密码
                         </label>
                         <button type="button" class="btn btn-primary btn-block" name="sb" onclick="check()">Login</button>
-                        <small class="d-block text-center mt-3"><a href="register.html">Register</a></small>
+                        <small class="d-block text-center mt-3"><a href="register.php">Register</a></small>
                     </form>
                 </div>
             </div>

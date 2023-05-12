@@ -139,8 +139,8 @@ li;
         echo <<<EOF
     <div class="atbs-offcanvas__section">
         <div class="text-center">
-            <i class="mdicon mdicon-person mdicon--first"></i><span><a href="../views/login.html">登录</a> / <a
-                    href="../views/register.html">注册</a></span>
+            <i class="mdicon mdicon-person mdicon--first"></i><span><a href="../views/login.php">登录</a> / <a
+                    href="../views/register.php">注册</a></span>
         </div>
     </div>
 EOF;

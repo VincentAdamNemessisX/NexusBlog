@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register Page</title>
+    <title>
+        <?php
+        if(isset($_SESSION['tabtitle']) && $_SESSION['tabtitle'] != '')
+            echo $_SESSION['tabtitle'];
+        else
+            echo 'NexusBlog';
+        ?>
+        Register Page
+    </title>
     <link rel="stylesheet" href="../css/bootstrap-min-4.5.2.css">
     <style>
         body {
@@ -133,7 +141,7 @@
                             <small id="confirmPasswordError" class="form-text text-danger"></small>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-register" name="reg">Register</button>
-                        <small class="d-block text-center mt-3"><a href="login.html">Login</a></small>
+                        <small class="d-block text-center mt-3"><a href="login.php">Login</a></small>
                     </form>
                 </div>
             </div>

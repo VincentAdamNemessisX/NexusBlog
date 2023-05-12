@@ -14,7 +14,14 @@ $_SESSION['types'] = $types;
 <head>
     <!-- Basic -->
     <meta charset="UTF-8">
-    <title>NexusBlog</title>
+    <title>
+        <?php
+            if(isset($_SESSION['tabtitle']) && $_SESSION['tabtitle'] != '')
+                echo $_SESSION['tabtitle'];
+            else
+                echo 'NexusBlog';
+        ?>
+    </title>
     <meta content="HTML5 News Magazine Template" name="keywords">
     <meta content="Nvic - Ultimate News and Magazine Template" name="description">
     <!-- Mobile Metas -->
@@ -45,6 +52,9 @@ $_SESSION['types'] = $types;
         @import url(../css/author.css);
         @import url(../css/font.css);
         @import url(../css/color.css);
+        p {
+            text-indent: 2em;
+        }
     </style>
     <!-- Web Fonts  -->
     <link href="../css/css2.css" rel="stylesheet">
