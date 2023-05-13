@@ -1,4 +1,7 @@
                 <?php
+                    $currentuser = $_SESSION['user'] ?? 'guest';
+                    $currentuserinfo = mysqli_fetch_array(queryData('accounts',
+                        '*', "username = '$currentuser'"));
                     $currentblogid = $_GET['blogid'];
                     if($currentblogid === null) {
                         echo "<script>window.history.back()</script>";
@@ -301,215 +304,185 @@ blogbottomsecond;
                             <div class="comments-area" id="comments">
                                 <div class="block-heading block-heading_style-4"
                                      style="--color-heading: var(--color-primary)">
-                                    <h4 class="block-heading__title">5 Comments</h4>
+                                    <h4 class="block-heading__title"><?php echo $commenttotal ?>条评论</h4>
                                 </div>
                                 <ol class="comment-list">
-                                    <li class="comment even thread-even depth-1 parent" id="comment-4">
-                                        <div class="comment-body" id="div-comment-4">
+                                    <?php
+                                        $comment = [];
+                                        $commentrst = queryData('comment, accounts', '*',
+                                        'comment.userid = accounts.accountid and parentid = -1 and blogid = '
+                                        . $currentblogid . ' order by commentid desc');
+                                        while ($comment = mysqli_fetch_array($commentrst)) {
+                                            if ($comment['nickname'] != null) {
+                                                $name = $comment['nickname'];
+                                            } else {
+                                                $name = $comment['username'];
+                                            }
+                                            $commenttime = date("Y年m月d日 H时i分s秒", strtotime($comment['commenttime']));
+                                            echo <<<commentitem
+                                    <li class="comment  thread-even depth-1 parent" id="comment-$comment[commentid]">
+                                        <div class="comment-body" id="div-comment-$comment[commentid]">
                                             <footer class="comment-meta">
                                                 <div class="comment-author vcard">
                                                     <img alt="avatar"
                                                          class="avatar photo" data-pagespeed-url-hash="1520034441"
                                                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg"><b
-                                                        class="fn">Diane Gregory</b><span class="says">says:</span>
+                                                         src="$comment[headPortrait]"><b
+                                                        class="fn">$name</b><span class="says">:</span>
                                                 </div><!-- .comment-author -->
                                                 <div class="comment-metadata">
                                                     <a href="#">
-                                                        <time datetime="2016-10-21T13:31:45+00:00">October 21, 2016
-                                                            at 1:31 pm
+                                                        <time datetime="$commenttime">
+                                                        $commenttime
                                                         </time>
                                                     </a>
                                                 </div><!-- .comment-metadata -->
                                             </footer><!-- .comment-meta -->
                                             <div class="comment-content">
-                                                <p>There's good news, and there's bad news. The bad news is, it's
-                                                    not
-                                                    the drug. You're here, in the astral plane. You went too far in
-                                                    the
-                                                    make believe and got lost in your mind, consciousness, and now
-                                                    you're trapped in this, no place. Where every day is the same,
-                                                    where
-                                                    you can imagine yourself a kingdom. but nothing is ever real.
+                                                <p>
+                                                    $comment[content]
                                                 </p>
                                             </div><!-- .comment-content -->
                                             <div class="reply">
                                                 <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
                                                    href="#"
-                                                   rel="nofollow">Reply</a>
+                                                   rel="nofollow">回复</a>
                                             </div>
                                         </div><!-- .comment-body -->
-                                        <ol class="children">
-                                            <li class="comment byuser comment-author-melchoyce bypostauthor odd alt depth-2 parent"
-                                                id="comment-5">
-                                                <div class="comment-body" id="div-comment-5">
-                                                    <footer class="comment-meta">
-                                                        <div class="comment-author vcard">
-                                                            <img alt="avatar"
-                                                                 class="avatar photo"
-                                                                 data-pagespeed-url-hash="1520034441"
-                                                                 onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                                 src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg"><a
-                                                                class="url" href="#" rel="external nofollow">Ryan
-                                                                Reynold</a><span class="says">says:</span>
-                                                        </div><!-- .comment-author -->
-                                                        <div class="comment-metadata">
-                                                            <a href="#">
-                                                                <time datetime="2016-10-21T13:31:45+00:00">October
-                                                                    21, 2016 at 1:31 pm
-                                                                </time>
-                                                            </a>
-                                                            <span class="edit-link">
-                                                                    <a class="comment-edit-link" href="#">Edit</a>
-                                                                </span>
-                                                        </div><!-- .comment-metadata -->
-                                                    </footer><!-- .comment-meta -->
-                                                    <div class="comment-content">
-                                                        <p>And what's the good news?</p>
-                                                    </div><!-- .comment-content -->
-                                                    <div class="reply">
-                                                        <a aria-label="Reply to Sculpture Fan"
-                                                           class="comment-reply-link" href="#"
-                                                           rel="nofollow">Reply</a>
-                                                    </div>
-                                                </div><!-- .comment-body -->
-                                                <ol class="children">
-                                                    <li class="comment even depth-3" id="comment-6">
-                                                        <div class="comment-body" id="div-comment-6">
-                                                            <footer class="comment-meta">
-                                                                <div class="comment-author vcard">
-                                                                    <img alt="avatar"
-                                                                         class="avatar photo"
-                                                                         data-pagespeed-url-hash="1520034441"
-                                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                                         src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg"><b
-                                                                        class="fn">Diane Gregory</b><span
-                                                                        class="says">says:</span>
-                                                                </div><!-- .comment-author -->
-                                                                <div class="comment-metadata">
-                                                                    <a href="#">
-                                                                        <time datetime="2016-10-21T13:31:45+00:00">
-                                                                            October 21, 2016 at 1:31 pm
-                                                                        </time>
-                                                                    </a>
-                                                                </div><!-- .comment-metadata -->
-                                                            </footer><!-- .comment-meta -->
-                                                            <div class="comment-content">
-                                                                <p>I'm not alone anymore.</p>
-                                                            </div><!-- .comment-content -->
-                                                            <div class="reply">
-                                                                <a aria-label="Reply to Sculpture Fan"
-                                                                   class="comment-reply-link"
-                                                                   href="#" rel="nofollow">Reply</a>
-                                                            </div>
-                                                        </div><!-- .comment-body -->
-                                                    </li><!-- #comment-## -->
-                                                </ol><!-- .children -->
-                                            </li><!-- #comment-## -->
-                                        </ol><!-- .children -->
-                                    </li><!-- #comment-## -->
-                                    <li class="comment byuser bypostauthor odd alt thread-odd thread-alt depth-1"
-                                        id="comment-7">
-                                        <div class="comment-body" id="div-comment-7">
+commentitem;
+                                        echo "<ol class = children>";
+                                        $childrencomment = [];
+                                        $childrencommentrst = queryData('comment, accounts', '*',
+                                        "comment.userid = accounts.accountid and parentid = $comment[commentid]
+                                         and blogid = $currentblogid order by commentid desc");
+                                        while ($childrencomment = mysqli_fetch_array($childrencommentrst)) {
+                                            if ($childrencomment['nickname'] != null) {
+                                                $childrenname = $childrencomment['nickname'];
+                                            } else {
+                                                $childrenname = $childrencomment['username'];
+                                            }
+                                            $childrencommenttime = date("Y年m月d日 H时i分s秒", strtotime($childrencomment['commenttime']));
+                                            echo <<<commentchildren
+                                    <li class="comment  thread-even depth-2 parent" id="comment-$childrencomment[commentid]">
+                                        <div class="comment-body" id="div-comment-$childrencomment[commentid]">
                                             <footer class="comment-meta">
                                                 <div class="comment-author vcard">
                                                     <img alt="avatar"
                                                          class="avatar photo" data-pagespeed-url-hash="1520034441"
                                                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg"><b
-                                                        class="fn">Ryan Reynold</b><span class="says">says:</span>
+                                                         src="$childrencomment[headPortrait]"><b
+                                                        class="fn">$childrenname</b><span class="says">:</span>
                                                 </div><!-- .comment-author -->
                                                 <div class="comment-metadata">
                                                     <a href="#">
-                                                        <time datetime="2016-10-21T13:31:45+00:00">October 21, 2016
-                                                            at 1:31 pm
+                                                        <time datetime="$childrencommenttime">
+                                                        $childrencommenttime
                                                         </time>
                                                     </a>
                                                 </div><!-- .comment-metadata -->
                                             </footer><!-- .comment-meta -->
                                             <div class="comment-content">
-                                                <p> It's just Thursday. Like the 260th Thursday as a passenger on
-                                                    the
-                                                    cruise ship "Mental Health." On the plus side I've mastered
-                                                    eating
-                                                    with a spoon.
+                                                <p>
+                                                    $childrencomment[content]
                                                 </p>
                                             </div><!-- .comment-content -->
                                             <div class="reply">
                                                 <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
                                                    href="#"
-                                                   rel="nofollow">Reply</a>
+                                                   rel="nofollow">回复</a>
                                             </div>
                                         </div><!-- .comment-body -->
-                                    </li><!-- #comment-## -->
-                                    <li class="comment byuser odd alt thread-odd thread-alt depth-1" id="comment-8">
-                                        <div class="comment-body" id="div-comment-8">
-                                            <footer class="comment-meta">
-                                                <div class="comment-author vcard">
-                                                    <img alt="avatar"
-                                                         class="avatar photo" data-pagespeed-url-hash="1520034441"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg"><b
-                                                        class="fn">Diane Gregory</b><span class="says">says:</span>
-                                                </div><!-- .comment-author -->
-                                                <div class="comment-metadata">
-                                                    <a href="#">
-                                                        <time datetime="2016-10-21T13:31:45+00:00">October 21, 2016
-                                                            at 1:31 pm
-                                                        </time>
-                                                    </a>
-                                                </div><!-- .comment-metadata -->
-                                            </footer><!-- .comment-meta -->
-                                            <div class="comment-content">
-                                                <p>I know, I don't have to be afraid. But I am because look at you.
-                                                    All
-                                                    of you. You're gods, and someday you are going to wake up and
-                                                    realize you don't have to listen to us anymore.
-                                                </p>
-                                            </div><!-- .comment-content -->
-                                            <div class="reply">
-                                                <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
-                                                   href="#"
-                                                   rel="nofollow">Reply</a>
-                                            </div>
-                                        </div><!-- .comment-body -->
-                                    </li><!-- #comment-## -->
+commentchildren;
+//                                            echo "<ol class = 'children'>";
+//                                            $grandchildrencomment = [];
+//                                            $grandchildrencommentrst = queryData('comment, accounts', '*',
+//                                                "comment.userid = accounts.accountid and parentid = $childrencomment[commentid]
+//                                         and blogid = $currentblogid order by commentid desc");
+//                                            while ($grandchildrencomment = mysqli_fetch_array($grandchildrencommentrst)) {
+//                                                if ($grandchildrencomment['nickname'] != null) {
+//                                                    $grandchildrenname = $grandchildrencomment['nickname'];
+//                                                } else {
+//                                                    $grandchildrenname = $grandchildrencomment['username'];
+//                                                }
+//                                                $grandchildrencommenttime = date("Y年m月d日 H时i分s秒",
+//                                                    strtotime($grandchildrencomment['commenttime']));
+//                                                echo <<<commentgrandchildren
+//                                    <li class="comment  thread-even depth-2 parent" id="comment-$grandchildrencomment[commentid]">
+//                                        <div class="comment-body" id="div-comment-$grandchildrencomment[commentid]">
+//                                            <footer class="comment-meta">
+//                                                <div class="comment-author vcard">
+//                                                    <img alt="avatar"
+//                                                         class="avatar photo" data-pagespeed-url-hash="1520034441"
+//                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+//                                                         src="$grandchildrencomment[headPortrait]"><b
+//                                                        class="fn">$grandchildrenname</b><span class="says">:</span>
+//                                                </div><!-- .comment-author -->
+//                                                <div class="comment-metadata">
+//                                                    <a href="#">
+//                                                        <time datetime="$grandchildrencommenttime">
+//                                                        $grandchildrencommenttime
+//                                                        </time>
+//                                                    </a>
+//                                                </div><!-- .comment-metadata -->
+//                                            </footer><!-- .comment-meta -->
+//                                            <div class="comment-content">
+//                                                <p>
+//                                                    $grandchildrencomment[content]
+//                                                </p>
+//                                            </div><!-- .comment-content -->
+//                                            <div class="reply">
+//                                                <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
+//                                                   href="#"
+//                                                   rel="nofollow">回复</a>
+//                                            </div>
+//                                        </div><!-- .comment-body -->
+//commentgrandchildren;
+//                                            }
+                                            }
+                                        }
+                                    ?>
                                 </ol>
                                 <div class="comment-respond" id="respond">
-                                    <h3 class="comment-reply-title" id="reply-title">Leave a Reply <small><a
+                                    <h3 class="comment-reply-title" id="reply-title">留下你的评论<small><a
                                                 href="#" id="cancel-comment-reply-link" rel="nofollow"
-                                                style="display: none;">Cancel reply</a></small></h3>
-                                    <form action="#" class="comment-form" id="commentform" method="post"
+                                                style="display: none;">取消回复</a></small></h3>
+                                    <form action="../handle/publishcomment.php" class="comment-form" id="commentform" method="post"
                                           novalidate="">
-                                        <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span>Required
-                                            fields are marked <span class="required">*</span></p>
+                                        <p class="comment-notes"><span id="email-notes">
+                                                你的邮箱和用户名会自动填入，必填项使用<span class="required">*</span>标记</p>
                                         <p class="comment-form-comment">
-                                            <label for="comment">Comment</label>
+                                            <label for="comment">评论</label>
                                             <textarea class="form-control-custom" cols="45" id="comment"
-                                                      maxlength="65525" name="comment" placeholder="Your review"
+                                                      maxlength="65525" name="comment" placeholder="你的回复"
                                                       required="required"
                                                       rows="8"></textarea>
                                         </p>
                                         <p class="comment-form-author">
-                                            <label for="author">Name <span class="required">*</span></label>
+                                            <label for="author">用户名<span class="required">*</span></label>
                                             <input class="form-control-custom" id="author" maxlength="245" name="author"
                                                    placeholder="Name *" required="required" size="30" type="text"
-                                                   value="">
+                                                   value="<?php
+                                                    if($currentuserinfo['nickName'] == null) {
+                                                        echo $currentuserinfo['username'];
+                                                    } else {
+                                                        echo $currentuserinfo['nickname'];
+                                                    }
+                                                   ?>" disabled>
                                         </p>
                                         <p class="comment-form-email">
-                                            <label for="email">Email <span class="required">*</span></label>
+                                            <label for="email">邮箱<span class="required">*</span></label>
                                             <input aria-describedby="email-notes" class="form-control-custom" id="email"
                                                    maxlength="100"
                                                    name="email" placeholder="Email *" required="required" size="30"
-                                                   type="email" value="">
+                                                   type="email" value="<?php
+                                                    echo $currentuserinfo['email'];
+                                            ?>" disabled>
                                         </p>
                                         <p class="form-submit">
                                             <input class="submit" id="submit" name="submit" type="submit"
-                                                   value="Post Comment">
-                                            <input id="comment_post_ID" name="comment_post_ID" type="hidden"
-                                                   value="44">
+                                                   value="发布评论">
                                             <input id="comment_parent" name="comment_parent" type="hidden"
-                                                   value="0">
+                                                   value="$parentid">
                                         </p>
                                     </form>
                                 </div><!-- #respond -->

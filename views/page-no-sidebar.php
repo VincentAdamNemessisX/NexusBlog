@@ -101,7 +101,5 @@ listitem;
         </div>
     </div>
 </div>
-</div>
-</div>
 <!-- .site-content -->
 <?php include_once "../templates/footer.php" ?>
