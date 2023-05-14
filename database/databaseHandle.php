@@ -1,7 +1,7 @@
 <?php
 global $conn;
 error_reporting(0);
-$conn = mysqli_connect('8.130.73.157:3306', 'NexusBlog', 'root')
+$conn = mysqli_connect('localhost:3306', 'root', 'root')
 or die("Database connect failed!" . mysqli_error($conn));
 mysqli_select_db($conn, 'nexusblog');
 mysqli_set_charset($conn, 'utf-8');
@@ -16,7 +16,7 @@ function queryData($table, $fields = "*", $condition = "", $offset = -1, $limit 
     if ($offset != -1 && $limit != -1) {
         $sql .= " limit $offset,$limit";
     }
-    print $sql;
+//    print $sql;
     return mysqli_query($conn, $sql);
 }
 
@@ -49,7 +49,7 @@ function insertData($table, $fields, $values, $data = [])
 //    }
     $valuesSql = implode(',', $values);
     $sql = "insert into $table($fieldsSql) values ($valuesSql)";
-//    print $sql;
+    print $sql;
     return mysqli_query($conn, $sql);
 }
 
@@ -65,7 +65,7 @@ function updateData($table, $condition, $data = [])
         }
     }
     $sql = "update $table set $dataSql  where $condition";
-//    print $sql;
+    print $sql;
     return mysqli_query($conn, $sql);
 }
 

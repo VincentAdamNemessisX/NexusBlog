@@ -9,8 +9,8 @@
                     $blogrst = queryData('blog, accounts, blogimages', '*',
                     "blog.blogid = blogimages.blogid and blog.blogid = $currentblogid");
                     $blog = mysqli_fetch_array($blogrst);
-                    $commentrst = queryData('blog, comment', 'comment.content',
-                    'blog.blogid = comment.blogid and blog.blogid = ' . $currentblogid);
+                    $commentrst = queryData('comment', 'commentid',
+                    'comment.blogid = ' . $currentblogid);
                     $commenttotal = mysqli_num_rows($commentrst);
                     if(!$blog) {
                         echo "<script>window.history.back()</script>";
@@ -53,7 +53,7 @@
                                                 <img alt="$blogauthor"
                                                      data-pagespeed-url-hash="1520034441"
                                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                     src="$blogimagesurl[0]">
+                                                     src="$authorheadportrait">
                                             </a>
                                             <div class="entry-author__text">
                                                 <a class="entry-author__name" href="author.php?authorid=$authorid"
@@ -306,160 +306,39 @@ blogbottomsecond;
                                      style="--color-heading: var(--color-primary)">
                                     <h4 class="block-heading__title"><?php echo $commenttotal ?>条评论</h4>
                                 </div>
-                                <ol class="comment-list">
-                                    <?php
-                                        $comment = [];
-                                        $commentrst = queryData('comment, accounts', '*',
-                                        'comment.userid = accounts.accountid and parentid = -1 and blogid = '
-                                        . $currentblogid . ' order by commentid desc');
-                                        while ($comment = mysqli_fetch_array($commentrst)) {
-                                            if ($comment['nickname'] != null) {
-                                                $name = $comment['nickname'];
-                                            } else {
-                                                $name = $comment['username'];
-                                            }
-                                            $commenttime = date("Y年m月d日 H时i分s秒", strtotime($comment['commenttime']));
-                                            echo <<<commentitem
-                                    <li class="comment  thread-even depth-1 parent" id="comment-$comment[commentid]">
-                                        <div class="comment-body" id="div-comment-$comment[commentid]">
-                                            <footer class="comment-meta">
-                                                <div class="comment-author vcard">
-                                                    <img alt="avatar"
-                                                         class="avatar photo" data-pagespeed-url-hash="1520034441"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="$comment[headPortrait]"><b
-                                                        class="fn">$name</b><span class="says">:</span>
-                                                </div><!-- .comment-author -->
-                                                <div class="comment-metadata">
-                                                    <a href="#">
-                                                        <time datetime="$commenttime">
-                                                        $commenttime
-                                                        </time>
-                                                    </a>
-                                                </div><!-- .comment-metadata -->
-                                            </footer><!-- .comment-meta -->
-                                            <div class="comment-content">
-                                                <p>
-                                                    $comment[content]
-                                                </p>
-                                            </div><!-- .comment-content -->
-                                            <div class="reply">
-                                                <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
-                                                   href="#"
-                                                   rel="nofollow">回复</a>
-                                            </div>
-                                        </div><!-- .comment-body -->
-commentitem;
-                                        echo "<ol class = children>";
-                                        $childrencomment = [];
-                                        $childrencommentrst = queryData('comment, accounts', '*',
-                                        "comment.userid = accounts.accountid and parentid = $comment[commentid]
-                                         and blogid = $currentblogid order by commentid desc");
-                                        while ($childrencomment = mysqli_fetch_array($childrencommentrst)) {
-                                            if ($childrencomment['nickname'] != null) {
-                                                $childrenname = $childrencomment['nickname'];
-                                            } else {
-                                                $childrenname = $childrencomment['username'];
-                                            }
-                                            $childrencommenttime = date("Y年m月d日 H时i分s秒", strtotime($childrencomment['commenttime']));
-                                            echo <<<commentchildren
-                                    <li class="comment  thread-even depth-2 parent" id="comment-$childrencomment[commentid]">
-                                        <div class="comment-body" id="div-comment-$childrencomment[commentid]">
-                                            <footer class="comment-meta">
-                                                <div class="comment-author vcard">
-                                                    <img alt="avatar"
-                                                         class="avatar photo" data-pagespeed-url-hash="1520034441"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="$childrencomment[headPortrait]"><b
-                                                        class="fn">$childrenname</b><span class="says">:</span>
-                                                </div><!-- .comment-author -->
-                                                <div class="comment-metadata">
-                                                    <a href="#">
-                                                        <time datetime="$childrencommenttime">
-                                                        $childrencommenttime
-                                                        </time>
-                                                    </a>
-                                                </div><!-- .comment-metadata -->
-                                            </footer><!-- .comment-meta -->
-                                            <div class="comment-content">
-                                                <p>
-                                                    $childrencomment[content]
-                                                </p>
-                                            </div><!-- .comment-content -->
-                                            <div class="reply">
-                                                <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
-                                                   href="#"
-                                                   rel="nofollow">回复</a>
-                                            </div>
-                                        </div><!-- .comment-body -->
-commentchildren;
-//                                            echo "<ol class = 'children'>";
-//                                            $grandchildrencomment = [];
-//                                            $grandchildrencommentrst = queryData('comment, accounts', '*',
-//                                                "comment.userid = accounts.accountid and parentid = $childrencomment[commentid]
-//                                         and blogid = $currentblogid order by commentid desc");
-//                                            while ($grandchildrencomment = mysqli_fetch_array($grandchildrencommentrst)) {
-//                                                if ($grandchildrencomment['nickname'] != null) {
-//                                                    $grandchildrenname = $grandchildrencomment['nickname'];
-//                                                } else {
-//                                                    $grandchildrenname = $grandchildrencomment['username'];
-//                                                }
-//                                                $grandchildrencommenttime = date("Y年m月d日 H时i分s秒",
-//                                                    strtotime($grandchildrencomment['commenttime']));
-//                                                echo <<<commentgrandchildren
-//                                    <li class="comment  thread-even depth-2 parent" id="comment-$grandchildrencomment[commentid]">
-//                                        <div class="comment-body" id="div-comment-$grandchildrencomment[commentid]">
-//                                            <footer class="comment-meta">
-//                                                <div class="comment-author vcard">
-//                                                    <img alt="avatar"
-//                                                         class="avatar photo" data-pagespeed-url-hash="1520034441"
-//                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-//                                                         src="$grandchildrencomment[headPortrait]"><b
-//                                                        class="fn">$grandchildrenname</b><span class="says">:</span>
-//                                                </div><!-- .comment-author -->
-//                                                <div class="comment-metadata">
-//                                                    <a href="#">
-//                                                        <time datetime="$grandchildrencommenttime">
-//                                                        $grandchildrencommenttime
-//                                                        </time>
-//                                                    </a>
-//                                                </div><!-- .comment-metadata -->
-//                                            </footer><!-- .comment-meta -->
-//                                            <div class="comment-content">
-//                                                <p>
-//                                                    $grandchildrencomment[content]
-//                                                </p>
-//                                            </div><!-- .comment-content -->
-//                                            <div class="reply">
-//                                                <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
-//                                                   href="#"
-//                                                   rel="nofollow">回复</a>
-//                                            </div>
-//                                        </div><!-- .comment-body -->
-//commentgrandchildren;
-//                                            }
-                                            }
-                                        }
-                                    ?>
-                                </ol>
+                                <?php
+                                    include_once '../function/commentsRecursive.php';
+                                    $commentrst = queryData('comment, accounts', '*',
+                                    "comment.userid = accounts.accountid and comment.blogid = $currentblogid
+                                    ");
+                                    $comments = [];
+                                    while ($comment = mysqli_fetch_assoc($commentrst)) {
+                                        $comments[] = $comment;
+                                    }
+                                    display_comments_recursive($comments, -1);
+                                    display_comments_recursive($comments, 0);
+                                ?>
                                 <div class="comment-respond" id="respond">
                                     <h3 class="comment-reply-title" id="reply-title">留下你的评论<small><a
                                                 href="#" id="cancel-comment-reply-link" rel="nofollow"
                                                 style="display: none;">取消回复</a></small></h3>
-                                    <form action="../handle/publishcomment.php" class="comment-form" id="commentform" method="post"
+                                    <form action="../handle/publishcomment.php?blogid=<?php echo $currentblogid ?>"
+                                          class="comment-form" id="commentform" method="post"
                                           novalidate="">
                                         <p class="comment-notes"><span id="email-notes">
                                                 你的邮箱和用户名会自动填入，必填项使用<span class="required">*</span>标记</p>
                                         <p class="comment-form-comment">
                                             <label for="comment">评论</label>
                                             <textarea class="form-control-custom" cols="45" id="comment"
-                                                      maxlength="65525" name="comment" placeholder="你的回复"
+                                                      maxlength="65525" name="comment" placeholder="你的评论"
                                                       required="required"
                                                       rows="8"></textarea>
                                         </p>
                                         <p class="comment-form-author">
                                             <label for="author">用户名<span class="required">*</span></label>
-                                            <input class="form-control-custom" id="author" maxlength="245" name="author"
+                                            <input class="form-control-custom"
+                                                   style="background-color: #e6e6e6; color:grey"
+                                                   id="author" maxlength="245" name="author"
                                                    placeholder="Name *" required="required" size="30" type="text"
                                                    value="<?php
                                                     if($currentuserinfo['nickName'] == null) {
@@ -471,7 +350,9 @@ commentchildren;
                                         </p>
                                         <p class="comment-form-email">
                                             <label for="email">邮箱<span class="required">*</span></label>
-                                            <input aria-describedby="email-notes" class="form-control-custom" id="email"
+                                            <input aria-describedby="email-notes"
+                                                   style="background-color: #e6e6e6; color:grey"
+                                                   class="form-control-custom" id="email"
                                                    maxlength="100"
                                                    name="email" placeholder="Email *" required="required" size="30"
                                                    type="email" value="<?php
@@ -481,8 +362,10 @@ commentchildren;
                                         <p class="form-submit">
                                             <input class="submit" id="submit" name="submit" type="submit"
                                                    value="发布评论">
+                                            <input id="commentid" name="commentid" type="hidden" value="">
+                                            <input id="comment_method" name="comment_method" type="hidden" value="1">
                                             <input id="comment_parent" name="comment_parent" type="hidden"
-                                                   value="$parentid">
+                                                   value="-1">
                                         </p>
                                     </form>
                                 </div><!-- #respond -->

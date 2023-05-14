@@ -3,7 +3,7 @@ include_once "../templates/header.php";
 //    include_once "../handle/recommendAirthMethod.php";
 ?>
 <!-- .site-content -->
-<div class="site-content">
+<div class="site-content" style="padding-bottom: 0">
     <div class="atbs-block atbs-block--fullwidth single-1">
         <div class="atbs-block atbs-block--fullwidth single-entry-wrap">
             <div class="container">
