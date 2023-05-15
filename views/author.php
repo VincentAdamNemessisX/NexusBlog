@@ -1,90 +1,63 @@
 <?php include_once "../templates/header.php" ?>
     <div class="site-content">
+        <?php
+            $currentauthorid = $_GET["authorid"];
+            if($currentauthorid == null) {
+                echo "<script>location.href='../views/index.php'</script>";
+            } else {
+                $authorinfo = mysqli_fetch_array(queryData('accounts', '*',
+                    "accountid = $currentauthorid"));
+                $author = $authorinfo['nickname'] ?? $authorinfo['username'];
+                $authorbio = $authorinfo['bio'] ?? "这个人很懒，什么都没有留下。";
+            }
+        ?>
         <div class="atbs-block atbs-block--fullwidth module-author">
             <div class="container">
-                <div class="row">
+                <div class="row" id="top">
                     <div class="atbs-main-col">
                         <!-- author-box -->
+                        <?php
+                            echo <<<authorbox
                         <div class="author-box">
                             <div class="author-box__image">
                                 <div class="author-avatar">
-                                    <img alt="Ryan Reynold" class="avatar photo"
+                                    <img alt="$author" class="avatar photo"
                                          data-pagespeed-url-hash="1520034441"
                                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                         src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
+                                         src="$authorinfo[headPortrait]">
                                 </div>
                             </div>
                             <div class="author-box__text">
                                 <div class="author-name meta-font">
-                                    <a href="" rel="author" title="Posts by Ryan Reynold">Ryan Reynold</a>
+                                    <a href="#top" rel="author" title="Posts by $author">$author</a>
                                 </div>
                                 <div class="author-bio">
-                                    A 26-year-old health centre receptionist who enjoys going to the movies, photography
-                                    and social media.
+                                    $authorbio;
                                 </div>
                                 <div class="author-info">
                                     <ul class="list-unstyled list-horizontal list-space-sm">
-                                        <li><a href="#"><i class="mdicon mdicon-mail_outline"></i><span class="sr-only">e-mail</span></a>
+                                        <li><a href="#$authorinfo[email]"><i class="mdicon mdicon-mail_outline"></i><span class="sr-only">e-mail</span></a>
                                         </li>
                                         <li><a href="#"><i class="mdicon mdicon-twitter"></i><span class="sr-only">Twitter</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="mdicon mdicon-facebook"></i><span class="sr-only">Facebook</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="mdicon mdicon-google-plus"></i><span class="sr-only">Google+</span></a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+authorbox;
+                        ?>
                         <!-- author-box -->
+                        <?php
+                            $blogrst = queryData('blog, blogimages, accounts, blogtype',
+                                'blogid, blogtitle, blogcontent, blogtime, blogtype, blogtypename, blogimages',
+                                "blog.author = accounts.username and blog.type = blogtype.name
+                                 and blog.blogid = blogimages.blogid and blog.accountid = $currentauthorid");
+                        ?>
                         <!-- listing-grid-2 -->
                         <div class="atbs-block atbs-block--fullwidth atbs-posts-listing--grid-2-has-sidebar">
                             <div class="atbs-block__inner">
                                 <div class="posts-list flex-box flex-box-2i flex-space-30 posts-list-tablet-2i">
-                                    <div class="list-item">
-                                        <article
-                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                            data-dark-mode="true">
-                                            <div class="post__thumb object-fit">
-                                                <a href="single.php">
-                                                    <img alt="File not found"
-                                                         data-pagespeed-url-hash="3134146331"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="post__text flex-box flex-direction-column inverse-text">
-                                                <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                    <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                </div>
-                                                <div class="post__text-group flex-item-auto-bottom">
-                                                    <div
-                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                                        <div class="post-author post-author_style-6">
-                                                            <div class="post-author__text">
-                                                                <div class="author_name--wrap">
-                                                                    <span>by</span>
-                                                                    <a class="post-author__name"
-                                                                       href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
+
                                     <div class="list-item">
                                         <article
                                             class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
