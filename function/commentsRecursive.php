@@ -51,6 +51,25 @@ liitem;
                             }
                     </script>
                     </span>";
+                echo "<span class='edit-link'>
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" style='margin-bottom: -3px' height=\"15px\" 
+                    viewBox=\"0 0 24 24\" width='15px' fill=\"#000000\">
+                        <path d=\"M0 0h24v24H0z\" fill=\"none\"/>
+                        <path d=\"M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z\"/>
+                    </svg>
+                    <a class='comment-remove-link' href='#comment-$comment[commentid]' 
+                    style='color: red; font-weight: bold;'
+                     onclick='removeComment($comment[commentid])'>删除</a>
+                    <script type='text/javascript'>
+                            function removeComment(id) {
+                                var submit = document.getElementById('submit');
+                                var commentmethod = document.getElementById('comment_method');
+                                commentid.value = id;
+                                commentmethod.value = 3;
+                                submit.click();
+                            }
+                    </script>
+                    </span>";
             }
             echo <<<liitem
                         </div><!-- .comment-metadata -->

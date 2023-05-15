@@ -33,4 +33,10 @@
                 echo "<script>alert('修改失败！');window.history.back()</script>";
             }
         }
+    } elseif ($_POST['comment_method'] == 3) {
+        if (removeData('comment', "commentid = $_POST[commentid]")) {
+            echo "<script>alert('删除成功！');history.back()</script>";
+        } else {
+            echo "<script>alert('删除失败！');window.history.back()</script>";
+        }
     }

@@ -4,8 +4,9 @@
                         '*', "username = '$currentuser'"));
                     $currentblogid = $_GET['blogid'];
                     if($currentblogid === null) {
-                        echo "<script>window.history.back()</script>";
+                        echo "<script>location.href='../views/index.php'</script>";
                     }
+                    updateData('blog', "blogid = $currentblogid", ['readTimes' => 'readTimes+1']);
                     $blogrst = queryData('blog, accounts, blogimages', '*',
                     "blog.blogid = blogimages.blogid and blog.blogid = $currentblogid");
                     $blog = mysqli_fetch_array($blogrst);
@@ -310,7 +311,7 @@ blogbottomsecond;
                                     include_once '../function/commentsRecursive.php';
                                     $commentrst = queryData('comment, accounts', '*',
                                     "comment.userid = accounts.accountid and comment.blogid = $currentblogid
-                                    ");
+                                    " . "order by commenttime desc");
                                     $comments = [];
                                     while ($comment = mysqli_fetch_assoc($commentrst)) {
                                         $comments[] = $comment;
@@ -322,7 +323,7 @@ blogbottomsecond;
                                     <h3 class="comment-reply-title" id="reply-title">留下你的评论<small><a
                                                 href="#" id="cancel-comment-reply-link" rel="nofollow"
                                                 style="display: none;">取消回复</a></small></h3>
-                                    <form action="../handle/publishcomment.php?blogid=<?php echo $currentblogid ?>"
+                                    <form action="../handle/managecomment.php?blogid=<?php echo $currentblogid ?>"
                                           class="comment-form" id="commentform" method="post"
                                           novalidate="">
                                         <p class="comment-notes"><span id="email-notes">

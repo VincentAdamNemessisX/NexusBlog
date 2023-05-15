@@ -59,9 +59,9 @@ function updateData($table, $condition, $data = [])
     $dataSql = "";
     foreach ($data as $k => $v) {
         if ($k == array_key_last($data)) {
-            $dataSql .= $k . "='" . $v . "'";
+            $dataSql .= $k . "=" . $v;
         } else {
-            $dataSql .= $k . "='" . $v . "',";
+            $dataSql .= $k . "=" . $v;
         }
     }
     $sql = "update $table set $dataSql  where $condition";
