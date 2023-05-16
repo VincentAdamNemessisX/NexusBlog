@@ -1,4 +1,4 @@
-<div class="atbs-sub-col js-sticky-sidebar">
+<div class="atbs-sub-col js-sticky-sidebar leaveToTop sideBarWidth">
     <!--                    最热阅读排行榜-->
     <!-- widget-1 -->
     <div class="widget atbs-atbs-widget atbs-widget-posts-1">
@@ -8,9 +8,17 @@
                         class="first-word">最热</span><span>阅读</span></h4>
             </div>
             <?php
-            $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
-                'accounts.username = blog.author and blog.blogid = blogimages.blogid and
+            $currentauthorid = $_GET["authorid"] ?? null;
+            if($currentauthorid) {
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    "accounts.username = blog.author and blog.blogid = blogimages.blogid and
+                                     blog.type = blogtype.name and accounts.accountid=$currentauthorid
+                                      order by readTimes Desc", '0', '3');
+            } else {
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    'accounts.username = blog.author and blog.blogid = blogimages.blogid and
                                      blog.type = blogtype.name order by readTimes Desc', '0', '3');
+            }
             ?>
             <div class="widget__inner">
                 <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
@@ -69,9 +77,17 @@ listitem;
                         class="first-word">最新</span><span>发布</span></h4>
             </div>
             <?php
-            $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
-                'accounts.username = blog.author and blog.blogid = blogimages.blogid and
+            $currentauthorid = $_GET["authorid"] ?? null;
+            if($currentauthorid) {
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    "accounts.username = blog.author and blog.blogid = blogimages.blogid and
+                                     blog.type = blogtype.name and accounts.accountid = $currentauthorid
+                                      order by publishTime Desc", '0', '5');
+            } else {
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    'accounts.username = blog.author and blog.blogid = blogimages.blogid and
                                      blog.type = blogtype.name order by publishTime Desc', '0', '5');
+            }
             ?>
             <div class="widget__inner">
                 <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">

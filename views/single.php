@@ -31,8 +31,7 @@
                         $blogimagesurl = explode(',', $blog['imagesurl']);
                         echo <<<singleheader
                     <div class="entry-thumb single-entry-thumb">
-                        <img alt="File not found" data-pagespeed-url-hash="3134146331"
-                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                        <img alt="File not found"
                              src="$blogimagesurl[0]">
                     </div>
                     <header class="single-header inverse-text">
@@ -46,8 +45,6 @@
                                 <a class="entry-author__avatar" href="author.php?authorid=$authorid" rel="author"
                                    title="Posts by $blogauthor">
                                     <img alt="$blogauthor"
-                                         data-pagespeed-url-hash="1520034441"
-                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                          src="$authorheadportrait">
                                 </a>
                                 <div class="entry-author__text">
@@ -69,7 +66,7 @@ singleheader;
             </div>
             <div class="atbs-block atbs-block--fullwidth single-entry-wrap">
                 <!-- .site-content -->
-                <div class="site-content">
+                <div class="site-content leaveToTop">
                     <div class="atbs-block atbs-block--fullwidth single-1">
                         <div class="atbs-block atbs-block--fullwidth single-entry-wrap">
                             <div class="container">
@@ -77,6 +74,7 @@ singleheader;
                                 <!--侧栏-->
                                 <?php include_once "../templates/blogsidebar.php" ?>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -100,12 +98,11 @@ singleheader;
                                     echo "<script>window.history.back()</script>";
                                 }
                                 $currentblogtype = mysqli_fetch_array(queryData('blog, blogtype', "type",
-                                    "blog.type = blogtype.name and blog.blogid = '$currentblogid'"))['type'];
-                                $blogrst = queryData('blog, blogimages, blogtype', 'blog.blogid, blog.title,
-                         blog.author, blog.publishTime, blogtype.name, blogimages.imagesurl, blog.blogshowstyle',
-                                    'blog.blogid = blogimages.blogid and blog.type = blogtype.name and 
-                            blog.type = "'.$currentblogtype.'" and
-                            blog.blogid != '.$currentblogid.' order by blog.publishTime desc limit 3');
+                                    "blog.type = blogtype.name and blog.blogid = $currentblogid"))['type'];
+                                $blogrst = queryData('blog, accounts, blogimages, blogtype', "*",
+                                    "blog.blogid = blogimages.blogid and blog.author = accounts.username
+                                     and blog.type = blogtype.name and blog.type = "."'".$currentblogtype."'"."and
+                                    blog.blogid != ".$currentblogid." order by blog.publishTime desc limit 3");
                                 while ($blog = mysqli_fetch_array($blogrst)) {
                                     $blogid = $blog['blogid'];
                                     $blogtitle = $blog['title'];
@@ -127,8 +124,6 @@ singleheader;
                                 <div class="post__thumb object-fit">
                                     <a href="$blogshowstyle?blogid=$blogid">
                                         <img alt="File not found"
-                                             data-pagespeed-url-hash="1270394416"
-                                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                              src="$blogimagesurl[0]">
                                     </a>
                                 </div>

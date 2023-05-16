@@ -11,7 +11,7 @@
         ?>
         Register Page
     </title>
-    <link rel="stylesheet" href="../css/bootstrap-min-4.5.2.css">
+    <link rel="stylesheet" href="../css/bootstrap-min-4.6.2.css">
     <style>
         body {
             background-color: #000;
@@ -121,7 +121,9 @@
                         </div>
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username" oninput="checkUsername()" onfocusin="checkUsername()" onfocusout="checkUsername()" placeholder="Enter username">
+                            <input type="text" class="form-control" name="username" id="username"
+                                   oninput="checkUsername()" onfocusin="checkUsername()" onfocusout="checkUsername()"
+                                   placeholder="Enter username">
                             <small id="usernameError" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">

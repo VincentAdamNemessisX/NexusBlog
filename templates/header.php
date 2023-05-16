@@ -26,7 +26,7 @@ $_SESSION['types'] = $types;
     <meta content="Nvic - Ultimate News and Magazine Template" name="description">
     <!-- Mobile Metas -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+    <script src="../js/jquery-3.7.0.min.js"></script>
     <!-- import stylesheet -->
     <style>
         @import url(../css/vendors.css);
@@ -52,9 +52,9 @@ $_SESSION['types'] = $types;
         @import url(../css/author.css);
         @import url(../css/font.css);
         @import url(../css/color.css);
-        p {
-            text-indent: 2em;
-        }
+        @import url(../css/customstyle.css);
+        @import url(https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css);
+        );
     </style>
     <!-- Web Fonts  -->
     <link href="../css/css2.css" rel="stylesheet">

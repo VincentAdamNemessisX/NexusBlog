@@ -2,11 +2,14 @@
     <div class="site-content">
         <?php
             $currentauthorid = $_GET["authorid"];
-            if($currentauthorid == null) {
-                echo "<script>location.href='../views/index.php'</script>";
+            if($currentauthorid == "") {
+//                echo "<script>location.href='../views/index.php'</script>";
             } else {
                 $authorinfo = mysqli_fetch_array(queryData('accounts', '*',
                     "accountid = $currentauthorid"));
+                if(!$authorinfo) {
+                    echo "<script>location.href='../views/index.php'</script>";
+                }
                 $author = $authorinfo['nickname'] ?? $authorinfo['username'];
                 $authorbio = $authorinfo['bio'] ?? "这个人很懒，什么都没有留下。";
             }
@@ -22,8 +25,6 @@
                             <div class="author-box__image">
                                 <div class="author-avatar">
                                     <img alt="$author" class="avatar photo"
-                                         data-pagespeed-url-hash="1520034441"
-                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                          src="$authorinfo[headPortrait]">
                                 </div>
                             </div>
@@ -32,7 +33,7 @@
                                     <a href="#top" rel="author" title="Posts by $author">$author</a>
                                 </div>
                                 <div class="author-bio">
-                                    $authorbio;
+                                    $authorbio
                                 </div>
                                 <div class="author-info">
                                     <ul class="list-unstyled list-horizontal list-space-sm">
@@ -49,34 +50,38 @@ authorbox;
                         <!-- author-box -->
                         <?php
                             $blogrst = queryData('blog, blogimages, accounts, blogtype',
-                                'blogid, blogtitle, blogcontent, blogtime, blogtype, blogtypename, blogimages',
+                                '*',
                                 "blog.author = accounts.username and blog.type = blogtype.name
-                                 and blog.blogid = blogimages.blogid and blog.accountid = $currentauthorid");
+                                 and blog.blogid = blogimages.blogid and accounts.accountid = $currentauthorid");
                         ?>
                         <!-- listing-grid-2 -->
                         <div class="atbs-block atbs-block--fullwidth atbs-posts-listing--grid-2-has-sidebar">
                             <div class="atbs-block__inner">
                                 <div class="posts-list flex-box flex-box-2i flex-space-30 posts-list-tablet-2i">
-
+    <?php
+                                        while ($blog = mysqli_fetch_array($blogrst)) {
+                                            $blogauthor = $blog['nickname'] ?? $blog['username'];
+                                            $blogimage = explode(',', $blog['imagesurl'])[0];
+                                            $blogorignalpublishtime = date('Y年m月d日H时i分s秒', strtotime($blog['publishTime']));
+                                            $blogpublishtime = date('Y年m月d日', strtotime($blog['publishTime']));
+                                            echo <<<blog
                                     <div class="list-item">
                                         <article
                                             class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
                                             data-dark-mode="true">
                                             <div class="post__thumb object-fit">
-                                                <a href="single.php">
+                                                <a href="$blog[blogshowstyle]?blogid=$blog[blogid]">
                                                     <img alt="File not found"
-                                                         data-pagespeed-url-hash="1270394416"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg">
+                                                         src="$blogimage">
                                                 </a>
                                             </div>
                                             <div class="post__text flex-box flex-direction-column inverse-text">
                                                 <div class="post__text-group">
                                                     <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
+                                                       href="categorystyle-$blog[showstyle].php?typeid=$blog[blogtypeid]">
+                                                       $blog[name]</a>
                                                     <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
+                                                        <a href="$blog[blogshowstyle]?blogid=$blog[blogid]">$blog[abstract]</a>
                                                     </h3>
                                                 </div>
                                                 <div class="post__text-group flex-item-auto-bottom">
@@ -85,451 +90,33 @@ authorbox;
                                                         <div class="post-author post-author_style-6">
                                                             <div class="post-author__text">
                                                                 <div class="author_name--wrap">
-                                                                    <span>by</span>
+                                                                    <span>由</span>
                                                                     <a class="post-author__name"
                                                                        href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
+                                                                       title="Posts by $blogauthor">$blogauthor</a>
+                                                                    <span>发布</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
+                                                              datetime="$blogorignalpublishtime"
+                                                              title="$blogorignalpublishtime">
+                                                            $blogpublishtime
                                                         </time>
                                                     </div>
                                                 </div>
                                             </div>
                                         </article>
                                     </div>
-                                    <div class="list-item">
-                                        <article
-                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                            data-dark-mode="true">
-                                            <div class="post__thumb object-fit">
-                                                <a href="single.php">
-                                                    <img alt="File not found"
-                                                         data-pagespeed-url-hash="3284578357"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="post__text flex-box flex-direction-column inverse-text">
-                                                <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                    <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                </div>
-                                                <div class="post__text-group flex-item-auto-bottom">
-                                                    <div
-                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                                        <div class="post-author post-author_style-6">
-                                                            <div class="post-author__text">
-                                                                <div class="author_name--wrap">
-                                                                    <span>by</span>
-                                                                    <a class="post-author__name"
-                                                                       href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="list-item">
-                                        <article
-                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                            data-dark-mode="true">
-                                            <div class="post__thumb object-fit">
-                                                <a href="single.php">
-                                                    <img alt="File not found"
-                                                         data-pagespeed-url-hash="2314954141"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/x1.jpg.pagespeed.ic.lC-7aJNJix.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="post__text flex-box flex-direction-column inverse-text">
-                                                <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                    <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                </div>
-                                                <div class="post__text-group flex-item-auto-bottom">
-                                                    <div
-                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                                        <div class="post-author post-author_style-6">
-                                                            <div class="post-author__text">
-                                                                <div class="author_name--wrap">
-                                                                    <span>by</span>
-                                                                    <a class="post-author__name"
-                                                                       href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="list-item">
-                                        <article
-                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                            data-dark-mode="true">
-                                            <div class="post__thumb object-fit">
-                                                <a href="single.php">
-                                                    <img alt="File not found"
-                                                         data-pagespeed-url-hash="606178561"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/x47.jpg.pagespeed.ic.ym8N9fj4mq.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="post__text flex-box flex-direction-column inverse-text">
-                                                <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                    <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                </div>
-                                                <div class="post__text-group flex-item-auto-bottom">
-                                                    <div
-                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                                        <div class="post-author post-author_style-6">
-                                                            <div class="post-author__text">
-                                                                <div class="author_name--wrap">
-                                                                    <span>by</span>
-                                                                    <a class="post-author__name"
-                                                                       href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="list-item">
-                                        <article
-                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                            data-dark-mode="true">
-                                            <div class="post__thumb object-fit">
-                                                <a href="single.php">
-                                                    <img alt="File not found"
-                                                         data-pagespeed-url-hash="3428646252"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/x42.jpg.pagespeed.ic.oAeuycxQzj.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="post__text flex-box flex-direction-column inverse-text">
-                                                <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                    <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                </div>
-                                                <div class="post__text-group flex-item-auto-bottom">
-                                                    <div
-                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                                        <div class="post-author post-author_style-6">
-                                                            <div class="post-author__text">
-                                                                <div class="author_name--wrap">
-                                                                    <span>by</span>
-                                                                    <a class="post-author__name"
-                                                                       href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="list-item">
-                                        <article
-                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                            data-dark-mode="true">
-                                            <div class="post__thumb object-fit">
-                                                <a href="single.php">
-                                                    <img alt="File not found"
-                                                         data-pagespeed-url-hash="3198453904"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/4.jpg.pagespeed.ce.ksyJTHqoXB.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="post__text flex-box flex-direction-column inverse-text">
-                                                <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                    <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                </div>
-                                                <div class="post__text-group flex-item-auto-bottom">
-                                                    <div
-                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                                        <div class="post-author post-author_style-6">
-                                                            <div class="post-author__text">
-                                                                <div class="author_name--wrap">
-                                                                    <span>by</span>
-                                                                    <a class="post-author__name"
-                                                                       href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="list-item">
-                                        <article
-                                            class="post post--vertical post--vertical-style-card-thumb-aside post--hover-theme"
-                                            data-dark-mode="true">
-                                            <div class="post__thumb object-fit">
-                                                <a href="single.php">
-                                                    <img alt="File not found"
-                                                         data-pagespeed-url-hash="2903953983"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                         src="../images/3.jpg.pagespeed.ce.epdGxZrfIQ.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="post__text flex-box flex-direction-column inverse-text">
-                                                <div class="post__text-group">
-                                                    <a class="post__cat post__cat-primary"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                    <h3 class="post__title f-20 f-w-600 m-b-35 m-t-10 atbs-line-limit atbs-line-limit-3">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                </div>
-                                                <div class="post__text-group flex-item-auto-bottom">
-                                                    <div
-                                                        class="post__meta time-style-1 flex-box justify-content-space align-item-center">
-                                                        <div class="post-author post-author_style-6">
-                                                            <div class="post-author__text">
-                                                                <div class="author_name--wrap">
-                                                                    <span>by</span>
-                                                                    <a class="post-author__name"
-                                                                       href="" rel="author"
-                                                                       title="Posts by Connor Randall"> Connor
-                                                                        Randall</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
+blog;
+                                        }
+?>
                                 </div>
                             </div>
                         </div>
                         <!-- listing-grid-2 -->
                     </div>
-                    <div class="atbs-sub-col js-sticky-sidebar">
-                        <!-- widget-1 -->
-                        <div class="widget atbs-atbs-widget atbs-widget-posts-1">
-                            <div class="widget-wrap">
-                                <div class="widget__title">
-                                    <h4 class="widget__title-text"><span
-                                            class="first-word">Most</span><span> post</span></h4>
-                                </div>
-                                <div class="widget__inner">
-                                    <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
-                                        <div class="list-item">
-                                            <article class="post post--vertical post--vertical-rectangle-outside">
-                                                <div class="post__thumb object-fit">
-                                                    <a href="single.php"><img
-                                                            alt="file not found"
-                                                            data-pagespeed-url-hash="3134146331"
-                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                            src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
-                                                    <a class="post__cat post__cat--bg"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                </div>
-                                                <div class="post__text text-center">
-                                                    <h3 class="post__title f-18 m-b-5 f-w-500">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                    <div class="post__meta time-style-1">
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="list-item">
-                                            <article class="post post--vertical post--vertical-rectangle-outside">
-                                                <div class="post__thumb object-fit">
-                                                    <a href="single.php"><img
-                                                            alt="file not found"
-                                                            data-pagespeed-url-hash="1270394416"
-                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                            src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
-                                                    <a class="post__cat post__cat--bg"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                </div>
-                                                <div class="post__text text-center">
-                                                    <h3 class="post__title f-18 m-b-5 f-w-500">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                    <div class="post__meta time-style-1">
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="list-item">
-                                            <article class="post post--vertical post--vertical-rectangle-outside">
-                                                <div class="post__thumb object-fit">
-                                                    <a href="single.php"><img
-                                                            alt="file not found"
-                                                            data-pagespeed-url-hash="3284578357"
-                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                            src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
-                                                    <a class="post__cat post__cat--bg"
-                                                       href="categorystyle-1.php">GADGETS</a>
-                                                </div>
-                                                <div class="post__text text-center">
-                                                    <h3 class="post__title f-18 m-b-5 f-w-500">
-                                                        <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                            Audio</a>
-                                                    </h3>
-                                                    <div class="post__meta time-style-1">
-                                                        <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
-                                                        </time>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- widget-1 -->
-                        <!-- widget-2 -->
-                        <div class="widget atbs-atbs-widget atbs-widget-posts-1">
-                            <div class="widget-wrap">
-                                <div class="widget__title">
-                                    <h4 class="widget__title-text"><span
-                                            class="first-word">Most</span><span> post</span></h4>
-                                </div>
-                                <div class="widget__inner">
-                                    <div class="posts-list flex-box flex-space-30 flex-box-1i posts-list-tablet-2i">
-                                        <div class="list-item">
-                                            <article
-                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
-                                                <div class="post__thumb atbs-thumb-object-fit">
-                                                    <a href="single.php"><img
-                                                            alt="File not found"
-                                                            data-pagespeed-url-hash="3134146331"
-                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                            src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg"></a>
-                                                </div>
-                                                <div class="post__text">
-                                                    <h3 class="post__title f-16 f-w-500">
-                                                        <a href="single.php">Never Let The Fear Of Striking Out Keep
-                                                            You</a>
-                                                    </h3>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="list-item">
-                                            <article
-                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
-                                                <div class="post__thumb atbs-thumb-object-fit">
-                                                    <a href="single.php"><img
-                                                            alt="File not found"
-                                                            data-pagespeed-url-hash="1270394416"
-                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                            src="../images/x39.jpg.pagespeed.ic.v5Lmp-m7EV.jpg"></a>
-                                                </div>
-                                                <div class="post__text">
-                                                    <h3 class="post__title f-16 f-w-500">
-                                                        <a href="single.php">Never Let The Fear Of Striking Out Keep
-                                                            You</a>
-                                                    </h3>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="list-item">
-                                            <article
-                                                class="post post--horizontal post--horizontal-xxs post--horizontal-middle">
-                                                <div class="post__thumb atbs-thumb-object-fit">
-                                                    <a href="single.php"><img
-                                                            alt="File not found"
-                                                            data-pagespeed-url-hash="3284578357"
-                                                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                                            src="../images/x21.jpg.pagespeed.ic.GxpFwn4c5G.jpg"></a>
-                                                </div>
-                                                <div class="post__text">
-                                                    <h3 class="post__title f-16 f-w-500">
-                                                        <a href="single.php">Never Let The Fear Of Striking Out Keep
-                                                            You</a>
-                                                    </h3>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- widget-2 -->
-                    </div>
+                    <?php include_once '../templates/blogsidebar.php' ?>
                 </div>
             </div>
         </div>

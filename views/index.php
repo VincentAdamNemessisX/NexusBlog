@@ -1147,7 +1147,8 @@ listitem;
             <div class="atbs-block__inner flex-box">
                 <?php
                     $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
-                        'accounts.username = blog.author and blog.blogid = blogimages.blogid and blog.type = blogtype.name
+                        'accounts.username = blog.author and blog.blogid = blogimages.blogid
+                         and blog.type = blogtype.name
                         and blog.type = "跑步" order by publishTime Desc', '0', '3');
                     $blog = mysqli_fetch_array($blogrst);
                     $blogid = $blog['blogid'];

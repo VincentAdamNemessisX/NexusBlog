@@ -2,7 +2,9 @@
     --color-white-footer: #222;
     --color-border: rgba(0, 0, 0, .1);
     --background-dark-mode: transparent;
-    --background-dark-mode-aside: #353535
+    --background-dark-mode-aside: #353535;
+    width: 100%;
+    height: 10%;
 }
 
 .site-footer.inverse-text {

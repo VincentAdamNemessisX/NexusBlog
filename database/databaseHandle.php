@@ -49,7 +49,7 @@ function insertData($table, $fields, $values, $data = [])
 //    }
     $valuesSql = implode(',', $values);
     $sql = "insert into $table($fieldsSql) values ($valuesSql)";
-    print $sql;
+//    print $sql;
     return mysqli_query($conn, $sql);
 }
 
@@ -65,7 +65,7 @@ function updateData($table, $condition, $data = [])
         }
     }
     $sql = "update $table set $dataSql  where $condition";
-    print $sql;
+//    print $sql;
     return mysqli_query($conn, $sql);
 }
 

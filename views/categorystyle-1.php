@@ -2,7 +2,7 @@
 <div class="site-content">
     <!-- module-2 -->
     <div class="atbs-block atbs-block--fullwidth atbs-featured-module-2">
-        <div class="container">
+        <div class="container leaveToTop">
             <div class="block-heading block-heading_style-1 block-heading--center block-heading-no-line">
                 <h4 class="block-heading__title">
                     <span class="first-word">editor's </span><span> choise</span>

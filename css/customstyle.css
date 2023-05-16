@@ -1,0 +1,25 @@
+.leaveToTop {
+    margin-top: 2em;
+}
+
+.blogFullWidth {
+    width: 1500px;
+}
+
+
+.container .atbs-main-col {
+    width: 80%;
+}
+
+
+#page-no-sidebar .atbs-main-col {
+    width: 100%;
+}
+
+.sideBarWidth {
+    width: 20%;
+}
+
+p {
+    text-indent: 2em;
+}

@@ -8,7 +8,8 @@
                     }
                     updateData('blog', "blogid = $currentblogid", ['readTimes' => 'readTimes+1']);
                     $blogrst = queryData('blog, accounts, blogimages', '*',
-                    "blog.blogid = blogimages.blogid and blog.blogid = $currentblogid");
+                    "blog.blogid = blogimages.blogid and blog.blogid = $currentblogid and
+                     blog.author = accounts.username");
                     $blog = mysqli_fetch_array($blogrst);
                     $commentrst = queryData('comment', 'commentid',
                     'comment.blogid = ' . $currentblogid);
@@ -28,12 +29,12 @@
                     $blogtype = $blog['type'];
                     $blogtypeid = $blog['blogtypeid'];
                     $authorid = $blog['accountid'];
-                    $authorbio = $blog['bio'];
+                    $authorbio = $blog['bio'] ?? '这个人很懒，什么都没有留下。';
                     $authorheadportrait = $blog['headPortrait'];
                     $blogimagesurl = explode(',', $blog['imagesurl']);
                 ?>
                 <div class="row">
-                    <div class="atbs-main-col">
+                    <div class="atbs-main-col" style="margin: 0 auto">
                         <div
                             class="block-heading block-heading_style-1 block-heading-no-line block-heading_style-1-small">
                             <h4 class="block-heading__title">
@@ -52,8 +53,6 @@
                                             <a class="entry-author__avatar" href="author.php?authorid=$authorid"
                                                rel="author" title="Posts by $blogauthor">
                                                 <img alt="$blogauthor"
-                                                     data-pagespeed-url-hash="1520034441"
-                                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                      src="$authorheadportrait">
                                             </a>
                                             <div class="entry-author__text">
@@ -115,8 +114,6 @@ blogtop;
                                                     data-shortcode="caption">
                                                 <img alt="post image"
                                                      class="wp-image-7 size-full"
-                                                     data-pagespeed-url-hash="3873578199"
-                                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                      src="$blogimage">
                                             </figure>
 blogcontent;
@@ -134,8 +131,6 @@ blogcontent;
                                                     data-shortcode="caption">
                                                 <img alt="post image"
                                                      class="wp-image-7 size-full"
-                                                     data-pagespeed-url-hash="3873578199"
-                                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                      src="$blogimagesurl[$i]">
                                             </figure>
 blogimags;
@@ -171,8 +166,6 @@ blogimags;
                                                 <div class="author-avatar">
                                                     <img alt="$blogauthor"
                                                          class="avatar photo"
-                                                         data-pagespeed-url-hash="1520034441"
-                                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                          src="$authorheadportrait">
                                                 </div>
                                                 <div class="author-box__text">
@@ -222,8 +215,6 @@ blogfooter;
                                                             class="post post--horizontal post--horizontal-middle post--horizontal-reverse post--horizontal-xs post__thumb--width-100 post__thumb-100">
                                                             <div class="post__thumb atbs-thumb-object-fit">
                                                                 <a href="$blogshowstyle?blogid=$blogid"><img
-                                                                        data-pagespeed-url-hash="3198453904"
-                                                                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                                         src="$blogimagesurl[0]"></a>
                                                             </div>
                                                             <div class="post__text text-right">
@@ -265,8 +256,6 @@ blogbottomfirst;
                                                             class="post post--horizontal post--horizontal-middle post--horizontal-xs post__thumb--width-100 post__thumb-100">
                                                             <div class="post__thumb atbs-thumb-object-fit">
                                                                 <a href="$blogshowstyle?blogid=$blogid"><img
-                                                                        data-pagespeed-url-hash="2903953983"
-                                                                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                                                         src="$blogimagesurl[0]"></a>
                                                             </div>
                                                             <div class="post__text text-left">
