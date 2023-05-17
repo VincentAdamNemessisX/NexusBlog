@@ -4,8 +4,12 @@
         <div class="atbs-block atbs-block--fullwidth atbs-featured-module-6">
             <div class="container">
                 <div class="block-heading block-heading_style-1 block-heading--center block-heading-no-line">
+                    <?php $currenttype = mysqli_fetch_array(queryData('blogtype', 'name',
+                        "blogtypeid = $_GET[typeid]"))['name'];
+                    ?>
                     <h4 class="block-heading__title">
-                        <span class="first-word">editor's </span><span> choise</span>
+                        <span class="first-word"><?php echo $currenttype ?></span>
+                        <span>专题</span>
                     </h4>
                 </div>
             </div>

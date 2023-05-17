@@ -27,3 +27,34 @@ p {
 .js-sticky-sidebar {
     width: 20%;
 }
+
+.comment-form .form-submit #submit {
+    background-color: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .5px;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    -webkit-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+
+.comment-form .form-submit #submit:hover {
+    background-color: var(--color-secondary);
+}

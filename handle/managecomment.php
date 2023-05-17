@@ -37,7 +37,8 @@
             }
         }
     } elseif ($_POST['commentmethod'] == 3) {
-        if (removeData('comment', "commentid = $_POST[commentid]")) {
+        if (removeData('comment', "commentid = $_POST[commentid]") &&
+            removeData('comment', "parentid = $_POST[commentid]")) {
             echo "success";
         } else {
             echo "failed";

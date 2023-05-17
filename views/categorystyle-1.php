@@ -27,7 +27,7 @@
                         $blog = mysqli_fetch_array($blogrst);
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                         $blogimagesurl = explode(',', $blog['imagesurl']);
-                        $blogauthor = $blog['nickName'] ?? $blog['username'];
+                        $blogauthor = $blog['nickname'] ?? $blog['username'];
                         echo <<<postmain
                         <div class="post-main">
                             <article
@@ -80,7 +80,7 @@ postmain;
                         $blog = mysqli_fetch_array($blogrst);
                         $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
                         $blogimagesurl = explode(',', $blog['imagesurl']);
-                        $blogauthor = $blog['nickName'] ?? $blog['username'];
+                        $blogauthor = $blog['nickname'] ?? $blog['username'];
                         echo <<<postsub
                         <div class="post-sub">
                             <article
@@ -133,9 +133,9 @@ postsub;
                     <div class="section-sub__inner flex-box flex-space-30">
                         <?php
                         $blog = mysqli_fetch_array($blogrst);
-                        $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                        $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                         $blogimagesurl = explode(',', $blog['imagesurl']);
-                        $blogauthor = $blog['nickName'] ?? $blog['username'];
+                        $blogauthor = $blog['nickname'] ?? $blog['username'];
                         echo <<<postmain
                         <div class="post-main">
                             <article
@@ -186,9 +186,9 @@ postsub;
                         </div>
 postmain;
                         $blog = mysqli_fetch_array($blogrst);
-                        $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
+                        $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                         $blogimagesurl = explode(',', $blog['imagesurl']);
-                        $blogauthor = $blog['nickName'] ?? $blog['username'];
+                        $blogauthor = $blog['nickname'] ?? $blog['username'];
                         echo <<<postsub
                         <div class="post-sub flex-order-1">
                             <article
@@ -250,47 +250,60 @@ postsub;
                         <div
                             class="block-heading block-heading_style-1 block-heading-no-line block-heading_style-1-small">
                             <h4 class="block-heading__title">
-                                <span class="first-word">In Category </span><span> Travel</span>
+                                <span class="first-word"><?php echo $currenttype ?></span><span>之旅</span>
                             </h4>
                         </div>
                         <div class="atbs-block__inner">
                             <div class="posts-list flex-box flex-space-30 flex-box-2i posts-list-tablet-2i">
+                                <?php
+                                    $blogrst = []; $blog = [];
+                                    $blogrst = queryData('accounts, blog, blogtype, blogimages ',
+                                        '*', 'blog.blogid = blogimages.blogid and
+                                 blog.author = accounts.username and blog.type = blogtype.name
+                                 and blogtype.blogtypeid = ' . $_GET['typeid'] . ' order by blog.publishTime desc');
+                                    while ($blog = mysqli_fetch_array($blogrst)) {
+                                        $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                                        $blogimagesurl = explode(',', $blog['imagesurl']);
+                                        $blogauthor = $blog['nickname'] ?? $blog['username'];
+                                        echo <<<listitme
                                 <div class="list-item">
                                     <article
                                         class="post post--vertical post--vertical-card-background post--vertical-card-background-small post--hover-theme"
                                         data-dark-mode="true">
                                         <div class="post__thumb object-fit">
-                                            <a href="single.php">
+                                            <a href="$blog[blogshowstyle]?blogid=$blog[blogid]">
                                                 <img alt="File not found"
                                                      data-pagespeed-url-hash="3134146331"
-                                                     src="../images/x41.jpg.pagespeed.ic.nvSrkipbG2.jpg">
+                                                     src="$blogimagesurl[0]">
                                             </a>
                                             <a class="post__cat post__cat--bg overlay-item--top-left"
-                                               href="">GADGETS</a>
+                                               href="">$blog[type]</a>
                                         </div>
                                         <div class="post__text inverse-text">
                                             <h3 class="post__title f-20 f-w-600 m-b-10 m-t-10 atbs-line-limit atbs-line-limit-2">
-                                                <a href="single.php">Oculus Working on Update to Improve Rift S
-                                                    Audio</a>
+                                                <a href="$blog[blogshowstyle]?blogid=$blog[blogid]">$blog[title]</a>
                                             </h3>
                                             <div class="post__meta border-avatar">
                                                 <div class="post-author post-author_style-7">
-                                                    <a class="post-author__avatar" href="author.php"
-                                                       rel="author" title="Posts by Connor Randall">
-                                                        <img alt="Connor Randall"
+                                                    <a class="post-author__avatar" 
+                                                    href="author.php?authorid=$blog[accountid]"
+                                                       rel="author" title="Posts by $blogauthor">
+                                                        <img alt="$blogauthor"
                                                              data-pagespeed-url-hash="1520034441"
-                                                             src="../images/xauthor.png.pagespeed.ic.Be6zF3JsOO.jpg">
+                                                             src="$blog[headPortrait]">
                                                     </a>
                                                     <div class="post-author__text">
                                                         <div class="author_name--wrap">
-                                                            <span>by</span>
+                                                            <span>由</span>
                                                             <a class="post-author__name"
-                                                               href="author.php" rel="author"
-                                                               title="Posts by Connor Randall"> Connor Randall</a>
+                                                               href="author.php?authorid=$blog[accountid]" rel="author"
+                                                               title="Posts by $blogauthor">$blogauthor</a>
+                                                            <span>创作</span>
                                                         </div>
                                                         <time class="time published"
-                                                              datetime="2021-03-06T08:45:23+00:00"
-                                                              title="March 6, 2021 at 8:45 am">March 6, 2021
+                                                              datetime="$blogpublishTime"
+                                                              title="$blogpublishTime">
+                                                                $blogpublishTime
                                                         </time>
                                                     </div>
                                                 </div>
@@ -298,6 +311,9 @@ postsub;
                                         </div>
                                     </article>
                                 </div>
+listitme;
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -307,6 +323,5 @@ postsub;
             </div>
         </div>
     </div>
-</div>
 <!-- .site-content -->
 <?php include_once "../templates/footer.php" ?>
