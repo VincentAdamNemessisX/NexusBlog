@@ -312,9 +312,9 @@ blogbottomsecond;
                                     <h3 class="comment-reply-title" id="reply-title">留下你的评论<small><a
                                                 href="#" id="cancel-comment-reply-link" rel="nofollow"
                                                 style="display: none;">取消回复</a></small></h3>
-                                    <form action="../handle/managecomment.php?blogid=<?php echo $currentblogid ?>"
-                                          class="comment-form" id="commentform" method="post"
-                                          novalidate="">
+                                    <form class="comment-form"
+                                            action="../handle/managecomment.php?blogid=<?php echo $currentblogid ?>"
+                                          id="commentform" method="post">
                                         <p class="comment-notes"><span id="email-notes">
                                                 你的邮箱和用户名会自动填入，必填项使用<span class="required">*</span>标记</p>
                                         <p class="comment-form-comment">
@@ -350,7 +350,7 @@ blogbottomsecond;
                                             ?>" disabled>
                                         </p>
                                         <p class="form-submit">
-                                            <input class="submit" id="submit" name="submit" type="submit"
+                                            <input class="submit" id="submit" name="submit" type="button"
                                                    value="发布评论">
                                             <input id="commentid" name="commentid" type="hidden" value="">
                                             <input id="comment_method" name="comment_method" type="hidden" value="1">
@@ -358,6 +358,32 @@ blogbottomsecond;
                                                    value="-1">
                                         </p>
                                     </form>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#submit").click(function () {
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: "../handle/manageComment.php?blogid=<?php echo $currentblogid ?>",
+                                                        data: {
+                                                            comment: $('#comment').val(),
+                                                            authorid: $('#authorid').val(),
+                                                            parentid: $('#comment_parent').val(),
+                                                            commentid: $('#commentid').val() ?? -1,
+                                                            commentmethod:$('#comment_method').val(),
+                                                        },
+                                                        success: function (data) {
+                                                            if (data === "success") {
+                                                                alert("操作成功！");
+                                                                // window.location.reload();
+                                                                $("#comment").val('');
+                                                            } else {
+                                                                alert("操作失败！");
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                    </script>
                                 </div><!-- #respond -->
                             </div>
                         </div>

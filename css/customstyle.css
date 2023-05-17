@@ -23,3 +23,7 @@
 p {
     text-indent: 2em;
 }
+
+.js-sticky-sidebar {
+    width: 20%;
+}

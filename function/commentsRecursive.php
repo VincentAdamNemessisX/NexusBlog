@@ -35,22 +35,12 @@ function display_comments_recursive($comments, $parent_id = -1) {
                             </a>
 liitem;
             if ($_SESSION['user'] == $comment['username']) {
-                echo "<span class='edit-link'>
-                    <a class='comment-edit-link' href='#commentform' onclick='editComment($comment[commentid], \"$comment[content]\")'>修改</a>
-                    <script type='text/javascript'>
-                            function editComment(id, content) {
-                                var submit = document.getElementById('submit');
-                                var comment = document.getElementById('comment');
-                                var commentid = document.getElementById('commentid');
-                                var commentmethod = document.getElementById('comment_method');
-                                submit.value = \"修改\";
-                                comment.placeholder = content;
-                                comment.value = content;
-                                commentid.value = id;
-                                commentmethod.value = 2;
-                            }
-                    </script>
-                    </span>";
+                echo <<<edit
+                <span class='edit-link'>
+                    <a class='comment-edit-link' href='#commentform' 
+                    onclick="editComment($comment[commentid], '$comment[content]')">修改</a>
+                </span>
+edit;
                 echo "<span class='edit-link'>
                     <svg xmlns=\"http://www.w3.org/2000/svg\" style='margin-bottom: -3px' height=\"15px\" 
                     viewBox=\"0 0 24 24\" width='15px' fill=\"#000000\">
@@ -60,15 +50,6 @@ liitem;
                     <a class='comment-remove-link' href='#comment-$comment[commentid]' 
                     style='color: red; font-weight: bold;'
                      onclick='removeComment($comment[commentid])'>删除</a>
-                    <script type='text/javascript'>
-                            function removeComment(id) {
-                                var submit = document.getElementById('submit');
-                                var commentmethod = document.getElementById('comment_method');
-                                commentid.value = id;
-                                commentmethod.value = 3;
-                                submit.click();
-                            }
-                    </script>
                     </span>";
             }
             echo <<<liitem
@@ -83,17 +64,6 @@ liitem;
                         <a aria-label="Reply to Sculpture Fan" class="comment-reply-link"
                            href="#commentform" onclick="replyComment($comment[commentid])"
                            rel="nofollow">回复</a>
-                        <script type="text/javascript">
-                            function replyComment(parentid) {
-                                var commentparent = document.getElementById('comment_parent');
-                                var submit = document.getElementById('submit');
-                                var comment = document.getElementById('comment');
-                                var commentmethod = document.getElementById('comment_method');
-                                commentparent.value = parentid; submit.value = "回复";
-                                comment.placeholder = "你的回复";
-                                commentmethod.value = 1;
-                            }
-                        </script>
                     </div>
 liitem;
             echo "<ol class='children'>";

@@ -456,7 +456,7 @@ postsub;
                 $blogimagesurl = explode(',', $blog['imagesurl']);
                 $blogid = $blog['blogid'];
                 echo <<<sectionmain
-<div class="section-main">
+                <div class="section-main">
                     <article
                         class="post post--vertical post--vertical-normal-two-column post--vertical-normal-two-column-text-reverse post__thumb-480"
                         data-dark-mode="true">

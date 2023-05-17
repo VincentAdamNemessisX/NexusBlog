@@ -27,6 +27,7 @@ $_SESSION['types'] = $types;
     <!-- Mobile Metas -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <script src="../js/jquery-3.7.0.min.js"></script>
+    <script src="../js/customscript.js"></script>
     <!-- import stylesheet -->
     <style>
         @import url(../css/vendors.css);
