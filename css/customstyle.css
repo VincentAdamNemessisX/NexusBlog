@@ -60,5 +60,9 @@ p {
 }
 
 .comment-form .form-submit #submit:hover {
-    background-color: var(--color-secondary);
+    background-color: blue;
+}
+
+.search-btn {
+    border: none;
 }

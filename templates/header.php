@@ -152,9 +152,13 @@ li;
                             </label>
                         </div>
                         <div class="search-form__submit-wrap">
-                            <button class="search-form__submit btn btn-primary" type="submit">搜索</button>
+                            <button class="search-form__submit btn btn-primary" style="border: none" type="button">搜索</button>
                         </div>
                     </form>
+                    <script>
+
+
+                    </script>
                     <div class="search-results">
                         <div class="typing-loader"></div>
                         <div class="search-results__inner"></div>
