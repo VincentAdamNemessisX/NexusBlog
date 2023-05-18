@@ -363,7 +363,7 @@ blogbottomsecond;
                                             $("#submit").click(function () {
                                                     $.ajax({
                                                         type: "POST",
-                                                        url: "../handle/manageComment.php?blogid=<?php echo $currentblogid ?>",
+                                                        url: "../handle/managecomment.php?blogid=<?php echo $currentblogid ?>",
                                                         data: {
                                                             comment: $('#comment').val(),
                                                             authorid: $('#authorid').val(),
@@ -374,8 +374,8 @@ blogbottomsecond;
                                                         success: function (data) {
                                                             if (data === "success") {
                                                                 alert("操作成功！");
-                                                                // window.location.reload();
                                                                 $("#comment").val('');
+                                                                window.location.reload();
                                                             } else {
                                                                 alert("操作失败！");
                                                             }

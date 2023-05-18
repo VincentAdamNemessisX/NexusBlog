@@ -6,6 +6,9 @@
             <div class="block-heading block-heading_style-1 block-heading--center block-heading-no-line">
                 <?php $currenttype = mysqli_fetch_array(queryData('blogtype', 'name',
                     "blogtypeid = $_GET[typeid]"))['name'];
+                if ($currenttype == "") {
+                    echo "<script>window.location.href = '../templates/404.php'</script>";
+                }
                 ?>
                 <h4 class="block-heading__title">
                     <span class="first-word"><?php echo $currenttype ?></span>

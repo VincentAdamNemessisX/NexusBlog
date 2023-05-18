@@ -82,7 +82,8 @@ $_SESSION['types'] = $types;
                         <i class="mdicon mdicon-search hidden-xs"></i>
                         <i class="mdicon mdicon-search visible-xs-inline-block"></i>
                     </button>
-                    <a class="offcanvas-menu-toggle mobile-header-btn js-atbs-offcanvas-toggle" href="#atbs-offcanvas-primary">
+                    <a class="offcanvas-menu-toggle mobile-header-btn js-atbs-offcanvas-toggle"
+                       href="#atbs-offcanvas-primary">
                         <i class="mdicon mdicon-menu hidden-xs"></i>
                         <i class="mdicon mdicon-menu visible-xs-inline-block"></i>
                     </a>
@@ -144,7 +145,7 @@ li;
             <!-- .navigation-bar__inner -->
             <div class="header-search-dropdown ajax-search is-in-navbar js-ajax-search" id="header-search-dropdown">
                 <div class="container container--narrow">
-                    <form action="#" class="search-form search-form--horizontal" method="get">
+                    <form action="" class="search-form search-form--horizontal" method="get">
                         <div class="search-form__input-wrap">
                             <label>
                                 <input class="search-form__input" name="s" placeholder="Search" type="text" value="">

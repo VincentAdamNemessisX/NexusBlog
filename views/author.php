@@ -3,12 +3,12 @@
         <?php
             $currentauthorid = $_GET["authorid"];
             if($currentauthorid == "") {
-//                echo "<script>location.href='../views/index.php'</script>";
+                echo "<script>window.location.href = '../templates/404.php'</script>";
             } else {
                 $authorinfo = mysqli_fetch_array(queryData('accounts', '*',
                     "accountid = $currentauthorid"));
                 if(!$authorinfo) {
-                    echo "<script>location.href='../views/index.php'</script>";
+                    echo "<script>window.location.href = '../templates/404.php'</script>";
                 }
                 $author = $authorinfo['nickname'] ?? $authorinfo['username'];
                 $authorbio = $authorinfo['bio'] ?? "这个人很懒，什么都没有留下。";

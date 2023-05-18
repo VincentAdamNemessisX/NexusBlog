@@ -8,7 +8,7 @@
                         //                        print_r(recommendBlogs(3));
                         $currentblogid = $_GET['blogid'];
                         if($currentblogid === null) {
-                            echo "<script>window.history.back()</script>";
+                            echo "<script>window.location.href = '../templates/404.php'</script>";
                         }
                         $blogrst = queryData('blog, accounts, blogtype, blogimages', '*',
                             'blog.blogid = '.$currentblogid.' and blog.author = accounts.username

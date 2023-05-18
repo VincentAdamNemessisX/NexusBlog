@@ -18,7 +18,6 @@
                 'commenttime' => "'" . $commenttime . "'"])) {
                 echo "success";
             } else {
-//                echo "<script>alert('评论失败！');window.history.back()</script>";
                 echo "failed";
             }
         }

@@ -31,7 +31,7 @@
                 //                        print_r(recommendBlogs(3));
                 $currentblogid = $_GET['blogid'];
                 if($currentblogid === null) {
-                    echo "<script>window.history.back()</script>";
+                    echo "<script>window.location.href = '../templates/404.php'</script>";
                 }
                 $currentblogtype = mysqli_fetch_array(queryData('blog, blogtype', "type",
                     "blog.type = blogtype.name and blog.blogid = $currentblogid"))['type'];

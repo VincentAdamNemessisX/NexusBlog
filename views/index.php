@@ -719,6 +719,7 @@ slidecontent;
                                                     <span>由</span>
                                                     <a class="post-author__name" href="author.php?authorid=$authorid"
                                                        rel="author" title="Posts by $blogauthor">$blogauthor</a>
+                                                    <span>创作</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1129,7 +1130,7 @@ listitem;
         </div>
     </div>
 </div>
-    </div>
+</div>
     <!-- module-6 -->
 
 

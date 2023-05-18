@@ -9,12 +9,29 @@
             </div>
             <?php
             $currentauthorid = $_GET["authorid"] ?? null;
+            $currenttypeid = $_GET["typeid"] ?? null;
+            $currentblogid = $_GET["blogid"] ?? null;
             if($currentauthorid) {
                 $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
                     "accounts.username = blog.author and blog.blogid = blogimages.blogid and
                                      blog.type = blogtype.name and accounts.accountid=$currentauthorid
                                       order by readTimes Desc", '0', '3');
-            } else {
+            } else if($currenttypeid) {
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    "accounts.username = blog.author and blog.blogid = blogimages.blogid and
+                                     blog.type = blogtype.name and blogtype.blogtypeid=$currenttypeid
+                                      order by readTimes Desc", '0', '3');
+            }  else if($currentblogid) {
+                $temptypeid = mysqli_fetch_array(queryData('blogtype', '*',
+                    "blogtypeid = (select blogtypeid from blog, blogtype where blog.type = blogtype.name
+                     and blogid = $currentblogid)"))['blogtypeid'];
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    "accounts.username = blog.author and blog.blogid = blogimages.blogid and
+                                     blog.type = blogtype.name and blogtypeid = '$temptypeid'  and
+                                      blog.blogid != $currentblogid
+                                      order by readTimes Desc", '0', '3');
+            }
+            else {
                 $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
                     'accounts.username = blog.author and blog.blogid = blogimages.blogid and
                                      blog.type = blogtype.name order by readTimes Desc', '0', '3');
@@ -77,13 +94,27 @@ listitem;
                         class="first-word">最新</span><span>发布</span></h4>
             </div>
             <?php
-            $currentauthorid = $_GET["authorid"] ?? null;
             if($currentauthorid) {
                 $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
                     "accounts.username = blog.author and blog.blogid = blogimages.blogid and
-                                     blog.type = blogtype.name and accounts.accountid = $currentauthorid
+                                     blog.type = blogtype.name and accounts.accountid=$currentauthorid
                                       order by publishTime Desc", '0', '5');
-            } else {
+            } else if($currenttypeid) {
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    "accounts.username = blog.author and blog.blogid = blogimages.blogid and
+                                     blog.type = blogtype.name and blogtype.blogtypeid=$currenttypeid
+                                      order by publishTime Desc", '0', '5');
+            } else if($currentblogid) {
+                $temptypeid = mysqli_fetch_array(queryData('blogtype', '*',
+                    "blogtypeid = (select blogtypeid from blog, blogtype where blog.type = blogtype.name
+                     and blogid = $currentblogid)"))['blogtypeid'];
+                $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
+                    "accounts.username = blog.author and blog.blogid = blogimages.blogid and
+                                     blog.type = blogtype.name and blogtypeid = '$temptypeid'  and
+                                      blog.blogid != $currentblogid
+                                      order by publishTime Desc", '0', '5');
+            }
+            else {
                 $blogrst = queryData('accounts, blog, blogimages, blogtype', '*',
                     'accounts.username = blog.author and blog.blogid = blogimages.blogid and
                                      blog.type = blogtype.name order by publishTime Desc', '0', '5');
