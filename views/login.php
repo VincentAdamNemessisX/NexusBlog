@@ -11,7 +11,7 @@
         ?>
         Login Page
     </title>
-    <link rel="stylesheet" href="../css/bootstrap-min-4.6.2.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <style>
         body {
             background-color: #000;

@@ -19,7 +19,7 @@
                         $blogcontent = $blog['content'];
                         $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                         $blogshowstyle = $blog['blogshowstyle'];
-                        $blogauthor = $blog['author'];
+                        $blogauthor = $blog['nickname'] ?? $blog['username'];
                         $blogreadtimes = $blog['readTimes'];
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
@@ -107,7 +107,7 @@ singleheader;
                                     $blogid = $blog['blogid'];
                                     $blogtitle = $blog['title'];
                                     $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
-                                    $blogauthor = $blog['author'];
+                                    $blogauthor = $blog['nickname'] ?? $blog['username'];
                                     $blogshowstyle = $blog['blogshowstyle'];
                                     $blogabstract = $blog['abstract'];
                                     $typestyle = $blog['showstyle'];

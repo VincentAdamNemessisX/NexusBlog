@@ -54,6 +54,7 @@ $_SESSION['types'] = $types;
         @import url(../css/font.css);
         @import url(../css/color.css);
         @import url(../css/customstyle.css);
+        @import url(../css/tailwind.min.css);
         @import url(https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css);
         );
     </style>
@@ -145,10 +146,12 @@ li;
             <!-- .navigation-bar__inner -->
             <div class="header-search-dropdown ajax-search is-in-navbar js-ajax-search" id="header-search-dropdown">
                 <div class="container container--narrow">
-                    <form action="" class="search-form search-form--horizontal" method="get">
+                    <form action="../views/search.php"
+                          id = "search-form"
+                          class="search-form search-form--horizontal" method="get">
                         <div class="search-form__input-wrap">
                             <label>
-                                <input class="search-form__input" name="s" placeholder="Search" type="text" value="">
+                                <input class="search-form__input" id="q" name="q" placeholder="Search" type="text" value="">
                             </label>
                         </div>
                         <div class="search-form__submit-wrap">
@@ -156,13 +159,18 @@ li;
                         </div>
                     </form>
                     <script>
-
-
+                        $(document).ready(function () {
+                            $('.search-form__submit').click(function () {
+                                var searchForm = $('#search-form');
+                                $('#q').val(encodeAll($("#q").val()));
+                                searchForm.submit();
+                            })
+                        })
                     </script>
-                    <div class="search-results">
-                        <div class="typing-loader"></div>
-                        <div class="search-results__inner"></div>
-                    </div>
+<!--                    <div class="search-results">-->
+<!--                        <div class="typing-loader"></div>-->
+<!--                        <div class="search-results__inner"></div>-->
+<!--                    </div>-->
                 </div>
             </div>
             <!-- .header-search-dropdown -->

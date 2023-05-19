@@ -41,7 +41,7 @@ include_once "../templates/header.php";
                     $blogid = $blog['blogid'];
                     $blogtitle = $blog['title'];
                     $blogpublishTime = date("Y年m月", strtotime($blog['publishTime']));
-                    $blogauthor = $blog['author'];
+                    $blogauthor = $blog['nickname'] ?? $blog['username'];
                     $blogshowstyle = $blog['blogshowstyle'];
                     $blogabstract = $blog['abstract'];
                     $typestyle = $blog['showstyle'];

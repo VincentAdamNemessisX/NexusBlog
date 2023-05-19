@@ -66,3 +66,33 @@ p {
 .search-btn {
     border: none;
 }
+
+
+.searchNoResultsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.no-result__inner {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.no-result__title {
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.no-result__desc {
+    color: #666;
+    font-size: 20px;
+}

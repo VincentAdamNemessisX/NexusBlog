@@ -1,4 +1,5 @@
 <?php include_once "../templates/header.php" ?>
+<?php include_once "../function/encodeAllErrorContent.php" ?>
     <div class="site-content leaveToTop">
         <div class="atbs-block atbs-block--fullwidth">
             <div class="container">
@@ -10,7 +11,10 @@
                                 class="block-heading block-heading_style-1 block-heading-no-line block-heading_style-1-small">
                                 <h4 class="block-heading__title">
                                     <?php
-                                        $search = $_GET['q'];
+                                        $search = encodeAllErrorContent($_GET['q']);
+                                        if(!$search) {
+                                            echo "<script>window.location.href = '../templates/404.php'</script>";
+                                        }
                                     ?>
                                     <span class="first-word">Search For: </span><span><?php echo $search ?></span>
                                 </h4>
@@ -21,7 +25,20 @@
                                         $searchblogresults = queryData('blog, blogimages, accounts', '*',
                                             "blog.blogid = blogimages.blogid 
                                             and blog.author = accounts.username
-                                            and (title like '%$search%' or content like '%$search%')");
+                                            and (title like '%$search%' or abstract like '%$search%' or
+                                             content like '%$search%')");
+                                        if(mysqli_num_rows($searchblogresults) == 0) {
+                                            echo <<<noresult
+                                        <div class="searchNoResultsContainer">
+                                            <div class="no-result__inner bg-white p-6 rounded-lg shadow">
+                                                <div class="no-result__content">
+                                                    <h2 class="no-result__title text-2xl font-bold text-gray-800 mb-4">没有找到相关内容</h2>
+                                                    <p class="no-result__desc text-gray-600">请尝试更换关键词</p>
+                                                </div>
+                                            </div>
+                                        </div>
+noresult;
+                                        }
                                         while ($row = mysqli_fetch_array($searchblogresults)) {
                                             $blogimagesurl = explode(',', $row['imagesurl']);
                                             $blogpublishtime = date('Y年m月d日', strtotime($row['publishTime']));

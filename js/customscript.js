@@ -33,3 +33,27 @@ function getUrlParam(name) {
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
     if (r != null) return unescape(r[2]); return null; //返回参数值
 }
+
+function encodeForHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}
+
+function encodeForUrl(str) {
+    return encodeURIComponent(str);
+}
+
+function encodeForScript(str) {
+    return str.replace(/'/g, '&apos;').replace(/"/g, '&quot;');
+}
+
+function encodeForCss(str) {
+    return str.replace(/'/g, '&apos;').replace(/"/g, '&quot;');
+}
+
+function encodeForAttr(str) {
+    return str.replace(/'/g, '&apos;').replace(/"/g, '&quot;');
+}
+
+function encodeAll(str) {
+    return encodeForHtml(encodeForScript(encodeForCss(encodeForAttr(str))));
+}

@@ -22,7 +22,7 @@
                     $blogcontent = $blog['content'];
                     $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                     $blogshowstyle = $blog['blogshowstyle'];
-                    $blogauthor = $blog['author'];
+                    $blogauthor = $blog['nickname'] ?? $blog['username'];
                     $blogreadtimes = $blog['readTimes'];
                     $blogabstract = $blog['abstract'];
                     $typestyle = $blog['showstyle'];
@@ -199,7 +199,7 @@ blogfooter;
                             $blogtitle = $blog['title'];
                             $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                             $blogshowstyle = $blog['blogshowstyle'];
-                            $blogauthor = $blog['author'];
+                            $blogauthor = $blog['nickname'] ?? $blog['username'];
                             $blogabstract = $blog['abstract'];
                             $typestyle = $blog['showstyle'];
                             $blogtype = $blog['type'];
@@ -241,7 +241,7 @@ blogbottomfirst;
                         $blogtitle = $blog['title'];
                         $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                         $blogshowstyle = $blog['blogshowstyle'];
-                        $blogauthor = $blog['author'];
+                        $blogauthor = $blog['nickname'] ?? $blog['username'];
                         $blogabstract = $blog['abstract'];
                         $typestyle = $blog['showstyle'];
                         $blogtype = $blog['type'];
@@ -365,7 +365,7 @@ blogbottomsecond;
                                                         type: "POST",
                                                         url: "../handle/managecomment.php?blogid=<?php echo $currentblogid ?>",
                                                         data: {
-                                                            comment: $('#comment').val(),
+                                                            comment: encodeAll($('#comment').val()),
                                                             authorid: $('#authorid').val(),
                                                             parentid: $('#comment_parent').val(),
                                                             commentid: $('#commentid').val() ?? -1,

@@ -1,4 +1,5 @@
 <?php
+include_once "../function/encodeAllErrorContent.php";
 //Test data
 //$comments = [['commentid' => 1, 'parentid' => -1, 'content' => 'RootTest',  'name' => 'bug', 'commenttime' => 2021-1-3/12/23/45],
 //    ['commentid' => 2, 'parentid' => 1, 'name' => 'bug', 'content' => 'SubTest', 'commenttime' => 2021-1-3/12/23/45],
@@ -52,12 +53,13 @@ edit;
                      onclick='removeComment($comment[commentid])'>删除</a>
                     </span>";
             }
+            $commentcontent = encodeAllErrorContent($comment['content']);
             echo <<<liitem
                         </div><!-- .comment-metadata -->
                     </footer><!-- .comment-meta -->
                     <div class="comment-content">
                         <p>
-                            $comment[content]
+                            $commentcontent
                         </p>
                     </div><!-- .comment-content -->
                     <div class="reply">
