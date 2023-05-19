@@ -24,7 +24,6 @@ function display_comments_recursive($comments, $parent_id = -1) {
                         <div class="comment-author vcard">
                             <img alt="avatar"
                                  class="avatar photo" data-pagespeed-url-hash="1520034441"
-                                 onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                                  src="$comment[headPortrait]"><b
                                 class="fn">$comment[name]</b><span class="says">:</span>
                         </div><!-- .comment-author -->
@@ -43,7 +42,7 @@ liitem;
                 </span>
 edit;
                 echo "<span class='edit-link'>
-                    <svg xmlns=\"http://www.w3.org/2000/svg\" style='margin-bottom: -3px' height=\"15px\" 
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" style='margin-bottom: -1%' height=\"15px\" 
                     viewBox=\"0 0 24 24\" width='15px' fill=\"#000000\">
                         <path d=\"M0 0h24v24H0z\" fill=\"none\"/>
                         <path d=\"M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z\"/>

@@ -1110,6 +1110,7 @@ postsub;
                                                             <a class="post-author__name"
                                                                href="author.php?authorid=$authorid" rel="author"
                                                                title="Posts by $blogauthor">$blogauthor</a>
+                                                            <span>发布</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1450,6 +1451,7 @@ postsub;
                                                             <a class="post-author__name"
                                                                href="author.php?authorid=$authorid" rel="author"
                                                                title="Posts by $blogauthor">$blogauthor</a>
+                                                            <span>撰写</span>
                                                         </div>
                                                     </div>
                                                 </div>

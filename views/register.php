@@ -12,6 +12,10 @@
         Register Page
     </title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.5.1.slim.min.js"></script>
+    <script src="../js/jquery-3.7.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/customscript.js"></script>
     <style>
         body {
             background-color: #000;
@@ -93,6 +97,12 @@
             width: 150px;
         }
 
+        #myModal {
+            text-align: center;
+            color: red;
+            font-weight: bolder;
+            font-size: x-large;
+        }
     </style>
 </head>
 <body>
@@ -105,7 +115,8 @@
                     <form class="register-form" action="../handle/register.php" method="post">
                         <div class="text-center mt-3">
                             <label for="headPortrait"></label>
-                            <select id="headPortrait" class="form-group" name="headPortrait" onload="fillHeadPortrait()" onchange="fillHeadPortrait()">
+                            <select id="headPortrait" class="form-group" name="headPortrait"
+                                    onload="fillHeadPortrait()" onchange="fillHeadPortrait()">
                                 <option value="../images/avatar-male-1.jpg">男生头像-1-力量</option>
                                 <option value="../images/avatar-male-2.jpg">男生头像-2-星空</option>
                                 <option value="../images/avatar-male-3.jpg">男生头像-3-落日</option>
@@ -120,36 +131,70 @@
                             <input type="image" src="../images/avatar-female-1.jpg" id="img_head" alt="headPortrait" class="rounded-circle imgSize">
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
+                            <label for="username">用户名</label>
                             <input type="text" class="form-control" name="username" id="username"
                                    oninput="checkUsername()" onfocusin="checkUsername()" onfocusout="checkUsername()"
-                                   placeholder="Enter username">
-                            <small id="usernameError" class="form-text text-danger"></small>
+                                   placeholder="请输入用户名">
+                            <small id="usernameError" style="display: block" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">邮箱</label>
                             <input type="email" class="form-control" name="email" id="email" oninput="checkEmail()"
-                                   onfocusin="checkEmail()" onfocusout="checkEmail()" placeholder="Enter email">
-                            <small id="emailError" class="form-text text-danger"></small>
+                                   onfocusin="checkEmail()" onfocusout="checkEmail()"
+                                   placeholder="请输入邮箱">
+                            <small id="emailError" style="display: block" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" oninput="checkPassword()" onfocusin="checkPassword()" onfocusout="checkPassword()" placeholder="Enter password">
-                            <small id="passwordError" class="form-text text-danger"></small>
+                            <label for="password">密码</label>
+                            <input type="password" class="form-control" name="password"
+                                   id="password" oninput="checkPassword()" onfocusin="checkPassword()"
+                                   onfocusout="checkPassword()" placeholder="请输入密码">
+                            <small id="passwordError" style="display: block" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
-                            <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" oninput="checkConfirmPassword()" onfocusin="checkConfirmPassword()" onfocusout="checkConfirmPassword()" placeholder="Confirm password">
-                            <small id="confirmPasswordError" class="form-text text-danger"></small>
+                            <label for="confirmPassword">再次输入密码</label>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                                   oninput="checkConfirmPassword()" onfocusin="checkConfirmPassword()"
+                                   onfocusout="checkConfirmPassword()" placeholder="请再次输入密码">
+                            <small id="confirmPasswordError" style="display: block" class="form-text text-danger"></small>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block btn-register" name="reg">Register</button>
-                        <small class="d-block text-center mt-3"><a href="login.php">Login</a></small>
+                        <button type="submit" class="btn btn-primary btn-block btn-register" name="reg">注册</button>
+                        <small class="d-block text-center mt-3"><a href="login.php">登录</a></small>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title"></h3>
+                <button type="button" onclick="hideMyModal()" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modal-body"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModalButton" onclick="hideMyModal()" class="btn btn-secondary" data-dismiss="modal">
+                    我知道了
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showMyModal(title, msg) {
+        $("#modal-title").text(title);
+        $("#modal-body").text(msg);
+        $("#myModal").modal("show");
+    }
+
+    function hideMyModal() {
+        $("#myModal").modal("hide");
+    }
+</script>
 <script>
     const form = document.querySelector('form');
     const username = document.getElementById('username');
@@ -165,7 +210,8 @@
         if(checkInputs()) {
             form.submit();
         } else {
-            alert("Please check your input!");
+            // alert("请检查输入项是否符合要求!");
+            showMyModal("注册验证", "请检查输入项是否符合要求！");
         }
     });
 
@@ -178,10 +224,25 @@
     function checkUsername() {
         const usernameValue = username.value.trim();
         if (usernameValue === '') {
-            setErrorFor(username, usernameError, 'Username cannot be blank');
+            setErrorFor(username, usernameError, '用户名不能为空');
             return false;
         } else {
-            setSuccessFor(username, usernameError);
+            $.ajax({
+                type: "POST",
+                url: "../function/checkUserName.php",
+                data: {
+                    username: encodeAll(usernameValue),
+                },
+                success: function (data) {
+                    if (data === "success") {
+                        setSuccessFor(username, usernameError);
+                        return true;
+                    } else {
+                        setErrorFor(username, usernameError, "用户名已存在");
+                        return false;
+                    }
+                }
+            });
             return true;
         }
     }
@@ -189,10 +250,10 @@
     function checkEmail() {
         const emailValue = email.value.trim();
         if (emailValue === '') {
-            setErrorFor(email, emailError, 'Email cannot be blank');
+            setErrorFor(email, emailError, '邮箱不能为空！');
             return false;
         } else if (!isEmail(emailValue)) {
-            setErrorFor(email, emailError, 'Not a valid email');
+            setErrorFor(email, emailError, '无效的邮箱地址！');
             return false;
         } else {
             setSuccessFor(email, emailError);
@@ -203,10 +264,10 @@
     function checkPassword() {
         const passwordValue = password.value.trim();
         if (passwordValue === '') {
-            setErrorFor(password, passwordError, 'Password cannot be blank');
+            setErrorFor(password, passwordError, '密码不能为空！');
             return false;
         } else if (passwordValue.length < 6) {
-            setErrorFor(password, passwordError, 'Password must be at least 6 characters');
+            setErrorFor(password, passwordError, '密码至少6位！');
             return false;
         } else {
             setSuccessFor(password, passwordError);
@@ -217,9 +278,9 @@
     function checkConfirmPassword() {
         const confirmPasswordValue = confirmPassword.value.trim();
         if (confirmPasswordValue === '') {
-            setErrorFor(confirmPassword, confirmPasswordError, 'Confirm password cannot be blank');
+            setErrorFor(confirmPassword, confirmPasswordError, '第二次输入密码不能为空！');
         } else if (confirmPasswordValue !== password.value.trim()) {
-            setErrorFor(confirmPassword, confirmPasswordError, 'Confirm password does not match');
+            setErrorFor(confirmPassword, confirmPasswordError, '两次密码不匹配！');
             return false;
         } else {
             setSuccessFor(confirmPassword, confirmPasswordError);
