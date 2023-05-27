@@ -110,7 +110,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header text-center"><h4>Register</h4></div>
+                <div class="card-header text-center"><h4>注册</h4></div>
                 <div class="card-body">
                     <form class="register-form" action="../handle/register.php" method="post">
                         <div class="text-center mt-3">

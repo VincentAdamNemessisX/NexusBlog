@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once '../database/databaseHandle.php';
+$loginstatus = isset($_SESSION['user']);
 $rst = queryData('blogtype');
 $types = [];
 while ($row = mysqli_fetch_array($rst)) {
@@ -55,7 +56,9 @@ $_SESSION['types'] = $types;
         @import url(../css/color.css);
         @import url(../css/customstyle.css);
         @import url(../css/tailwind.min.css);
-        @import url(https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css);
+        @import url(../css/bootstrap.min.css);
+        @import url(../css/materialdesignicons.min.css);
+        @import url(../function/layer/layui.css);
         );
     </style>
     <!-- Web Fonts  -->
@@ -63,6 +66,7 @@ $_SESSION['types'] = $types;
     <link href="../css/css21.css" rel="stylesheet">
 </head>
 <body class="home home-1 has-block-heading-line">
+<?php include_once "../templates/modal.php" ?>
 <!-- .site-wrapper -->
 <div class="site-wrapper">
     <!-- Site header -->
@@ -80,9 +84,28 @@ $_SESSION['types'] = $types;
                 </div>
                 <div class="mobile-header__section text-right inverse-text">
                     <button class="mobile-header-btn js-search-dropdown-toggle" type="submit">
-                        <i class="mdicon mdicon-search hidden-xs"></i>
-                        <i class="mdicon mdicon-search visible-xs-inline-block"></i>
+                        <i class="mdi mdi-credit-card-search-outline hidden-xs"></i>
+                        <i class="mdi mdi-credit-card-search-outline visible-xs-inline-block"></i>
                     </button>
+                <?php
+                    if($loginstatus) {
+                        echo <<<logout
+                    <button id="logoutbtn1" class="mobile-header-btn" type="button" onclick="logout()"
+                            onchange="checkLoginStatus()">
+                        <i id="logout1" class="mdi mdi-logout hidden-xs"></i>
+                        <i id="logout2" class="mdi mdi-logout visible-xs-inline-block"></i>
+                    </button>
+logout;
+                    } else {
+                        echo <<<login
+                    <button id="logoutbtn1" class="mobile-header-btn" lay-type="1" type="button" onclick="logout()"
+                            onchange="checkLoginStatus()">
+                        <i id="logout1" class="mdi mdi-logout hidden-xs"></i>
+                        <i id="logout2" class="mdi mdi-logout visible-xs-inline-block"></i>
+                    </button>
+login;
+                    }
+                ?>
                     <a class="offcanvas-menu-toggle mobile-header-btn js-atbs-offcanvas-toggle"
                        href="#atbs-offcanvas-primary">
                         <i class="mdicon mdicon-menu hidden-xs"></i>
@@ -96,7 +119,8 @@ $_SESSION['types'] = $types;
         <nav class="navigation-bar hidden-xs hidden-sm js-sticky-header-holder">
             <div class="navigation-bar__inner flexbox-wrap flexbox-center-y">
                 <div class="navigation-bar__section flex-box align-item-center">
-                    <a class="offcanvas-menu-toggle navigation-bar-btn js-atbs-offcanvas-toggle btn-menu-bar-icon flex-box align-item-center"
+                    <a class="offcanvas-menu-toggle navigation-bar-btn js-atbs-offcanvas-toggle
+                    btn-menu-bar-icon flex-box align-item-center"
                        href="#atbs-offcanvas-primary">
                         <svg height="20" viewbox="0 0 30 20" width="30" xmlns="http://www.w3.org/2000/svg">
                             <g data-name="Group 19291" id="Group_19291" transform="translate(4636 4933)">
@@ -139,8 +163,25 @@ li;
                     </ul>
                 </div>
                 <div class="navigation-bar__section">
-                    <button class="navigation-bar-btn js-search-dropdown-toggle nav-btn-square " type="submit"><i
-                            class="mdicon mdicon-search"></i></button>
+                    <button class="navigation-bar-btn js-search-dropdown-toggle nav-btn-square "
+                            style="margin-right: 0"
+                            type="submit"><i
+                            class="mdi mdi-credit-card-search-outline"></i></button>
+                    <?php
+                        if ($loginstatus) {
+                            echo <<<logout
+                    <button id="logoutbtn2" class="navigation-bar-btn nav-btn-square" type="button" 
+                    onclick="logout()" onchange="checkLoginStatus()">
+                        <i id="logout" class="mdi mdi-logout"></i></button>
+logout;
+                        } else {
+                            echo <<<login
+                    <button id="logoutbtn2" class="navigation-bar-btn nav-btn-square" type="button" onclick="
+                    window.location.href='../views/login.php'">
+                        <i id="logout" class="mdi mdi-login-variant"></i></button>
+login;
+                        }
+                    ?>
                 </div>
             </div>
             <!-- .navigation-bar__inner -->

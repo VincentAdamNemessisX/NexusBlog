@@ -11,6 +11,7 @@
 <script src="../js/jquery-3.7.0.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/customscript.js"></script>
+<body>
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

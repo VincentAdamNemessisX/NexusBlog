@@ -57,3 +57,40 @@ function encodeForAttr(str) {
 function encodeAll(str) {
     return encodeForHtml(encodeForScript(encodeForCss(encodeForAttr(str))));
 }
+
+function checkLoginStatus() {
+    $.ajax({
+        type: "POST",
+        url: "../handle/checkloginstatus.php",
+        success: function (data) {
+            if (data === "true") {
+                $('#logout').attr('class', 'mdi mdi-logout');
+                $('#logout1').attr('class', 'mdi mdi-logout hidden-xs');
+                $('#logout2').attr('class', 'mdi mdi-logout visible-xs-inline-block');
+                $('#logoutbtn1').attr('onclick', 'logout()');
+                $('#logoutbtn2').attr('onclick', 'logout()');
+            } else {
+                $('#logout').attr('class', 'mdi mdi-login-variant');
+                $('#logout1').attr('class', 'mdi mdi-login-variant hidden-xs');
+                $('#logout2').attr('class', 'mdi mdi-login-variant visible-xs-inline-block');
+                $('#logoutbtn1').attr('onclick', 'window.location.href="../views/login.php"');
+                $('#logoutbtn2').attr('onclick', 'window.location.href="../views/login.php"');
+                window.location.reload();
+            }
+        }
+    })
+}
+
+function logout() {
+    $.ajax({
+        type: "POST",
+        url: "../handle/logout.php",
+        success: function () {
+                $('#logout').attr('class', 'mdi mdi-login-variant');
+                $('#logout1').attr('class', 'mdi mdi-login-variant hidden-xs');
+                $('#logout2').attr('class', 'mdi mdi-login-variant visible-xs-inline-block');
+                layer.msg('您已成功登出', {icon: 1});
+                checkLoginStatus();
+        },
+    })
+}

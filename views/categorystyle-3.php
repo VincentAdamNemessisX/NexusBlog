@@ -190,7 +190,7 @@ sectionsublistitem;
                                                                     <div class="author_name--wrap">
                                                                         <span>由</span>
                                                                         <a class="post-author__name"
-                                                                           href="author.php?$blog[accountid]" rel="author"
+                                                                           href="author.php?authorid=$blog[accountid]" rel="author"
                                                                            title="Posts by $blog[author]">$blogauthor</a>
                                                                         <span>撰写</span>
                                                                     </div>

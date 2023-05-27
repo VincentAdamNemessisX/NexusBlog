@@ -11,7 +11,11 @@
         ?>
         Login Page
     </title>
+    <script src="../js/jquery-3.5.1.slim.min.js"></script>
+    <script src="../js/jquery-3.7.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/customscript.js"></script>
     <style>
         body {
             background-color: #000;
@@ -25,7 +29,14 @@
             background-color: #212121;
             color: #fff;
             border: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            margin: 0 auto;
         }
+
         .btn-primary {
             background-color: #e53935;
             border-color: #e53935;
@@ -34,6 +45,16 @@
         .btn-primary:hover {
             background-color: #c62828;
             border-color: #c62828;
+        }
+
+        @media screen and (max-width: 500px) {
+            .container {
+                width: auto;
+            }
+
+            .card {
+                width: auto;
+            }
         }
 
         /* 隐藏原始的复选框 */
@@ -84,40 +105,37 @@
             font-weight: bolder;
         }
     </style>
-    <script src="../js/jquery-3.5.1.slim.min.js"></script>
-    <script src="../js/jquery-3.7.0.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/customscript.js"></script>
 </head>
 <body class="d-flex align-items-center">
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header text-center"><h4>登录</h4></div>
-                <div class="text-center mt-3">
+                <div class="card-header text-center mb-3"><h4>登录</h4></div>
+                <div class="text-center mb-3">
                     <img id="headPortrait" src="../images/avatar-default.png" alt="Avatar"
                          class="rounded-circle imgSize">
                 </div>
                 <div class="card-body">
                     <form action="../handle/login.php" method="post" id="form">
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="username">用户名</label>
                             <input type="text" class="form-control" name="username" id="username"
                                    placeholder="请输入用户名">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="password">密码</label>
                             <input type="password" class="form-control" name="password" id="password"
                                    placeholder="请输入密码">
                         </div>
-                        <label class="checkbox-container">
+                        <label class="checkbox-container mb-2">
                             <input type="checkbox" name="rmbMe">
                             <span class="checkmark">
                                 <i class="fa fa-check"></i>
                             </span>记住密码
                         </label>
-                        <button type="button" class="btn btn-primary btn-block" name="sb" onclick="check()">登录</button>
+                        <button type="button" class="d-block text-center mt-4 btn btn-primary btn-block"
+                                name="sb" style="margin: 0 auto" onclick="check()">登录</button>
                         <small class="d-block text-center mt-3"><a href="register.php">注册</a></small>
                     </form>
                 </div>

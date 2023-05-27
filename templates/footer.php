@@ -85,7 +85,22 @@ li;
             <div class="navigation-bar__section">
 
                 <button class="navigation-bar-btn js-search-dropdown-toggle" type="submit"><i
-                        class="mdicon mdicon-search"></i></button>
+                        class="mdi mdi-credit-card-search-outline"></i></button>
+                <?php
+                if (isset($_SESSION['user'])) {
+                    echo <<<logout
+                    <button id="logoutbtn2" class="navigation-bar-btn nav-btn-square" type="button" 
+                    onclick="logout()" onchange="checkLoginStatus()">
+                        <i id="logout" class="mdi mdi-logout"></i></button>
+logout;
+                } else {
+                    echo <<<login
+                    <button id="logoutbtn2" class="navigation-bar-btn nav-btn-square" type="button" onclick="
+                    window.location.href='../views/login.php'">
+                        <i id="logout" class="mdi mdi-login-variant"></i></button>
+login;
+                }
+                ?>
             </div>
         </div>
         <!-- .navigation-bar__inner -->
@@ -137,7 +152,7 @@ li;
     </div>
     <?php if(!isset($_SESSION['user']))
         echo <<<EOF
-    <div class="atbs-offcanvas__section">
+    <div class="atbs-offcanvas__section" id="loginsection">
         <div class="text-center">
             <i class="mdicon mdicon-person mdicon--first"></i><span><a href="../views/login.php">登录</a> / <a
                     href="../views/register.php">注册</a></span>
@@ -158,5 +173,10 @@ EOF;
 <script src="../js/sidebar.js.pagespeed.jm.9GUzEJsw5p.js"></script>
 <script src="../js/owl-carousel.min.js.pagespeed.jm.CUaR_y7pym.js"></script>
 <script src="../js/scripts.js.pagespeed.jm.0lwMB5gWYG.js"></script>
+<script src="../js/jquery-3.5.1.slim.min.js"></script>
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../function/layer/layui.js"></script>
+<script src="../js/customscript.js"></script>
 </body>
 </html>
