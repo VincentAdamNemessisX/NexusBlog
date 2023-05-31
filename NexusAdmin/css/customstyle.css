@@ -1,0 +1,11 @@
+.block-center {
+    margin: 0 auto;
+    margin-top: 20%;
+    width: 50%;
+    font-size: 16px;
+}
+
+#no-record {
+    text-align: center;
+    font-size: 30px;
+}

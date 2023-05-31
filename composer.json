@@ -1,6 +1,7 @@
 {
   "require": {
     "nlp-tools/nlp-tools": "1.0.*@dev",
-    "ext-mysqli": "*"
+    "ext-mysqli": "*",
+    "ext-json": "*"
   }
 }
