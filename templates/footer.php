@@ -14,6 +14,7 @@
                     <nav class="footer-menu text-center">
                         <ul class="navigation navigation--footer navigation--inline" id="menu-footer-menu">
                             <li><a href="../views/index.php">主页</a></li>
+                            <li><a href="../NexusAdmin/index.php">后台管理</a></li>
                             <?php
                             foreach ($_SESSION['types'] as $type) {
                                 $typename = $type['name'];
@@ -64,6 +65,9 @@ li;
                 <ul class="navigation navigation--main navigation--inline" id="menu-main-menu">
                     <li class="menu-item-cat-1">
                         <a href="../views/index.php">主页</a>
+                    </li>
+                    <li class="menu-item-cat-2">
+                        <a href="../NexusAdmin/index.php">后台管理</a>
                     </li>
                     <?php
                     foreach ($_SESSION['types'] as $type) {
@@ -132,6 +136,9 @@ login;
         <ul class="navigation navigation--offcanvas" id="menu-offcanvas-menu">
             <li class="menu-item-cat-1">
                 <a href="../views/index.php">主页</a>
+            </li>
+            <li class="menu-item-cat-2">
+                <a href="../NexusAdmin/index.php">后台管理</a>
             </li>
             <?php
             foreach ($_SESSION['types'] as $type) {

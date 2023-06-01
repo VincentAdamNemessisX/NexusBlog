@@ -145,6 +145,9 @@ login;
                         <li class="menu-item-cat-1">
                             <a href="../views/index.php">主页</a>
                         </li>
+                        <li class="menu-item-cat-3">
+                            <a href="../NexusAdmin/index.php">后台管理</a>
+                        </li>
                         <?php
                             foreach ($_SESSION['types'] as $type) {
                                 $typename = $type['name'];

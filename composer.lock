@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99049aa9c3e5f32d7b72d4c8b4ca1117",
+    "content-hash": "c14d62cfd1f1412d3dcc534c80b163c5",
     "packages": [
         {
             "name": "nlp-tools/nlp-tools",
@@ -66,7 +66,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "ext-mysqli": "*"
+        "ext-mysqli": "*",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

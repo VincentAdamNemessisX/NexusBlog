@@ -64,11 +64,11 @@
                 <dd>
                     <a onclick="xadmin.open('切换帐号','../login.php')">切换帐号</a></dd>
                 <dd>
-                    <a href="../../handle/logout.php">退出</a></dd>
+                    <a href="../handle/logout.php">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item to-index">
-            <a href="../../">前台首页</a></li>
+            <a href="../">前台首页</a></li>
     </ul>
 </div>
 <!-- 顶部结束 -->
@@ -102,12 +102,17 @@
             </li>
             <li>
                 <a href="javascript:">
-                    <i class="iconfont left-nav-li" lay-tips="文章管理">&#xe723;</i>
+                    <i class="iconfont left-nav-li" lay-tips="博客管理">&#xe723;</i>
                     <cite>博客管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('文章列表','blog-list.php')">
+                        <a onclick="xadmin.add_tab('发布博客','./function/publish_blog/blog_publish.php')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>发布博客</cite></a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('博客列表','blog-list.php')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>博客列表</cite></a>
                     </li>
@@ -120,7 +125,7 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('分类列表','blog-cate.php')">
+                        <a onclick="xadmin.add_tab('分类列表','blog-cate-list.php')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>分类列表</cite></a>
                     </li>

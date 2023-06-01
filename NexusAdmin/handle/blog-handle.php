@@ -31,12 +31,12 @@ if($action == "add") {
 }
 if($action == "edit") {
     $data = [];
-    foreach ($_POST['data'] as $key => $value) {
-        if($key != "action" && $key != "id") {
+    foreach ($_POST as $key => $value) {
+        if($key != "action" && $key != "blogid") {
             $data[$key] = "'" . $value . "'";
         }
     }
-    $result = updateData('blog', "blogid = " . $_POST['id'],
+    $result = updateData('blog', "blogid = " . $_POST['blogid'],
         $data);
     if($result) {
         echo "success";

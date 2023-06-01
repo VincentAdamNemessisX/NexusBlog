@@ -127,19 +127,19 @@ record;
 
                             <?php $current_page = ($offset + $limit) > 0 ? ceil(($offset + $limit) / $limit) : 1; ?>
 
-                            <a class="prev" href="blog-cate.php?offset=0">&lt;&lt;</a>
+                            <a class="prev" href="blog-cate-list.php?offset=0">&lt;&lt;</a>
 
-                            <a class="next" href="blog-cate.php?offset=<?php
+                            <a class="next" href="blog-cate-list.php?offset=<?php
                             echo max(($offset + $limit) > 0 ? $offset - $limit : 0, 0);
                             ?>">上一页</a>
 
                             <a class="num" href=""><?php echo $current_page . "/" . ceil($max_offset / $limit); ?></a>
 
-                            <a class="next" href="blog-cate.php?offset=<?php
+                            <a class="next" href="blog-cate-list.php?offset=<?php
                             echo max(($offset + $limit) < $max_offset ? ($offset + $limit) : 0, 0); ?>">
                                 下一页</a>
 
-                            <a class="next" href="blog-cate.php?offset=<?php
+                            <a class="next" href="blog-cate-list.php?offset=<?php
                             echo min($max_offset - $offset, $max_offset - $limit) + 1; ?>">&gt;&gt;</a>
                         </div>
                 </div>

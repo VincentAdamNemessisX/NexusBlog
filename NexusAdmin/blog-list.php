@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/customstyle.css">
     <script charset="utf-8" src="./lib/layui/layui.js"></script>
     <script src="./js/xadmin.js" type="text/javascript"></script>
+    <script src="js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -26,6 +27,9 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-body ">
+                    <?php
+                        $offset = 0; $limit = 5
+                    ?>
                     <form id="sb-form" class="layui-form layui-col-space5">
                         <div class="layui-input-inline layui-show-xs-block">
                             <input class="layui-input" id="title" name="title" placeholder="文章标题或内容" required></div>
@@ -51,10 +55,80 @@
                                             something: data.field.title,
                                         },
                                         success: function (data) {
+                                            $ = layui.jquery;
+                                            var form = layui.form,
+                                                layer = layui.layer;
                                             if (data !== 'fail' && data !== 'none') {
-                                                layer.msg('搜索成功！', {icon: 6});
                                                 let result = JSON.parse(data);
+                                                //console.log(result);
                                                 $("#results").empty();
+                                                if (result != null && result.length > 0) {
+                                                    layer.msg('搜索成功！', {icon: 6});
+                                                    $("#no-record").remove();
+                                                    result.forEach((item) => {
+                                                        $("#results").append("<tr>" +
+                                                            "<td>" + item['blogid'] + "</td>" +
+                                                            "<td>" + item['title'] + "</td>" +
+                                                            "<td>" + item['type'] + "</td>" +
+                                                            "<td>" + item['author'] + "</td>" +
+                                                            "<td>" + item['publishTime'] + "</td>" +
+                                                            "<td>" + item['readTimes'] + "</td>" +
+                                                            "<td>" + item['blogshowstyle'] + "</td>" +
+                                                            "<td class='td-manage'>" +
+                                                            "<a title='编辑'  " +
+                                                            "onclick=\"blogEdit(" +
+                                                            item['blogid'] + ")\"" +
+                                                            " href='javascript:;'>" +
+                                                            "<i class=\"layui-icon\">&#xe642;</i>" +
+                                                            "</a>" +
+                                                            "<a title=\"删除\" " +
+                                                            "onclick=\"blog_del(this, " +
+                                                            +item['blogid'] + ")\"" +
+                                                            " href=\"javascript:;\">" +
+                                                            "<i class=\"layui-icon\">&#xe640;</i>" +
+                                                            "</a>" +
+                                                            "</td>" +
+                                                            "</tr>");
+                                                    })
+                                                } else {
+                                                    layer.msg('未搜索到相关博客！', {icon: 3});
+                                                    $("#results").append('<tr><td id="no-record" colSpan="8">无相关博客！</td></tr>');
+                                                }
+                                            }else {
+                                                layer.msg('搜索失败！', {icon: 5});
+                                            }
+                                        },
+                                    })
+                                    return false;
+                                });
+                            });
+
+                            function blogEdit(blogid) {
+                                xadmin.open('编辑','blog-edit.php?blogid=' + blogid);
+                            }
+
+                            function getData(data) {
+                                $ = layui.jquery;
+                                var form = layui.form,
+                                    layer = layui.layer;
+                                $.ajax({
+                                    type: 'post',
+                                    url: 'handle/blog-handle.php',
+                                    data: {
+                                        action: 'search',
+                                        something: data,
+                                    },
+                                    success: function (data) {
+                                        $ = layui.jquery;
+                                        var form = layui.form,
+                                            layer = layui.layer;
+                                        if (data !== 'fail' && data !== 'none') {
+                                            let result = JSON.parse(data);
+                                            //console.log(result);
+                                            $("#results").empty();
+                                            if (result != null && result.length > 0) {
+                                                layer.msg('搜索成功！', {icon: 6});
+                                                $("#no-record").remove();
                                                 result.forEach((item) => {
                                                     $("#results").append("<tr>" +
                                                         "<td>" + item['blogid'] + "</td>" +
@@ -65,37 +139,35 @@
                                                         "<td>" + item['readTimes'] + "</td>" +
                                                         "<td>" + item['blogshowstyle'] + "</td>" +
                                                         "<td class='td-manage'>" +
-                                                           "<a title='编辑'  " +
+                                                        "<a title='编辑'  " +
                                                         "onclick=\"blogEdit(" +
                                                         item['blogid'] + ")\"" +
-                                                            " href='javascript:;'>" +
-                                                                "<i class=\"layui-icon\">&#xe642;</i>" +
-                                                            "</a>" +
-                                                            "<a title=\"删除\" " +
+                                                        " href='javascript:;'>" +
+                                                        "<i class=\"layui-icon\">&#xe642;</i>" +
+                                                        "</a>" +
+                                                        "<a title=\"删除\" " +
                                                         "onclick=\"blog_del(this, " +
-                                                        + item['blogid'] + ")\"" +
+                                                        +item['blogid'] + ")\"" +
                                                         " href=\"javascript:;\">" +
-                                                            "<i class=\"layui-icon\">&#xe640;</i>" +
-                                                            "</a>" +
+                                                        "<i class=\"layui-icon\">&#xe640;</i>" +
+                                                        "</a>" +
                                                         "</td>" +
                                                         "</tr>");
                                                 })
-                                            } else if (data === null || data === 'none') {
-                                                layer.msg('未搜索到相关博客！', {icon: 3});
-                                                $(`#results`).empty();
-                                                $("#results").append('<tr><td id="no-record" colSpan="8">无相关博客！</td></tr>');
                                             } else {
-                                                layer.msg('搜索失败！', {icon: 5});
+                                                layer.msg('未搜索到相关博客！', {icon: 3});
+                                                $("#results").append('<tr><td id="no-record" colSpan="8">无相关博客！</td></tr>');
                                             }
-                                        },
-                                    })
-                                    return false;
-                                });
-                            });
-
-                            function blogEdit(blogid) {
-                                xadmin.open('编辑','blog-edit.php?id=' + blogid);
+                                        }else {
+                                            layer.msg('搜索失败！', {icon: 5});
+                                        }
+                                    },
+                                })
                             }
+
+                            $(function () {
+                                getData('');
+                            });
                         </script>
                     </form>
                 </div>
@@ -117,14 +189,7 @@
                     </table>
                 </div>
                 <div class="layui-card-body ">
-                    <div class="page">
-                        <div>
-                            <a class="prev" href="">&lt;&lt;</a>
-                            <a class="num" href="">1</a>
-                            <span class="current">2</span>
-                            <a class="num" href="">3</a>
-                            <a class="num" href="">489</a>
-                            <a class="next" href="">&gt;&gt;</a></div>
+                    <div id="page" class="page">
                     </div>
                 </div>
             </div>
