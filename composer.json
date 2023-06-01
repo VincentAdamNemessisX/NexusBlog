@@ -1,6 +1,4 @@
 {
-  "name": "NexusBlog",
-  "description": "Extends of mysqli and extends of json and native language process",
   "require": {
     "nlp-tools/nlp-tools": "1.0.*@dev",
     "ext-mysqli": "*",
