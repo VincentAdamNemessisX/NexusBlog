@@ -14,6 +14,7 @@ if($action == "delete") {
         echo "fail";
     }
 }
+
 if ($action == "publish") {
     $data = [];
     foreach ($_POST['data'] as $key => $value) {
@@ -45,6 +46,7 @@ if($action == "edit") {
         echo "fail";
     }
 }
+
 if($action == "search") {
     $something = $_POST['something'];
     if ($something != null) {

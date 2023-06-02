@@ -39,7 +39,7 @@
                     $('.x-iframe').eq(i).attr("src",$('.x-iframe').eq(i).attr('src'));
                 return;
             }
-        };
+        }
 
 		this.add_lay_tab(title,url,id);
 	    this.set_data(title,url,id);
@@ -76,16 +76,16 @@
 	Xadmin.prototype.open = function (title,url,w,h,full) {
 		if (title == null || title == '') {
 	        var title=false;
-	    };
+	    }
 	    if (url == null || url == '') {
 	        var url="404.html";
-	    };
+	    }
 	    if (w == null || w == '') {
 	        var w=($(window).width()*0.9);
-	    };
+	    }
 	    if (h == null || h == '') {
 	        var h=($(window).height() - 50);
-	    };
+	    }
 	    var index = layer.open({
 	        type: 2,
 	        area: [w+'px', h +'px'],
@@ -113,7 +113,7 @@
    * @return {[type]} [description]
    */
   Xadmin.prototype.father_reload = function() {
-      parent.location.reload();
+      parent.window.location.reload(true);
   };
 	/**
 	 * [get_data 获取所有项]

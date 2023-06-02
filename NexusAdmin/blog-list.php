@@ -17,11 +17,6 @@
 </head>
 
 <body>
-    <a class="layui-btn layui-btn-small" onclick="location.reload()"
-       style="line-height:1.6em;margin-top:3px;float:right" title="刷新">
-        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
-    </a>
-</div>
 <div class="layui-fluid">
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
@@ -104,7 +99,7 @@
                             });
 
                             function blogEdit(blogid) {
-                                xadmin.open('编辑', 'function/publish_blog/blog_publish.php?action=publish&blogid=' + blogid);
+                                xadmin.open('编辑', 'function/publish_blog/blog_publish.php?action=edit&blogid=' + blogid);
                             }
 
                             function getData(data) {
