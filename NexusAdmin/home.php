@@ -34,42 +34,42 @@
                         <div class="layui-card-body ">
                             <ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
                                 <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                    <a href="javascript:" class="x-admin-backlog-body">
                                         <h3>文章数</h3>
                                         <p>
                                             <cite>66</cite></p>
                                     </a>
                                 </li>
                                 <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                    <a href="javascript:" class="x-admin-backlog-body">
                                         <h3>会员数</h3>
                                         <p>
                                             <cite>12</cite></p>
                                     </a>
                                 </li>
                                 <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                    <a href="javascript:" class="x-admin-backlog-body">
                                         <h3>回复数</h3>
                                         <p>
                                             <cite>99</cite></p>
                                     </a>
                                 </li>
                                 <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                    <a href="javascript:" class="x-admin-backlog-body">
                                         <h3>商品数</h3>
                                         <p>
                                             <cite>67</cite></p>
                                     </a>
                                 </li>
                                 <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                    <a href="javascript:" class="x-admin-backlog-body">
                                         <h3>文章数</h3>
                                         <p>
                                             <cite>67</cite></p>
                                     </a>
                                 </li>
                                 <li class="layui-col-md2 layui-col-xs6 ">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                    <a href="javascript:" class="x-admin-backlog-body">
                                         <h3>文章数</h3>
                                         <p>
                                             <cite>6766</cite></p>
