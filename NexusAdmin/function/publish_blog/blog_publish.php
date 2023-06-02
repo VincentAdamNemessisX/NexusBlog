@@ -172,11 +172,11 @@ if ($action && $blogid) {
             },
             success: function (data) {
                 if (data === "success") {
-                    layer.alert("<?php echo $action == "edit" && $blogid ? "修改" : "发布" ?>成功！", {icon: 6});
-                    setTimeout(function () {
-                        xadmin.close();
-                        // xadmin.father_reload();
-                    }, 3000);
+                    layer.alert("<?php echo $action == "edit" && $blogid ? "修改" : "发布" ?>成功！", {icon: 6},
+                        function () {
+                            xadmin.close();
+                            xadmin.father_reload();
+                        });
                 } else {
                     layer.alert("<?php echo $action == "edit" && $blogid ? "修改" : "发布" ?>失败！", {icon: 5})
                 }

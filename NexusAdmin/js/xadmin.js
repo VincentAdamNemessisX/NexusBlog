@@ -113,7 +113,7 @@
    * @return {[type]} [description]
    */
   Xadmin.prototype.father_reload = function() {
-      parent.window.location.reload(true);
+      parent.window.location.reload();
   };
 	/**
 	 * [get_data 获取所有项]

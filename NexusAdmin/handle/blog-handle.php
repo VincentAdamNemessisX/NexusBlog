@@ -3,10 +3,10 @@ require_once '../../database/databaseHandle.php';
 require_once '../function/result_to_json.php';
 $action = $_POST['action'] ?? "";
 if($action == "delete") {
-    $id = $_POST['id'];
-    $result = removeData('blog', "blogid = $id") ||
+    $blogid = $_POST['blogid'];
+    $result = removeData('blog', "blogid = $blogid") ||
         removeData('comment',
-            "blogid = $id") || removeData('comment',
+            "blogid = $blogid") || removeData('comment',
             "parentid not in (select commentid from comment)");
     if ($result) {
         echo "success";
@@ -17,8 +17,8 @@ if($action == "delete") {
 
 if ($action == "publish") {
     $data = [];
-    foreach ($_POST['data'] as $key => $value) {
-        if ($key != "action" && $key != "id") {
+    foreach ($_POST as $key => $value) {
+        if ($key != "action" && $key != "blogid") {
             $data[$key] = "'" . $value . "'";
         }
     }

@@ -89,7 +89,7 @@
                             <cite>用户列表</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('会员删除','member-del.php')">
+                        <a onclick="xadmin.add_tab('用户删除','member-del.php')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>删除用户</cite></a>
                     </li>
@@ -153,7 +153,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe class="x-iframe" frameborder="0" scrolling="yes" src='welcome.php'></iframe>
+                <iframe class="x-iframe" frameborder="0" scrolling="yes" src='home.php'></iframe>
             </div>
         </div>
         <div id="tab_show"></div>

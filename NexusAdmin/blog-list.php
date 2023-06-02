@@ -183,7 +183,7 @@
                         <tbody id="results"></tbody>
                     </table>
                 </div>
-                <div class="layui-card-body ">
+                <div class="layui-card-body">
                     <div id="page" class="page">
                     </div>
                 </div>
@@ -192,42 +192,29 @@
     </div>
 </div>
 </body>
-<script>layui.use(['laydate', 'form'],
-    function () {
-        var laydate = layui.laydate;
+<script>
 
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#end' //指定元素
-        });
-    });
-
-/*用户-删除*/
-function blog_del(obj, id) {
-    layer.confirm('确认要删除该博客及相关评论吗？',
-        function (index) {
-            //发异步删除数据
-            $.ajax({
-                type: 'post',
-                url: 'handle/blog-handle.php',
-                data: {
-                    action: 'delete',
-                    id: id,
-                },
-                success: function (data) {
-                    if (data === 'success') {
-                        layer.msg('已删除!', {
-                            icon: 1,
-                            time: 1000
-                        });
-                        $(obj).parents("tr").remove();
-                    } else {
-                        layer.msg('删除失败！', {
+    /*博客-删除*/
+    function blog_del(obj, id) {
+        layer.confirm('确认要删除该博客及相关评论吗？',
+            function (index) {
+                //发异步删除数据
+                $.ajax({
+                    type: 'post',
+                    url: 'handle/blog-handle.php',
+                    data: {
+                        action: 'delete',
+                        blogid: id,
+                    },
+                    success: function (data) {
+                        if (data === 'success') {
+                            layer.msg('已删除!', {
+                                icon: 1,
+                                time: 1000
+                            });
+                            $(obj).parents("tr").remove();
+                        } else {
+                            layer.msg('删除失败！', {
                             icon: 5,
                             time: 1000
                         });

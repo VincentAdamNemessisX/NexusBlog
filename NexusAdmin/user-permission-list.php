@@ -105,7 +105,6 @@
 <script>layui.use('table',
     function () {
         var table = layui.table;
-
         //监听单元格编辑
         table.on('edit(test)',
             function (obj) {
