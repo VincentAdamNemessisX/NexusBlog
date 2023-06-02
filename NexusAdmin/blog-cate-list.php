@@ -110,7 +110,7 @@
                                     <i class="layui-icon">&#xe642;</i>编辑
                                 </button>
                                 <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                        href="javascript:;" onclick="blog_del(this,$record[blogtypeid])">
+                                        href="javascript:;" onclick="cate_del(this,$record[blogtypeid])">
                                     <i class="layui-icon">&#xe640;</i>删除
                                 </button>
                             </td>
@@ -144,27 +144,27 @@ record;
                         </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
-</div>
-<script>
-    layui.use(['form'], function () {
-        form = layui.form;
+    <script>
+        layui.use(['form'], function () {
+            form = layui.form;
 
-    });
+        });
 
-    /*用户-删除*/
-    function member_del(obj, id) {
-        layer.confirm('确认要删除此分类及该分类下所有博客以及相关的所有评论吗？', function (index) {
-            //发异步删除数据
-            $.ajax({
-                type: "post",
-                url: "handle/blog-cate-handle.php",
-                data: {
-                    action: "delete",
-                    id: id
-                },
-                success: function (data) {
+        /*用户-删除*/
+        function cate_del(obj, id) {
+            layer.confirm('确认要删除此分类及该分类下所有博客以及相关的所有评论吗？', function (index) {
+                //发异步删除数据
+                $.ajax({
+                    type: "post",
+                    url: "handle/blog-cate-handle.php",
+                    data: {
+                        action: "delete",
+                        id: id
+                    },
+                    success: function (data) {
                     if (data === "success") {
                         $(obj).parents("tr").remove();
                         layer.msg('已删除!', {icon: 1, time: 1000});

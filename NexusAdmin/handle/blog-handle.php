@@ -8,27 +8,28 @@ if($action == "delete") {
         removeData('comment',
             "blogid = $id") || removeData('comment',
             "parentid not in (select commentid from comment)");
-    if($result) {
+    if ($result) {
         echo "success";
     } else {
         echo "fail";
     }
 }
-if($action == "add") {
+if ($action == "publish") {
     $data = [];
     foreach ($_POST['data'] as $key => $value) {
-        if($key != "action" && $key != "id") {
+        if ($key != "action" && $key != "id") {
             $data[$key] = "'" . $value . "'";
         }
     }
     $result = insertData('blog', "", "",
         $data);
-    if($result) {
+    if ($result) {
         echo "success";
     } else {
         echo "fail";
     }
 }
+
 if($action == "edit") {
     $data = [];
     foreach ($_POST as $key => $value) {

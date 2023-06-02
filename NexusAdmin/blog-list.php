@@ -94,7 +94,7 @@
                                                     layer.msg('未搜索到相关博客！', {icon: 3});
                                                     $("#results").append('<tr><td id="no-record" colSpan="8">无相关博客！</td></tr>');
                                                 }
-                                            }else {
+                                            } else {
                                                 layer.msg('搜索失败！', {icon: 5});
                                             }
                                         },
@@ -104,7 +104,7 @@
                             });
 
                             function blogEdit(blogid) {
-                                xadmin.open('编辑','blog-edit.php?blogid=' + blogid);
+                                xadmin.open('编辑', 'function/publish_blog/blog_publish.php?action=publish&blogid=' + blogid);
                             }
 
                             function getData(data) {
