@@ -1,7 +1,8 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$action = $_GET['action'] ?? "";
+$action = $_GET['action'] ?? "publish";
 $blogid = $_GET['blogid'] ?? "";
 include_once "../../../database/databaseHandle.php";
 $blogshowstyle_rst = queryData('blogpagestyle');
@@ -72,6 +73,35 @@ if ($action && $blogid) {
             font-family: Consolas, sans-serif;
             font-weight: bold;
         }
+
+        .upload-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-container label, button {
+            cursor: pointer;
+            padding: 10px 20px;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .upload-container label:hover, label:focus {
+            background-color: #007bff;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -127,8 +157,40 @@ if ($action && $blogid) {
     </div>
     <div class="mb-3">
         <label for="author" class="col-form-label">作者</label>
-        <input type="text" class="text-center fa-user-plus disabled" id="author" style="border: none"
-               disabled value="<?php echo $blog_info['author'] ?? $_SESSION['user'] ?? 'Illegal user' ?>">
+        <input type="text" class="text-center disabled personal-color" id="author" style="font-size: 20px"
+               disabled value="<?php echo ($blog_info['author'] ?? $_SESSION['user']) ?? 'Illegal user' ?>">
+    </div>
+    <div class="upload-container mb-3">
+        <label for="image" id="file_label">请选择一张图片上传</label>
+        <form enctype="multipart/form-data">
+            <input type="file" id="image" accept="image/jpeg, image/png, image/jpg">
+            <label id="upload">上传图片</label>
+        </form>
+        <script>
+            $('#upload').on('click', function () {
+                var file_data = $('#image').prop('files')[0];
+                var form_data = new FormData();
+                var layer = layui.layer;
+                form_data.append('action', 'upload');
+                form_data.append('image', file_data);
+                $.ajax({
+                    url: '../handle_file_upload.php',
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function (data) {
+                        if (data === "success") {
+                            layer.alert('图片上传成功!');
+                        } else {
+                            layer.alert('图片上传失败!');
+                        }
+                    }
+                });
+            });
+        </script>
     </div>
     <!-- 放置 md 编辑器 -->
     <div id="editor"></div>
@@ -148,11 +210,6 @@ if ($action && $blogid) {
 
     // 发布博客
     function publish() {
-        const pre = $("pre");
-        const spans = pre.find("span");
-        const text = spans.map(function () {
-            return $(this).text();
-        }).get().join("");
         var layer = layui.layer;
         const title = $("#title").val();
         const abstract = $("#abstract").val();
@@ -161,6 +218,7 @@ if ($action && $blogid) {
         $.ajax({
             url: "../../handle/blog-handle.php",
             type: "POST",
+            dataType: 'text',
             data: {
                 action: "<?php echo $action ?? 'publish' ?>",
                 blogid: "<?php echo $blogid ?? '' ?>",
@@ -168,7 +226,7 @@ if ($action && $blogid) {
                 abstract: abstract,
                 type: type,
                 blogshowstyle: blogshowstyle,
-                content: text
+                content: editor.getMarkdown(),
             },
             success: function (data) {
                 if (data === "success") {

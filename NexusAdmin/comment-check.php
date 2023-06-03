@@ -23,11 +23,13 @@
             <div class="layui-card">
                 <div class="layui-card-body ">
                     <?php
-                        $offset = 0; $limit = 5
+                    $offset = 0;
+                    $limit = 5
                     ?>
                     <form id="sb-form" class="layui-form layui-col-space5">
                         <div class="layui-input-inline layui-show-xs-block">
-                            <input class="layui-input" id="title" name="title" placeholder="文章标题或内容" required></div>
+                            <input class="layui-input" id="title" name="title" placeholder="文章标题或内容" required>
+                        </div>
                         <div class="layui-input-inline layui-show-xs-block">
                             <button id="search" class="layui-btn" lay-filter="search" lay-submit=""
                                     onload="document.forms[0].submit()">
@@ -44,7 +46,7 @@
                                     //发异步，把数据提交给php
                                     $.ajax({
                                         type: 'post',
-                                        url: 'handle/blog-handle.php',
+                                        url: 'handle/comment-handle.php',
                                         data: {
                                             action: 'search',
                                             something: data.field.title,
@@ -98,8 +100,8 @@
                                 });
                             });
 
-                            function blogEdit(blogid) {
-                                xadmin.open('编辑', 'function/publish_blog/blog_publish.php?action=edit&blogid=' + blogid);
+                            function blogEdit(comment) {
+                                xadmin.open('评论编辑', 'comment-edit.php?commentid=' + comment, 800, 600);
                             }
 
                             function getData(data) {
@@ -108,7 +110,7 @@
                                     layer = layui.layer;
                                 $.ajax({
                                     type: 'post',
-                                    url: 'handle/blog-handle.php',
+                                    url: 'handle/comment-handle.php',
                                     data: {
                                         action: 'search',
                                         something: data,
@@ -153,7 +155,7 @@
                                                 layer.msg('未搜索到相关博客！', {icon: 3});
                                                 $("#results").append('<tr><td id="no-record" colSpan="8">无相关博客！</td></tr>');
                                             }
-                                        }else {
+                                        } else {
                                             layer.msg('搜索失败！', {icon: 5});
                                         }
                                     },
@@ -203,7 +205,7 @@
                         //发异步删除数据
                         $.ajax({
                             type: 'post',
-                            url: 'handle/blog-handle.php',
+                            url: 'handle/comment-handle.php',
                             data: {
                                 action: 'delete',
                                 blogid: id,

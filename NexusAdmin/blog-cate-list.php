@@ -78,16 +78,23 @@
                         <tr>
                             <?php
                             include_once "../database/databaseHandle.php";
-                            $offset = $_GET['offset'] ?? 0; $limit = 5;
+                            $offset = $_GET['offset'] ?? 0;
+                            $limit = 10;
                             $category_rst = queryData('blogtype order by blogtypeid ', "*",
                                 "", $offset, $limit);
                             $max_offset = mysqli_num_rows(queryData('blogtype'));
                             $fields = array_keys(mysqli_fetch_array(queryData('blogtype')));
                             foreach ($fields as $field) {
                                 switch ($field) {
-                                    case "id": echo "<th>分类ID</th>";break;
-                                    case "name": echo "<th>分类名称</th>";break;
-                                    case "showstyle": echo "<th>分类显示样式</th>";break;
+                                    case "id":
+                                        echo "<th>分类ID</th>";
+                                        break;
+                                    case "name":
+                                        echo "<th>分类名称</th>";
+                                        break;
+                                    case "showstyle":
+                                        echo "<th>分类显示样式</th>";
+                                        break;
                                 }
                             }
                         ?>

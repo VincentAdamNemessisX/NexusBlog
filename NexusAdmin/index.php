@@ -31,29 +31,6 @@
     <div class="left_open">
         <a><i class="iconfont" title="展开左侧栏">&#xe699;</i></a>
     </div>
-    <!--            <ul class="layui-nav left fast-add" lay-filter="">-->
-    <!--                <li class="layui-nav-item">-->
-    <!--                    <a href="javascript:;">+新增</a>-->
-    <!--                    <dl class="layui-nav-child">-->
-    <!--                        &lt;!&ndash; 二级菜单 &ndash;&gt;-->
-    <!--                        <dd>-->
-    <!--                            <a onclick="xadmin.open('最大化','','','',true)">-->
-    <!--                                <i class="iconfont">&#xe6a2;</i>弹出最大化</a></dd>-->
-    <!--                        <dd>-->
-    <!--                            <a onclick="xadmin.open('弹出自动宽高','')">-->
-    <!--                                <i class="iconfont">&#xe6a8;</i>弹出自动宽高</a></dd>-->
-    <!--                        <dd>-->
-    <!--                            <a onclick="xadmin.open('弹出指定宽高','',500,300)">-->
-    <!--                                <i class="iconfont">&#xe6a8;</i>弹出指定宽高</a></dd>-->
-    <!--                        <dd>-->
-    <!--                            <a onclick="xadmin.add_tab('在tab打开','')">-->
-    <!--                                <i class="iconfont">&#xe6b8;</i>在tab打开</a></dd>-->
-    <!--                        <dd>-->
-    <!--                            <a onclick="xadmin.add_tab('在tab打开刷新','',true)">-->
-    <!--                                <i class="iconfont">&#xe6b8;</i>在tab打开刷新</a></dd>-->
-    <!--                    </dl>-->
-    <!--                </li>-->
-    <!--            </ul>-->
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
             <a href="javascript:">admin</a>
@@ -79,23 +56,41 @@
         <ul id="nav">
             <li>
                 <a href="javascript:">
+                    <i class="iconfont left-nav-li" lay-tips="首页">&#xe696;</i>
+                    <cite>首页</cite>
+                    <i class="iconfont nav_right">&#xe828;</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6ae;</i>首页', 'home.php')">
+                            <i class="iconfont">&#xe6ae;</i>
+                            <cite>后台首页</cite></a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6b1;</i>前台首页','../')">
+                            <i class="iconfont">&#xe6b1;</i>
+                            <cite>前台首页</cite></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:">
                     <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe6b8;</i>
                     <cite>用户管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('用户列表','member-list.php')">
-                            <i class="iconfont">&#xe6a7;</i>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6a2;</i>用户列表','user-list.php')">
+                            <i class="iconfont">&#xe6a2;</i>
                             <cite>用户列表</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('用户删除','member-del.php')">
-                            <i class="iconfont">&#xe6a7;</i>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6b6;</i>用户删除','user-del.php')">
+                            <i class="iconfont">&#xe6b6;</i>
                             <cite>删除用户</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('权限管理','member-list1.php')">
-                            <i class="iconfont">&#xe6a7;</i>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe735;</i>权限管理','user-permission-list.php')">
+                            <i class="iconfont">&#xe735;</i>
                             <cite>权限管理</cite></a>
                     </li>
                 </ul>
@@ -107,27 +102,37 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('发布博客','./function/publish_blog/blog_publish.php')">
-                            <i class="iconfont">&#xe6a7;</i>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6b9;</i>发布博客','./function/publish_blog/blog_publish.php')">
+                            <i class="iconfont">&#xe6b9;</i>
                             <cite>发布博客</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('博客列表','blog-list.php')">
-                            <i class="iconfont">&#xe6a7;</i>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6fa;</i>博客列表','blog-list.php')">
+                            <i class="iconfont">&#xe6fa;</i>
                             <cite>博客列表</cite></a>
                     </li>
                 </ul>
             </li>
             <li>
+                <a onclick="xadmin.add_tab('分类列表','blog-cate-list.php')">
+                    <i class="iconfont left-nav-li" lay-tips="分类管理">&#xe699;</i>
+                    <cite>分类管理</cite></a>
+            </li>
+            <li>
                 <a href="javascript:">
-                    <i class="iconfont left-nav-li" lay-tips="分类管理">&#xe723;</i>
-                    <cite>分类管理</cite>
+                    <i class="iconfont left-nav-li" lay-tips="评论管理">&#xe69b;</i>
+                    <cite>评论管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('分类列表','blog-cate-list.php')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>分类列表</cite></a>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6b5;</i>评论列表','comment-list.php')">
+                            <i class="iconfont">&#xe6b5;</i>
+                            <cite>评论列表</cite></a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe723;</i>评论审核','comment-check.php')">
+                            <i class="iconfont">&#xe723;</i>
+                            <cite>评论审核</cite></a>
                     </li>
                 </ul>
             </li>
