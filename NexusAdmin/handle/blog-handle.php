@@ -58,10 +58,16 @@ if($action == "edit") {
     }
     $result = updateData('blog', "blogid = " . $_POST['blogid'],
         $data);
-    if($result) {
-        echo "success";
+    if ($result) {
+        $updateImage = updateData('blogimages', "blogid = -1",
+            ["blogid" => $_POST['blogid']]);
+        if ($updateImage) {
+            echo "success";
+        } else {
+            echo "updateImageBlogidFailOrNoImageUpdate";
+        }
     } else {
-        echo "fail";
+        echo "editFail";
     }
 }
 

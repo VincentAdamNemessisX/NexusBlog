@@ -99,7 +99,7 @@ if ($action && $blogid) {
         }
 
         .upload-container label:hover, label:focus {
-            background-color: #007bff;
+            background-color: purple;
             color: #fff;
         }
     </style>
@@ -112,7 +112,9 @@ if ($action && $blogid) {
         <input type="text" id="title" class="mr-3" style="border: 3px solid purple" placeholder="在此处输入标题"
                value="<?php echo $blog_info['title'] ?? '' ?>">
         <button onclick="publish()"
-                style="background-color: purple"><?php echo $action == "edit" && $blogid ? "修改博客" : "发布博客" ?></button>
+                style="background-color: purple; width: 15%"><?php echo $action == "edit" && $blogid ? "修改" : "发布" ?>
+            博客
+        </button>
         <?php
         if ($action == "edit" && $blogid) {
             echo <<<btn
@@ -156,7 +158,7 @@ if ($action && $blogid) {
         </select>
     </div>
     <div class="mb-3">
-        <label for="author" class="col-form-label">作者</label>
+        <label for="author" style="font-size: 20px" class="col-form-label">作者</label>
         <input type="text" class="text-center disabled personal-color" id="author" style="font-size: 20px"
                disabled value="<?php echo ($blog_info['author'] ?? $_SESSION['user']) ?? 'Illegal user' ?>">
     </div>

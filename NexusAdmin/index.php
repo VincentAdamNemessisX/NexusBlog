@@ -61,7 +61,7 @@
                     <i class="iconfont nav_right">&#xe828;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6ae;</i>首页', 'home.php')">
+                        <a onclick="$('#home').click()">
                             <i class="iconfont">&#xe6ae;</i>
                             <cite>后台首页</cite></a>
                     </li>
@@ -145,8 +145,8 @@
 <div class="page-content">
     <div class="layui-tab tab" lay-allowclose="false" lay-filter="xbs_tab">
         <ul class="layui-tab-title">
-            <li class="home">
-                <i class="layui-icon">&#xe68e;</i>首页
+            <li id="home" class="home">
+                <i class='iconfont' style='margin-right: 0.5rem; margin-bottom: -0.2rem'>&#xe6ae;</i>首页
             </li>
         </ul>
         <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html class="x-admin-sm">
-
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>修改密码</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
@@ -16,53 +15,36 @@
     <!--[if lt IE 9]>
     <script src="./js/html5.min.js"></script>
     <script src="./js/respond.min.js"></script>
-    <![endif]-->
-</head>
+    <![endif]--></head>
+
 <body>
 <div class="layui-fluid">
     <div class="layui-row">
         <form class="layui-form">
             <div class="layui-form-item">
-                <label class="layui-form-label" for="L_username">
-                    <span class="x-red">*</span>用户名</label>
-                <div class="layui-input-inline">
-                    <input autocomplete="off" class="layui-input" id="L_username" lay-verify="username" name="username"
-                           required="" type="text"></div>
-                <div class="layui-form-mid layui-word-aux">
-                    <span class="x-red">*</span>将会成为您唯一的登入名
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="L_email">
-                    <span class="x-red">*</span>邮箱</label>
-                <div class="layui-input-inline">
-                    <input autocomplete="off" class="layui-input" id="L_email" lay-verify="email" name="email"
-                           required=""
-                           type="text"></div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label" for="L_pass">
-                    <span class="x-red">*</span>密码</label>
+                    <span class="x-red">*</span>请输入新密码</label>
                 <div class="layui-input-inline">
-                    <input autocomplete="off" class="layui-input" id="L_pass" lay-verify="pass" name="pass" required=""
+                    <input autocomplete="off" class="layui-input" id="L_pass" lay-verify="pass" name="pass"
+                           required="required"
                            type="password"></div>
                 <div class="layui-form-mid layui-word-aux">6到16个字符</div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label" for="L_repass">
-                    <span class="x-red">*</span>确认密码</label>
+                    <span class="x-red">*</span>请确认新密码</label>
                 <div class="layui-input-inline">
                     <input autocomplete="off" class="layui-input" id="L_repass" lay-verify="repass" name="repass"
-                           required="" type="password"></div>
+                           required="required" type="password"></div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label" for="L_repass"></label>
-                <button class="layui-btn" lay-filter="add" lay-submit="">添加</button>
+                <button class="layui-btn" lay-filter="add" lay-submit="">修改</button>
             </div>
         </form>
     </div>
 </div>
-<script>layui.use(['form', 'layer', 'jquery'],
+<script>layui.use(['form', 'layer'],
         function () {
             $ = layui.jquery;
             var form = layui.form,
@@ -70,20 +52,6 @@
 
             //自定义验证规则
             form.verify({
-                username: function (value) {
-                    if (value.length < 3) {
-                        return '用户名至少3个字符';
-                    }
-                },
-                email: function (value) {
-                    if (value.length < 1) {
-                        return '邮箱不能为空';
-                    }
-                    if (!value.test(/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/)))
-                    {
-                        return '请输入正确的邮箱格式';
-                    }
-                },
                 pass: [/(.+){6,12}$/, '密码必须6到12位'],
                 repass: function (value) {
                     if ($('#L_pass').val() !== $('#L_repass').val()) {
@@ -97,31 +65,44 @@
                 function (data) {
                     //发异步，把数据提交给php
                     $.ajax({
-                        url: 'user-add-do.php',
+                        url: './handle/user-handle.php',
                         type: 'post',
-                        dataType: 'json',
-                        data: data.field,
+                        dataType: 'text', //返回的数据格式：json/xml/html/script/jsonp/text
+                        data: {
+                            action: 'edit_password',
+                            accountid: <?php echo $_GET['accountid']; ?>,
+                            password: data.field.pass,
+                        },
                         success: function (data) {
-                            if (data === "success") {
-                                layer.alert("添加成功！", {
+                            if (data === 'success') {
+                                layer.alert("修改成功", {
                                         icon: 6
                                     },
                                     function () {
+                                        // 获得frame索引
+                                        var index = parent.layer.getFrameIndex(window.name);
                                         //关闭当前frame
-                                        xadmin.close();
-
-                                        // 可以对父窗口进行刷新finished
-                                        xadmin.father_reload();
+                                        parent.layer.close(index);
                                     });
+                            } else if (data === "failWithSamePassword") {
+                                layer.alert("修改失败：新密码与旧密码相同!", {
+                                    icon: 5
+                                });
                             } else {
-                                layer.alert("添加失败:" + data + "!", {icon: 5})
+                                layer.alert("修改失败：" + data + "!", {
+                                        icon: 5
+                                    },
+                                    function () {
+                                        // 获得frame索引
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        //关闭当前frame
+                                        parent.layer.close(index);
+                                    });
                             }
                         }
-                    })
+                    });
                     return false;
                 });
-
-        });
-    </body>
-
-    </html>
+        });</script>
+</body>
+</html>
