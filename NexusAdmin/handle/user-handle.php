@@ -60,9 +60,14 @@ if ($action == "delete_all") {
 if ($action == "add") {
     $data = [];
     foreach ($_POST as $key => $value) {
-        if ($key != "action" && $key != "accountid") {
+        if ($key != "action" && $key != "accountid" && $key != "repass") {
             $data[$key] = "'" . $value . "'";
         }
+    }
+    $check_same = mysqli_fetch_array(queryData('accounts', "username", "username = '" . $_POST['username'] . "'"));
+    if ($check_same) {
+        echo "failWithSameUsername";
+        return;
     }
     $result = insertData('accounts', "", "",
         $data);
@@ -76,8 +81,10 @@ if ($action == "add") {
 if ($action == "edit") {
     $data = [];
     foreach ($_POST as $key => $value) {
-        if ($key != "action" && $key != "accountid") {
+        if ($key != "action" && $key != "accountid" && $key != "headPortrait") {
             $data[$key] = "'" . $value . "'";
+        } elseif ($key == "headPortrait") {
+            $data[$key] = "'../images/" . $value . "'";
         }
     }
     $result = updateData('accounts', "accountid = " . $_POST['accountid'], $data);
@@ -102,6 +109,10 @@ if ($action == "edit_password") {
         }
     }
 }
+
+//if ($action == "permission_update") {
+//
+//}
 
 if ($action == "get") {
     $result = queryData('accounts');

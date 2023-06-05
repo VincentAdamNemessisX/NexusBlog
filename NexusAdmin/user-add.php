@@ -44,7 +44,8 @@
                 <label class="layui-form-label" for="L_pass">
                     <span class="x-red">*</span>密码</label>
                 <div class="layui-input-inline">
-                    <input autocomplete="off" class="layui-input" id="L_pass" lay-verify="pass" name="pass" required=""
+                    <input autocomplete="off" class="layui-input" id="L_pass" lay-verify="password"
+                           name="password" required=""
                            type="password"></div>
                 <div class="layui-form-mid layui-word-aux">6到16个字符</div>
             </div>
@@ -56,13 +57,15 @@
                            required="" type="password"></div>
             </div>
             <div class="layui-form-item">
+                <input type="hidden" name="action" value="add">
                 <label class="layui-form-label" for="L_repass"></label>
                 <button class="layui-btn" lay-filter="add" lay-submit="">添加</button>
             </div>
         </form>
     </div>
 </div>
-<script>layui.use(['form', 'layer', 'jquery'],
+<script>
+    layui.use(['form', 'layer', 'jquery'],
         function () {
             $ = layui.jquery;
             var form = layui.form,
@@ -79,12 +82,12 @@
                     if (value.length < 1) {
                         return '邮箱不能为空';
                     }
-                    if (!value.test(/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/)))
-                    {
+                    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (!regex.test(value)) {
                         return '请输入正确的邮箱格式';
                     }
                 },
-                pass: [/(.+){6,12}$/, '密码必须6到12位'],
+                password: [/(.+){6,12}$/, '密码必须6到12位'],
                 repass: function (value) {
                     if ($('#L_pass').val() !== $('#L_repass').val()) {
                         return '两次密码不一致';
@@ -97,9 +100,9 @@
                 function (data) {
                     //发异步，把数据提交给php
                     $.ajax({
-                        url: 'user-add-do.php',
+                        url: 'handle/user-handle.php',
                         type: 'post',
-                        dataType: 'json',
+                        dataType: 'text',
                         data: data.field,
                         success: function (data) {
                             if (data === "success") {
@@ -122,6 +125,7 @@
                 });
 
         });
-    </body>
+</script>
+</body>
 
-    </html>
+</html>

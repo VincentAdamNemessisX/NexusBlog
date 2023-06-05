@@ -19,7 +19,13 @@ if (mysqli_fetch_array(queryData('accounts', 'username', "username='$username'")
 if(!$existUserFlag && $username && $email && $password) {
     if (insertData("accounts", [], [], ["username" => "'" . $username . "'", "email" => "'" . $email . "'",
         "password" => "'" . md5($password) . "'", "headPortrait" => "'" . $headPortrait . "'"])) {
-        $_SESSION['user'] = $username;
+        $act = mysqli_fetch_array(queryData('accounts', 'username,permission,status',
+            "username='$username'"));
+        $_SESSION['user'] = $act['username'];
+        $_SESSION['permission'] = $act['permission'];
+        $_SESSION['status'] = $act['status'];
+        $_SESSION['lastloginip'] = $_SERVER['REMOTE_ADDR'];
+        $_SESSION['lastLoginTime'] = date('Y-m-d H:i:s');
         echo "<script>showMyModal('注册校验', '恭喜【 $username 】注册成功!');
             $('#closeModalButton1').attr('onclick','hideMyModal(2)');
             $('#closeModalButton').attr('onclick','hideMyModal(2)');

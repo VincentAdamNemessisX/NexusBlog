@@ -1,3 +1,16 @@
+<?php
+session_start();
+include_once "../database/databaseHandle.php";
+$login_user['user'] = $_SESSION['user'];
+$login_user['permission'] = $_SESSION['permission'] ?? 0;
+$login_user['status'] = $_SESSION['status'] ?? 2;
+$login_user['lastloginip'] = $_SESSION['lastloginip'];
+if ($login_user['permission'] < 9 && $login_user['status'] != 1) {
+    echo "<script>alert('您没有权限访问该页面，请联系网站管理员或确认登录账户！');
+        location.href = '../views/index.php';
+    </script>";
+}
+?>
 <!doctype html>
 <html class="x-admin-sm">
 <head>
@@ -10,13 +23,12 @@
     <meta content="no-siteapp" http-equiv="Cache-Control"/>
     <link href="./css/font.css" rel="stylesheet">
     <link href="../css/xadmin.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
     <script charset="utf-8" src="./lib/layui/layui.js"></script>
     <script src="./js/xadmin.js" type="text/javascript"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
-    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <script src="./js/html5.min.js"></script>
+    <script src="./js/respond.min.js"></script>
     <![endif]-->
     <script>
         // 是否开启刷新记忆tab功能
@@ -83,16 +95,12 @@
                             <i class="iconfont">&#xe6a2;</i>
                             <cite>用户列表</cite></a>
                     </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6b6;</i>用户删除','user-del.php')">
-                            <i class="iconfont">&#xe6b6;</i>
-                            <cite>删除用户</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe735;</i>权限管理','user-permission-list.php')">
-                            <i class="iconfont">&#xe735;</i>
-                            <cite>权限管理</cite></a>
-                    </li>
+                    <!--                    用户权限管理-->
+                    <!--                    <li>-->
+                    <!--                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe735;</i>权限管理','user-permission-list.php')">-->
+                    <!--                            <i class="iconfont">&#xe735;</i>-->
+                    <!--                            <cite>权限管理</cite></a>-->
+                    <!--                    </li>-->
                 </ul>
             </li>
             <li>
@@ -114,28 +122,31 @@
                 </ul>
             </li>
             <li>
-                <a onclick="xadmin.add_tab('分类列表','blog-cate-list.php')">
+                <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe699;</i>分类列表','blog-cate-list.php')">
                     <i class="iconfont left-nav-li" lay-tips="分类管理">&#xe699;</i>
                     <cite>分类管理</cite></a>
             </li>
-            <li>
-                <a href="javascript:">
-                    <i class="iconfont left-nav-li" lay-tips="评论管理">&#xe69b;</i>
-                    <cite>评论管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6b5;</i>评论列表','comment-list.php')">
-                            <i class="iconfont">&#xe6b5;</i>
-                            <cite>评论列表</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe723;</i>评论审核','comment-check.php')">
-                            <i class="iconfont">&#xe723;</i>
-                            <cite>评论审核</cite></a>
-                    </li>
-                </ul>
-            </li>
+            <!--            评论管理-->
+            <!--            <li>-->
+            <!--                <a href="javascript:">-->
+            <!--                    <i class="iconfont left-nav-li" lay-tips="评论管理">&#xe69b;</i>-->
+            <!--                    <cite>评论管理</cite>-->
+            <!--                    <i class="iconfont nav_right">&#xe697;</i></a>-->
+            <!--                <ul class="sub-menu">-->
+            <!--                    <li>-->
+            <!--                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe6b5;</i>评论列表','comment-list.php')">-->
+            <!--                            <i class="iconfont">&#xe6b5;</i>-->
+            <!--                            <cite>评论列表</cite></a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a onclick="xadmin.add_tab('<i class=\'iconfont\' style=\'margin-right: 0.5rem; margin-bottom: -0.2rem\'>&#xe723;</i>评论审核','comment-check.php')">-->
+            <!--                            <i class="iconfont">&#xe723;</i>-->
+            <!--                            <cite>评论审核</cite></a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </li>-->
+            <!--            数据分析-->
+            <!--            <li>-->
         </ul>
     </div>
 </div>
