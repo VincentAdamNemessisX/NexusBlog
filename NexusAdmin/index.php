@@ -26,6 +26,7 @@ if ($login_user['permission'] < 9 || $login_user['status'] != 1) {
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
           name="viewport"/>
     <meta content="no-siteapp" http-equiv="Cache-Control"/>
+    <link rel="icon" href="../favicon.ico">
     <link href="./css/font.css" rel="stylesheet">
     <link href="../css/xadmin.css" rel="stylesheet">
     <script charset="utf-8" src="./lib/layui/layui.js"></script>

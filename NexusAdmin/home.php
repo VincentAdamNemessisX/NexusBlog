@@ -224,20 +224,26 @@ $total_read_count = mysqli_fetch_array(queryData('blog', 'sum(readTimes) as coun
                             <th>MYSQL版本</th>
                             <td><?php echo $_MYSQL_VERSION ?? '获取失败' ?></td>
                         </tr>
-                        <tr>
-                            <th>存储空间</th>
-                            <td id="space"><?php
-                                if ($_FREE_SPACE && $_TOTAL_SPACE) {
-                                    echo $_FREE_SPACE . 'MB/' . $_TOTAL_SPACE . 'MB';
-                                } else {
-                                    echo '获取失败';
-                                }
-                                ?></td>
-                        </tr>
-                        <tr>
-                            <th>运行时间</th>
-                            <td id="runtime"><?php echo $_RUN_TIME ?? '获取失败' ?></td>
-                        </tr>
+                        <!--                        <tr>-->
+                        <!--                            <th>存储空间</th>-->
+                        <!--                            <td id="space">-->
+                        <?php
+                        //                                if ($_FREE_SPACE && $_TOTAL_SPACE) {
+                        //                                    echo $_FREE_SPACE . 'MB/' . $_TOTAL_SPACE . 'MB';
+                        //                                } else {
+                        //                                    echo '获取失败';
+                        //                                }
+                        ?>
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <th>运行时间</th>-->
+                        <!--                            <td id="runtime">-->
+                        <?php
+                        //                                echo $_RUN_TIME ?? '获取失败'
+                        ?>
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
                         </tbody>
                         <script>
                             function updateSpaceAndRunTime() {
@@ -257,7 +263,7 @@ $total_read_count = mysqli_fetch_array(queryData('blog', 'sum(readTimes) as coun
                                 });
                             }
 
-                            setInterval(updateSpaceAndRunTime, 30000);
+                            // setInterval(updateSpaceAndRunTime, 30000);
                         </script>
                     </table>
                 </div>

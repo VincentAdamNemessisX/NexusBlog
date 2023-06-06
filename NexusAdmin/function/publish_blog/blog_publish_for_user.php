@@ -237,8 +237,7 @@ if ($action && $blogid) {
                 if (data === "success") {
                     layer.alert("<?php echo $action == "edit" && $blogid ? "修改" : "发布" ?>成功！", {icon: 6},
                         function () {
-                            xadmin.close();
-                            xadmin.father_reload();
+                            window.location.href = "../../../views/index.php";
                         });
                 } else {
                     layer.alert("<?php echo $action == "edit" && $blogid ? "修改" : "发布" ?>失败！", {icon: 5})
