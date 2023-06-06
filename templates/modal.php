@@ -38,13 +38,13 @@
     }
 
     function hideMyModal(x) {
-        if(x == 0) {
+        if (x === 0) {
             $("#myModal").modal("hide");
         }
-        if(x == 1) {
+        if (x === 1) {
             window.history.back();
         }
-        if(x == 2) {
+        if (x === 2) {
             window.location.href = "../views/index.php";
         }
     }

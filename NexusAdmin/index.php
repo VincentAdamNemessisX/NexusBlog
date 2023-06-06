@@ -5,7 +5,12 @@ $login_user['user'] = $_SESSION['user'];
 $login_user['permission'] = $_SESSION['permission'] ?? 0;
 $login_user['status'] = $_SESSION['status'] ?? 2;
 $login_user['lastloginip'] = $_SESSION['lastloginip'];
-if ($login_user['permission'] < 9 && $login_user['status'] != 1) {
+if (!$login_user['user']) {
+    echo "<script>alert('您还没有登录，请先登录！');
+        location.href = '../views/login.php';
+    </script>";
+}
+if ($login_user['permission'] < 9 || $login_user['status'] != 1) {
     echo "<script>alert('您没有权限访问该页面，请联系网站管理员或确认登录账户！');
         location.href = '../views/index.php';
     </script>";
@@ -32,7 +37,7 @@ if ($login_user['permission'] < 9 && $login_user['status'] != 1) {
     <![endif]-->
     <script>
         // 是否开启刷新记忆tab功能
-        // var is_remember = false;
+        var is_remember = false;
     </script>
 </head>
 <body class="index">
@@ -45,15 +50,33 @@ if ($login_user['permission'] < 9 && $login_user['status'] != 1) {
     </div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:">admin</a>
+            <a href="javascript:"><?php echo $_SESSION['user'] ?? 'unknown_admin' ?></a>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
-                    <a onclick="xadmin.open('个人信息','./')">个人信息</a></dd>
+                    <a onclick="window.location.href='../views/login.php'">切换帐号</a>
+                </dd>
                 <dd>
-                    <a onclick="xadmin.open('切换帐号','../login.php')">切换帐号</a></dd>
-                <dd>
-                    <a href="../handle/logout.php">退出</a></dd>
+                    <a href="javascript:" onclick="logout()">退出</a></dd>
+                <script>
+                    function logout() {
+                        var layer = layui.layer;
+                        $.ajax({
+                            type: "POST",
+                            url: "../handle/logout.php",
+                            dataType: "text",
+                            success: function (data) {
+                                if (data === 'success') {
+                                    layer.msg('已退出登录！', {icon: 1, time: 1000}, function () {
+                                        window.location.href = '../views/login.php';
+                                    });
+                                } else {
+                                    layer.msg('退出登录失败！', {icon: 2, time: 1000});
+                                }
+                            },
+                        });
+                    }
+                </script>
             </dl>
         </li>
         <li class="layui-nav-item to-index">
@@ -70,7 +93,7 @@ if ($login_user['permission'] < 9 && $login_user['status'] != 1) {
                 <a href="javascript:">
                     <i class="iconfont left-nav-li" lay-tips="首页">&#xe696;</i>
                     <cite>首页</cite>
-                    <i class="iconfont nav_right">&#xe828;</i></a>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
                         <a onclick="$('#home').click()">

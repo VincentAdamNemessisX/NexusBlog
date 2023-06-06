@@ -221,10 +221,20 @@
         img_head.src = headPortrait.value;
     }
 
+    function isUsername(username) {
+        return /^[a-zA-Z0-9_]+$/.test(username);
+    }
+
     function checkUsername() {
         const usernameValue = username.value.trim();
         if (usernameValue === '') {
             setErrorFor(username, usernameError, '用户名不能为空');
+            return false;
+        } else if (usernameValue.length < 3 || usernameValue.length > 20) {
+            setErrorFor(username, usernameError, '用户名长度必须在3-20个字符之间');
+            return false;
+        } else if (!isUsername(usernameValue)) {
+            setErrorFor(username, usernameError, '用户名只能包含字母、数字、下划线');
             return false;
         } else {
             $.ajax({

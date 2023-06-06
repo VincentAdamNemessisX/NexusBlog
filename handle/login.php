@@ -2,20 +2,27 @@
 session_start();
 include_once '../database/databaseHandle.php';
 include_once "../templates/modal.php";
+$login_key = $_POST['login_key'] ?? '';
 date_default_timezone_set('PRC');
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $acts = queryData("accounts", "*", "username='" . $_POST['username'] . "'");
         $act = mysqli_fetch_array($acts);
         if ($act) {
             if (md5($_POST['password']) == $act['password']) {
-                $_SESSION['user'] = $act['username'];
-                $_SESSION['permission'] = $act['permission'];
-                $_SESSION['status'] = $act['status'];
-                $_SESSION['lastloginip'] = $_SERVER['REMOTE_ADDR'];
-                $_SESSION['lastLoginTime'] = date('Y-m-d H:i:s');
-                echo "<script>$('#closeModalButton1').attr('onclick','hideMyModal(2)');
+                if ($act['status'] != 1) {
+                    echo "<script>$('#closeModalButton1').attr('onclick','hideMyModal(1)');
+                    $('#closeModalButton').attr('onclick','hideMyModal(1)');
+                    showMyModal('登录验证', '登录失败，账户已冻结，请联系管理员！');</script>";
+                } else {
+                    $_SESSION['user'] = $act['username'];
+                    $_SESSION['permission'] = $act['permission'];
+                    $_SESSION['status'] = $act['status'];
+                    $_SESSION['lastloginip'] = $_SERVER['REMOTE_ADDR'];
+                    $_SESSION['lastLoginTime'] = date('Y-m-d H:i:s');
+                    echo "<script>$('#closeModalButton1').attr('onclick','hideMyModal(2)');
                     $('#closeModalButton').attr('onclick','hideMyModal(2)');
                     showMyModal('登录验证', '登录成功！');</script>";
+                }
             } else {
                 echo "<script>$('#closeModalButton1').attr('onclick','hideMyModal(1)');
                     $('#closeModalButton').attr('onclick','hideMyModal(1)');

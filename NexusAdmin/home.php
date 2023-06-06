@@ -30,7 +30,7 @@ include_once "../database/databaseHandle.php";
                     <blockquote class="layui-elem-quote">欢迎管理员：
                         <span class="x-red">
                                     <?php echo $_SESSION['user']; ?>
-                                </span>！当前时间:<span id="crt_time"></span>
+                                </span>！当前时间:<span id="crt_time" onload="showTime()"></span>
                     </blockquote>
                     <script>
                         function showTime() {
@@ -44,7 +44,6 @@ include_once "../database/databaseHandle.php";
                             var time = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
                             document.getElementById("crt_time").innerHTML = time;
                         }
-
                         setInterval("showTime()", 1000);
                     </script>
                 </div>
