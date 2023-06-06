@@ -6,7 +6,7 @@ function uploadFile()
     if (!file_exists('../../uploadFiles/BlogImages')) {
         mkdir('../../uploadFiles/BlogImages', 0777);
     }
-    $MyFilePath = "../../uploadFiles/BlogImages/";
+    $MyFilePath = "../uploadFiles/BlogImages/";
     $Extensions = array("jpeg", "jpg", "png", "pdf");
     $MaxFileSize = 50;
     date_default_timezone_set("PRC");
