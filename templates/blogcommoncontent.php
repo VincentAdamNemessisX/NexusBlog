@@ -66,38 +66,8 @@
                                     </div>
 <!--                                    分享按钮-->
                                     <div class="socials-share-box">
-                                        <ul class="social-list">
-                                            <li class="facebook-share">
-                                                <a class="sharing-btn sharing-btn-primary facebook-btn facebook-theme-bg-hover"
-                                                   data-placement="top" href="#" title="Share on Facebook">
-                                                    <div class="share-item__icon">
-                                                        <svg fill="#888" height="1.3em"
-                                                             preserveaspectratio="xMidYMid meet" viewbox="0 0 40 40"
-                                                             width="1.3em">
-                                                            <g>
-                                                                <path
-                                                                    d="m21.7 16.7h5v5h-5v11.6h-5v-11.6h-5v-5h5v-2.1c0-2 0.6-4.5 1.8-5.9 1.3-1.3 2.8-2 4.7-2h3.5v5h-3.5c-0.9 0-1.5 0.6-1.5 1.5v3.5z"></path>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="twitter-share">
-                                                <a class="sharing-btn sharing-btn-primary twitter-btn twitter-theme-bg-hover"
-                                                   data-placement="top" href="#" title="Share on Twitter">
-                                                    <div class="share-item__icon">
-                                                        <svg fill="#888" height="1.3em"
-                                                             preserveaspectratio="xMidYMid meet" viewbox="0 0 40 40"
-                                                             width="1.3em">
-                                                            <g>
-                                                                <path
-                                                                    d="m31.5 11.7c1.3-0.8 2.2-2 2.7-3.4-1.4 0.7-2.7 1.2-4 1.4-1.1-1.2-2.6-1.9-4.4-1.9-1.7 0-3.2 0.6-4.4 1.8-1.2 1.2-1.8 2.7-1.8 4.4 0 0.5 0.1 0.9 0.2 1.3-5.1-0.1-9.4-2.3-12.7-6.4-0.6 1-0.9 2.1-0.9 3.1 0 2.2 1 3.9 2.8 5.2-1.1-0.1-2-0.4-2.8-0.8 0 1.5 0.5 2.8 1.4 4 0.9 1.1 2.1 1.8 3.5 2.1-0.5 0.1-1 0.2-1.6 0.2-0.5 0-0.9 0-1.1-0.1 0.4 1.2 1.1 2.3 2.1 3 1.1 0.8 2.3 1.2 3.6 1.3-2.2 1.7-4.7 2.6-7.6 2.6-0.7 0-1.2 0-1.5-0.1 2.8 1.9 6 2.8 9.5 2.8 3.5 0 6.7-0.9 9.4-2.7 2.8-1.8 4.8-4.1 6.1-6.7 1.3-2.6 1.9-5.3 1.9-8.1v-0.8c1.3-0.9 2.3-2 3.1-3.2-1.1 0.5-2.3 0.8-3.5 1z"></path>
-                                                            </g>
-
-                                                        </svg>
-                                                    </div>
-                                                </a>
-                                            </li>
+                                        <ul class="social-list--md" style="background-color: grey">
+                                            <li><a href="mailto:$blog[email]?subject=$blogtitle"><i class="mdicon mdicon-mail_outline"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -177,15 +147,7 @@ blogimags;
                                                         $authorbio
                                                     </div>
                                                     <ul class="author-social list-unstyled list-horizontal">
-                                                        <li>
-                                                            <a href="#"><i class="mdicon mdicon-mail_outline"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="mdicon mdicon-mail_outline"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="mdicon mdicon-mail_outline"></i></a>
-                                                        </li>
+                                                        <li><a href="mailto:$blog[email]?subject=$blogtitle"><i class="mdicon mdicon-mail_outline"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

@@ -1,0 +1,27 @@
+<?php
+include_once "database/databaseHandle.php";
+global $conn;
+global $_VERSION;
+global $_SERVER_ADDRESS;
+global $_OS;
+global $_RUN_ENV;
+global $_PHP_VERSION;
+global $_PHP_RUN_METHOD;
+global $_MYSQL_VERSION;
+global $_TOTAL_SPACE;
+global $_FREE_SPACE;
+global $_RUN_TIME;
+$_VERSION = "1.0.0";
+$_SERVER_ADDRESS = gethostname() . ',' . gethostbyname(gethostname());
+$_OS = php_uname('s') . ',' . php_uname('r');
+$_RUN_ENV = 'PHP ' . PHP_VERSION . '/SAPI ' . PHP_SAPI . '/OS ' . PHP_OS;
+$_PHP_VERSION = phpversion();
+$_PHP_RUN_METHOD = php_sapi_name();
+$_MYSQL_VERSION = mysqli_get_server_info($conn);
+$_TOTAL_SPACE = round(disk_total_space('/') / 1024 / 1024, 2);
+$_FREE_SPACE = round(disk_free_space('/') / 1024 / 1024, 2);
+$_RUN_TIME = explode(' ', strstr(exec('uptime'), ',', true))[4];
+$_RUN_TIME = explode(':', $_RUN_TIME);
+$_RUN_TIME[0] = $_RUN_TIME[0] . '小时';
+$_RUN_TIME[1] = $_RUN_TIME[1] . '分钟';
+$_RUN_TIME = implode('', $_RUN_TIME);

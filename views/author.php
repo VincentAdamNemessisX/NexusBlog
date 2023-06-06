@@ -37,9 +37,8 @@
                                 </div>
                                 <div class="author-info">
                                     <ul class="list-unstyled list-horizontal list-space-sm">
-                                        <li><a href="#$authorinfo[email]"><i class="mdicon mdicon-mail_outline"></i><span class="sr-only">e-mail</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="mdicon mdicon-twitter"></i><span class="sr-only">Twitter</span></a>
+                                        <li><a href="mailto:$authorinfo[email]"><i class="mdicon mdicon-mail_outline">                                        
+                                            </i><span class="sr-only">e-mail</span></a>
                                         </li>
                                     </ul>
                                 </div>

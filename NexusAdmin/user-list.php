@@ -223,7 +223,10 @@ item;
 
     function delAll(argument) {
         var ids = [];
-
+        if (ids.length === 0) {
+            layer.msg('请选择要删除的数据', {icon: 2, time: 1000});
+            return;
+        }
         // 获取选中的id 
         $('tbody input').each(function (index, el) {
             if ($(this).prop('checked')) {

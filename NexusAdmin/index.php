@@ -37,7 +37,7 @@ if ($login_user['permission'] < 9 || $login_user['status'] != 1) {
     <![endif]-->
     <script>
         // 是否开启刷新记忆tab功能
-        var is_remember = false;
+        // var is_remember = false;
     </script>
 </head>
 <body class="index">
