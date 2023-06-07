@@ -1,24 +1,24 @@
 <?php include_once "../templates/header.php"; ?>
-<div class="site-content">
-    <!-- module-1 -->
-    <div class="atbs-block atbs-block--fullwidth atbs-featured-module-1">
-        <div class="atbs-block__inner background-dots">
-            <div class="atbs-block__inner-group flex-box">
+    <div class="site-content">
+        <!-- module-1 -->
+        <div class="atbs-block atbs-block--fullwidth atbs-featured-module-1">
+            <div class="atbs-block__inner background-dots">
+                <div class="atbs-block__inner-group flex-box">
 
-                <!--editor's pick by some good content 推荐博客输出-->
-                <div class="section-main">
-                    <?php $blogrst = queryData('accounts, recommendblog, blogtype, blog, blogimages', '*',
-                            'blog.blogid = recommendblog.blogid and blog.author = accounts.username
+                    <!--editor's pick by some good content 推荐博客输出-->
+                    <div class="section-main">
+                        <?php $blogrst = queryData('accounts, blogtype, blog, blogimages', '*',
+                            'blog.isrecommend = 1 and blog.author = accounts.username
                              and blog.type = blogtype.name and blog.blogid = blogimages.blogid order by publishTime desc',
-                        '0', '5');
-                    ?>
-                    <div
-                        class="owl-carousel js-atbs-carousel-1i atbs-carousel dots-circle nav-circle  nav-vertical nav-border">
-                        <!--                        cycle print recommend data-->
-                        <?php while ($blog = mysqli_fetch_array($blogrst)) {
-                            $blogtitle = $blog['title'];
-                            $blogshowstyle = $blog['blogshowstyle'];
-                            $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
+                            '0', '5');
+                        ?>
+                        <div
+                                class="owl-carousel js-atbs-carousel-1i atbs-carousel dots-circle nav-circle  nav-vertical nav-border">
+                            <!--                        cycle print recommend data-->
+                            <?php while ($blog = mysqli_fetch_array($blogrst)) {
+                                $blogtitle = $blog['title'];
+                                $blogshowstyle = $blog['blogshowstyle'];
+                                $blogpublishTime = date("Y年m月d日", strtotime($blog['publishTime']));
                             $blogauthor = $blog['nickname'] ?? $blog['username'];
                             $blogabstract = $blog['abstract'];
                             $blogtypeid = $blog['blogtypeid'];
@@ -176,10 +176,11 @@ listitems;
                 <div class="section-main">
                     <div class="section-main__inner flex-box flex-space-30">
                         <?php
-                        $blogrst = []; $blog = [];
-                        $blogrst = queryData('accounts, blog, blogtype, blogimages, selectedblog',
+                        $blogrst = [];
+                        $blog = [];
+                        $blogrst = queryData('accounts, blog, blogtype, blogimages',
                             '*', 'blog.blogid = blogimages.blogid and blog.author = accounts.username
-                             and blog.blogid = selectedblog.blogid and blog.type = blogtype.name');
+                             and blog.isselected = 1 and blog.type = blogtype.name');
                         $blog = mysqli_fetch_array($blogrst);
                         $blogshowstyle = $blog['blogshowstyle'];
                         $blogtitle = $blog['title'];

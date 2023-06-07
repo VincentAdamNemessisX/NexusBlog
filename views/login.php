@@ -128,14 +128,15 @@
                             <input type="password" class="form-control" name="password" id="password"
                                    placeholder="请输入密码">
                         </div>
-                        <label class="checkbox-container mb-2">
-                            <input type="checkbox" name="rmbMe">
-                            <span class="checkmark">
-                                <i class="fa fa-check"></i>
-                            </span>记住密码
-                        </label>
+                        <!--                        <label class="checkbox-container mb-2">-->
+                        <!--                            <input type="checkbox" name="rmbMe">-->
+                        <!--                            <span class="checkmark">-->
+                        <!--                                <i class="fa fa-check"></i>-->
+                        <!--                            </span>记住密码-->
+                        <!--                        </label>-->
                         <button type="button" class="d-block text-center mt-4 btn btn-primary btn-block"
-                                name="sb" style="margin: 0 auto" onclick="check()">登录</button>
+                                name="sb" style="margin: 0 auto" onclick="check()">登录
+                        </button>
                         <small class="d-block text-center mt-3"><a href="register.php">注册</a></small>
                     </form>
                 </div>
