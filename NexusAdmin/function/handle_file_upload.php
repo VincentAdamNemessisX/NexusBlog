@@ -6,7 +6,7 @@ function uploadFile()
     if (!file_exists('../../uploadFiles/BlogImages')) {
         mkdir('../../uploadFiles/BlogImages', 0777);
     }
-    $MyFilePath = "../uploadFiles/BlogImages/";
+    $MyFilePath = "../../uploadFiles/BlogImages/";
     $Extensions = array("jpeg", "jpg", "png", "pdf");
     $MaxFileSize = 50;
     date_default_timezone_set("PRC");
@@ -41,6 +41,7 @@ function uploadFile()
 if ($_POST['action'] == 'upload') {
     $imagesurl = uploadFile();
     if ($imagesurl) {
+        $imagesurl = substr_replace($imagesurl, "", 0, 3);
         $result_image = insertData('blogimages', "", "",
             ["blogid" => -1, "imagesurl" => "'" . $imagesurl . "'"]);
         if ($result_image) {
